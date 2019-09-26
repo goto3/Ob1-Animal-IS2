@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Paseo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProyNetbeans&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">Paseo.java</span></div><h1>Paseo.java</h1><pre class="source lang-java linenums">package dominio;
+
+import java.time.LocalTime;
+import javax.swing.ImageIcon;
+
+public class Paseo extends Actividad {
+
+    private Usuario responsable;
+    private Perro perro;
+    private double distancia;
+    private ImageIcon ruta;
+    private boolean fueRealizado;
+    private LocalTime hora;
+    private Fecha fecha;
+    private String nombre;
+
+<span class="fc" id="L17">    public Paseo(String nombre, Usuario responasble, Perro perro, double distancia, boolean fueRealizado, LocalTime hora, Fecha fecha) {</span>
+<span class="fc" id="L18">        this.responsable = responasble;</span>
+<span class="fc" id="L19">        this.perro = perro;</span>
+<span class="fc" id="L20">        setDistancia(distancia);</span>
+<span class="fc" id="L21">        this.fueRealizado = fueRealizado;</span>
+<span class="fc" id="L22">        this.hora = hora;</span>
+<span class="fc" id="L23">        this.fecha = fecha;</span>
+<span class="fc" id="L24">        this.ruta=null;</span>
+<span class="fc" id="L25">        setNombre(nombre);</span>
+<span class="fc" id="L26">    }</span>
+    
+<span class="fc" id="L28">    public Paseo(){</span>
+<span class="fc" id="L29">        this.responsable = new Usuario();</span>
+<span class="fc" id="L30">        this.perro = new Perro();</span>
+<span class="fc" id="L31">        this.distancia = 0;</span>
+<span class="fc" id="L32">        this.fueRealizado = false;</span>
+<span class="fc" id="L33">        this.hora = LocalTime.now();</span>
+<span class="fc" id="L34">        this.fecha = new Fecha();</span>
+<span class="fc" id="L35">        this.nombre = &quot;Sin-Nombre&quot;;</span>
+<span class="fc" id="L36">        this.ruta=null;</span>
+<span class="fc" id="L37">    }</span>
+
+    public ImageIcon getRuta() {
+<span class="fc" id="L40">        return ruta;</span>
+    }
+
+    public void setRuta(ImageIcon ruta) {
+<span class="fc" id="L44">        this.ruta = ruta;</span>
+<span class="fc" id="L45">    }</span>
+    
+    @Override
+    public LocalTime getHora() {
+<span class="fc" id="L49">        return hora;</span>
+    }
+
+    @Override
+    public void setHora(LocalTime hora) {
+<span class="fc" id="L54">        this.hora = hora;</span>
+<span class="fc" id="L55">    }</span>
+    
+    public double getDistancia() {
+<span class="fc" id="L58">        return distancia;</span>
+    }
+
+    public final void setDistancia(double distancia) {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">       if(distancia &lt; 0){</span>
+<span class="fc" id="L63">           this.distancia = 0.0;</span>
+       }else{
+<span class="fc" id="L65">           this.distancia = distancia;</span>
+       }
+<span class="fc" id="L67">    }</span>
+
+    @Override
+    public Usuario getResponsable() {
+<span class="fc" id="L71">        return responsable;</span>
+    }
+
+    @Override
+    public void setResponsable(Usuario responasble) {
+<span class="fc" id="L76">        this.responsable = responasble;</span>
+<span class="fc" id="L77">    }</span>
+
+    @Override
+    public Perro getMascota() {
+<span class="fc" id="L81">        return perro;</span>
+    }
+
+    @Override
+    public void setMascota(Perro perros) {
+<span class="fc" id="L86">        this.perro = perros;</span>
+<span class="fc" id="L87">    }</span>
+
+    @Override
+    public boolean getFueRealizado() {
+<span class="fc" id="L91">        return fueRealizado;</span>
+    }
+
+    @Override
+    public void setFueRealizado(boolean seCompleto) {
+<span class="fc" id="L96">        this.fueRealizado = seCompleto;</span>
+<span class="fc" id="L97">    }</span>
+
+    @Override
+    public Fecha getFecha() {
+<span class="fc" id="L101">        return fecha;</span>
+    }
+    @Override
+    public void setFecha(Fecha fecha) {
+<span class="fc" id="L105">        this.fecha = fecha;</span>
+<span class="fc" id="L106">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L110">        return &quot;Paseo{&quot; + &quot;responsable=&quot; + responsable + &quot;, perro=&quot; + perro + &quot;, distancia=&quot; + distancia + &quot;, fueRealizado=&quot; + fueRealizado + &quot;, hora=&quot; + hora + &quot;, fecha=&quot; + fecha + &quot;, nombre=&quot; + nombre + '}';</span>
+    }
+
+    @Override
+    public String getNombre() {
+<span class="fc" id="L115">        return this.nombre;</span>
+    }
+
+
+    public final void setNombre(String nombre) {
+<span class="fc bfc" id="L120" title="All 2 branches covered.">         if(nombre.equals(&quot;&quot;)){</span>
+<span class="fc" id="L121">            this.nombre = &quot;Sin-Nombre&quot;;</span>
+        }else{
+<span class="fc" id="L123">            this.nombre = nombre;</span>
+        }
+<span class="fc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

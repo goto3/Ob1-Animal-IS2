@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Fecha.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProyNetbeans&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">Fecha.java</span></div><h1>Fecha.java</h1><pre class="source lang-java linenums">package dominio;
+
+import java.util.*;
+
+public class Fecha {
+
+    private int dia;
+    private int mes;
+    private int ano;
+    private ArrayList&lt;Actividad&gt; actividades;
+
+<span class="fc" id="L12">    public Fecha(int dia, int mes, int ano) {</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (dia &gt; 0) {</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">            if (dia &gt; 31) {</span>
+<span class="fc" id="L15">                this.dia = 31;</span>
+            } else {
+<span class="fc" id="L17">                this.dia = dia;</span>
+            }
+        } else {
+<span class="fc" id="L20">            this.dia = 1;</span>
+        }
+<span class="fc bfc" id="L22" title="All 4 branches covered.">        if (mes &gt; 0 &amp;&amp; mes &lt; 13) {</span>
+<span class="fc" id="L23">            this.mes = mes;</span>
+<span class="fc bfc" id="L24" title="All 4 branches covered.">            if (mes == 2 &amp;&amp; dia &gt; 29) {</span>
+<span class="fc" id="L25">                this.dia = 29;</span>
+            }
+        } else {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (mes &lt; 1) {</span>
+<span class="fc" id="L29">                this.mes = 1;</span>
+            }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            if (mes &gt; 12) {</span>
+<span class="fc" id="L32">                this.mes = 12;</span>
+            }
+        }
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (ano &gt; 0) {</span>
+<span class="fc" id="L36">            this.ano = ano;</span>
+        } else {
+<span class="fc" id="L38">            this.ano = 2018;</span>
+        }
+<span class="fc" id="L40">        this.actividades = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L41">    }</span>
+
+<span class="fc" id="L43">    public Fecha() {</span>
+<span class="fc" id="L44">        this.dia = 1;</span>
+<span class="fc" id="L45">        this.mes = 1;</span>
+<span class="fc" id="L46">        this.ano = 2018;</span>
+<span class="fc" id="L47">        this.actividades = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L48">    }</span>
+
+    public int getDia() {
+<span class="fc" id="L51">        return dia;</span>
+    }
+
+    public void setDia(int dia) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (dia &gt; 0) {</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (dia &gt; 31) {</span>
+<span class="fc" id="L57">                this.dia = 31;</span>
+            } else {
+<span class="fc" id="L59">                this.dia = dia;</span>
+            }
+        } else {
+<span class="fc" id="L62">            this.dia = 1;</span>
+        }
+<span class="fc" id="L64">        setMes(mes);</span>
+<span class="fc" id="L65">    }</span>
+
+    public int getMes() {
+<span class="fc" id="L68">        return mes;</span>
+    }
+
+    public void setMes(int mes) {
+<span class="fc bfc" id="L72" title="All 4 branches covered.">        if (mes &gt; 0 &amp;&amp; mes &lt; 13) {</span>
+<span class="fc" id="L73">            this.mes = mes;</span>
+<span class="fc bfc" id="L74" title="All 4 branches covered.">            if (mes == 2 &amp;&amp; dia &gt; 29) {</span>
+<span class="fc" id="L75">                dia = 29;</span>
+            }
+        } else {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            if (mes &lt; 1) {</span>
+<span class="fc" id="L79">                this.mes = 1;</span>
+            }
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (mes &gt; 12) {</span>
+<span class="fc" id="L82">                this.mes = 12;</span>
+            }
+        }
+
+<span class="fc" id="L86">    }</span>
+
+    public int getAno() {
+<span class="fc" id="L89">        return ano;</span>
+    }
+
+    public void setAno(int ano) {
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if (ano &gt; 0) {</span>
+<span class="fc" id="L94">            this.ano = ano;</span>
+        } else {
+<span class="fc" id="L96">            this.ano = 2018;</span>
+        }
+<span class="fc" id="L98">    }</span>
+
+    public ArrayList&lt;Actividad&gt; getActividades() {
+<span class="fc" id="L101">        return actividades;</span>
+    }
+
+    public void agregarActividad(Actividad actividad) {
+<span class="fc" id="L105">        actividades.add(actividad);</span>
+<span class="fc" id="L106">    }</span>
+
+    public void borrarActividad(Actividad actividad) {
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if (actividades.contains(actividad)) {</span>
+<span class="fc" id="L110">            actividades.remove(actividad);</span>
+        } else {
+<span class="fc" id="L112">            System.out.println(&quot;No se pudo borrar actividad&quot;);</span>
+        }
+<span class="fc" id="L114">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L118">        return &quot;Fecha{&quot; + &quot;dia=&quot; + dia + &quot;, mes=&quot; + mes + &quot;, año=&quot; + ano + &quot;, actividades=&quot; + actividades + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
