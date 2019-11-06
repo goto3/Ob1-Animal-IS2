@@ -90,6 +90,4 @@ public class Animal {
         return "Perro{" + "nombre=" + nombre + ", altura=" + altura + ", peso=" + peso + ", comentarios=" + comentarios + '}';
     }
 
-    
-
 }

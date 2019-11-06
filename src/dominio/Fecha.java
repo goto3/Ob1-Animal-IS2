@@ -9,7 +9,7 @@ public class Fecha {
     private int mes;
     private int ano;
     private final ArrayList<Actividad> actividades;
-    
+
     private final int PRIMER_DIA_MES = 1;
     private final int ULTIMO_DIA_MES = 31;
     private final int DIA_ANO_BISIESTO = 29;
@@ -32,8 +32,8 @@ public class Fecha {
             this.mes = PRIMER_MES_ANO;
         } else if (mesRecibido > ULTIMO_MES_ANO) {
             this.mes = ULTIMO_MES_ANO;
-        } else if (mesRecibido >= PRIMER_MES_ANO && 
-                mesRecibido <= ULTIMO_MES_ANO) {
+        } else if (mesRecibido >= PRIMER_MES_ANO
+                && mesRecibido <= ULTIMO_MES_ANO) {
             this.mes = mesRecibido;
             if (mes == FEBRERO && dia > DIA_ANO_BISIESTO) {
                 this.dia = DIA_ANO_BISIESTO;

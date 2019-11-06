@@ -5,12 +5,11 @@ public abstract class Persona {
     protected String nombre;
     protected String mail;
 
-    
     public Persona() {
         this.nombre = "Sin-Nombre";
         this.mail = "Sin-Mail";
     }
-        
+
     public Persona(String nombre, String mail) {
         this.nombre = nombre;
         this.mail = mail;
@@ -39,7 +38,7 @@ public abstract class Persona {
             this.mail = mail;
         }
     }
-    
+
     @Override
     public String toString() {
         return "Nombre=" + nombre + ", mail=" + mail + '}';

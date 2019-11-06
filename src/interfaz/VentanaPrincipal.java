@@ -53,7 +53,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private String rutaImagenAgregar;
     private Fecha fechaSeleccionada;
     private String rutaImagenRuta;
-    
+
     private String RUTA_IMAGEN_PERRO_POR_DEFECTO = "images/perroPorDefecto.png";
 
     public VentanaPrincipal(Sistema sis) {
@@ -89,7 +89,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         CalPanRuta.setVisible(false);
         this.setSize(950, 625);
     }
-    
 
     public void resetearPestanaPerros() {
         setearListaPerros();
@@ -1356,7 +1355,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int dia = CalDayChooser.getDay();
         int mes = CalMonthChooser.getMonth() + 1;
         int ano = CalYearChooser.getYear();
-        ArrayList<Actividad> listaActividades = (ArrayList)sistema.listaActividadesPorFecha(dia, mes, ano);
+        ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
         String[] arrActividades = new String[listaActividades.size()];
         for (int i = 0; i < listaActividades.size(); i++) {
             Actividad act = listaActividades.get(i);
@@ -1661,7 +1660,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int dia = CalDayChooser.getDay();
         int mes = CalMonthChooser.getMonth() + 1;
         int ano = CalYearChooser.getYear();
-        ArrayList<Actividad> listaActividades = (ArrayList)sistema.listaActividadesPorFecha(dia, mes, ano);
+        ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
         String[] arrActividades = new String[listaActividades.size()];
         for (int i = 0; i < listaActividades.size(); i++) {
             Actividad act = listaActividades.get(i);
@@ -1768,7 +1767,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int dia = CalDayChooser.getDay();
         int mes = CalMonthChooser.getMonth() + 1;
         int ano = CalYearChooser.getYear();
-        ArrayList<Actividad> listaActividades = (ArrayList)sistema.listaActividadesPorFecha(dia, mes, ano);
+        ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
         String[] arrActividades = new String[listaActividades.size()];
         for (int i = 0; i < listaActividades.size(); i++) {
             Actividad act = listaActividades.get(i);

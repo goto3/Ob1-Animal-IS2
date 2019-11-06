@@ -5,14 +5,14 @@ import dominio.modelo.usuarios.Responsable;
 import java.time.LocalTime;
 
 public abstract class Actividad {
-    
+
     protected Animal animal;
     protected Responsable responsable;
     protected boolean fueRealizado;
     protected Fecha fecha;
     protected LocalTime hora;
     protected String nombre;
-    
+
     public Actividad() {
         this.responsable = new Responsable();
         this.animal = new Animal();
@@ -21,9 +21,9 @@ public abstract class Actividad {
         this.hora = LocalTime.now();
         this.fecha = new Fecha();
     }
-    
-        public Actividad(String nombre, Animal animal, Responsable responsable,
-                boolean fueRealizado, Fecha fecha, LocalTime hora) {
+
+    public Actividad(String nombre, Animal animal, Responsable responsable,
+            boolean fueRealizado, Fecha fecha, LocalTime hora) {
         this.nombre = nombre;
         this.responsable = responsable;
         this.animal = animal;
@@ -32,24 +32,24 @@ public abstract class Actividad {
         this.hora = hora;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
-        if(nombre.equals("")){
+        if (nombre.equals("")) {
             this.nombre = "Sin-Nombre";
-        }else{
+        } else {
             this.nombre = nombre;
         }
     }
 
-    public LocalTime getHora(){
-        return hora;   
+    public LocalTime getHora() {
+        return hora;
     }
 
-    public void setHora(LocalTime hora){
-         this.hora = hora;
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 
     public Responsable getUsuario() {
@@ -60,7 +60,7 @@ public abstract class Actividad {
         this.responsable = responasble;
     }
 
-    public Animal getMascota(){
+    public Animal getMascota() {
         return animal;
     }
 
@@ -72,7 +72,7 @@ public abstract class Actividad {
         return fueRealizado;
     }
 
-    public void setFueRealizado(boolean seCompleto){
+    public void setFueRealizado(boolean seCompleto) {
         fueRealizado = seCompleto;
     }
 

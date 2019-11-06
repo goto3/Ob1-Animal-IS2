@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Responsable extends Persona {
-    
+
     List<Actividad> actividades;
-    
-    public Responsable(){
+
+    public Responsable() {
         super("Sin-Nombre", "Sin-Email");
         actividades = new ArrayList<>();
     }
-    
-    public Responsable(String nombre, String mail){
+
+    public Responsable(String nombre, String mail) {
         super(nombre, mail);
         actividades = new ArrayList<>();
     }
-    
-    public List <Actividad> getActividades() {
+
+    public List<Actividad> getActividades() {
         return actividades;
     }
 
-    public void agregarActividad(Actividad act){
+    public void agregarActividad(Actividad act) {
         actividades.add(act);
     }
 
     @Override
     public String toString() {
-        return "Persona => Responsable: Nombre = " 
+        return "Persona => Responsable: Nombre = "
                 + this.nombre + ", mail = " + this.mail;
     }
 }

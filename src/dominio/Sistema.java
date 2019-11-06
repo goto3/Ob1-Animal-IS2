@@ -27,7 +27,7 @@ public class Sistema {
         this.fechas = new ArrayList<>();
         this.veterinarias = new ArrayList<>();
     }
-    
+
     public List<Actividad> listaActividadesPorFecha(int dia, int mes, int ano) {
         ArrayList<Actividad> retLista = new ArrayList<>();
         if (dia >= 1 && dia <= 31 && mes >= 0 && mes <= 12 && ano >= 1) {
@@ -40,8 +40,6 @@ public class Sistema {
         }
         return retLista;
     }
-    
-    
 
     /* GETTERS */
     public List<Responsable> getResponsables() {
@@ -190,7 +188,5 @@ public class Sistema {
             System.out.println("No existe tal fecha");
         }
     }
-
-    
 
 }

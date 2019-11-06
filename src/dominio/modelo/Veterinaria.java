@@ -1,18 +1,9 @@
-/*
-        * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dominio.modelo;
 
 import dominio.Fecha;
 import dominio.modelo.actividades.VisitaVeterinaria;
 import java.util.ArrayList;
 
-/**
- *
- * @author marce
- */
 public class Veterinaria {
 
     private String nombre;
@@ -53,26 +44,26 @@ public class Veterinaria {
     public void setActividadesAgendadas(ArrayList<Actividad> actividadesAgendadas) {
         this.actividadesAgendadas = actividadesAgendadas;
     }
-    
-    private boolean existeActividadEnEseMomento(Fecha fecha, int hora){
+
+    private boolean existeActividadEnEseMomento(Fecha fecha, int hora) {
         for (int i = 0; i < actividadesAgendadas.size(); i++) {
-                Actividad actAgendada = actividadesAgendadas.get(i);
-                if (fecha.getDia() == actAgendada.getFecha().getDia()
-                        && fecha.getMes() == actAgendada.getFecha().getMes()
-                        && fecha.getAno() == actAgendada.getFecha().getAno()
-                        && hora == actAgendada.getHora().getHour()) {
-                    return true;
-                }
+            Actividad actAgendada = actividadesAgendadas.get(i);
+            if (fecha.getDia() == actAgendada.getFecha().getDia()
+                    && fecha.getMes() == actAgendada.getFecha().getMes()
+                    && fecha.getAno() == actAgendada.getFecha().getAno()
+                    && hora == actAgendada.getHora().getHour()) {
+                return true;
+            }
         }
         return false;
-        
+
     }
 
     public boolean agendarActividad(VisitaVeterinaria act) {
         int hora = act.getHora().getHour();
         if (hora >= horaInicial && hora <= horaFinal) {
             Fecha fecha = act.getFecha();
-            if(!existeActividadEnEseMomento(fecha, hora)){
+            if (!existeActividadEnEseMomento(fecha, hora)) {
                 actividadesAgendadas.add(act);
                 act.setVeterinaria(this);
                 return true;
