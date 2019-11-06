@@ -30,7 +30,7 @@ public class Perro {
         return nombre;
     }
 
-    public final void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         if (nombre.equals("")) {
             this.nombre = "Sin-Nombre";
         } else {
@@ -43,7 +43,7 @@ public class Perro {
         return altura;
     }
 
-    public final void setAltura(double altura) {
+    public void setAltura(double altura) {
         if (altura < 0) {
             this.altura = 0.0;
         } else {
@@ -56,7 +56,7 @@ public class Perro {
         return peso;
     }
 
-    public final void setPeso(double peso) {
+    public void setPeso(double peso) {
         if (peso < 0) {
             this.peso = 0.0;
         } else {
@@ -68,7 +68,7 @@ public class Perro {
         return comentarios;
     }
 
-    public final void setComentarios(String comentarios) {
+    public void setComentarios(String comentarios) {
         if (comentarios.equals("")) {
             this.comentarios = "Sin-Comentarios";
 

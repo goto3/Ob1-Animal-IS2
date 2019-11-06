@@ -65,8 +65,8 @@ public class SistemaTest {
     public void testAñadirActividadDosElementos() {
         Actividad act1 = new ActividadCualquiera();
         Actividad act2 = new Alimentacion();
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
         assertTrue(sis.getActividades().contains(act1));
         assertTrue(sis.getActividades().contains(act2));
     }
@@ -78,9 +78,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, 2018);
         assertTrue(lista.contains(act1));
         assertTrue(lista.contains(act2));
     }
@@ -92,9 +92,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 1, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 1, 2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
     }
@@ -106,9 +106,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(-10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(-10, 2, 2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -121,9 +121,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, -2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, -2, 2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -136,9 +136,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, -2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, -2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -151,9 +151,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(32, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(32, 2, 2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -166,9 +166,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 13, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista =(ArrayList) sis.listaActividadesPorFecha(10, 13, 2018);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -181,9 +181,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(31, 2, 0);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(31, 2, 0);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -196,9 +196,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(32, -2, 0);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(32, -2, 0);
         assertTrue(!lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertTrue(lista.isEmpty());
@@ -212,9 +212,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha2);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, 2018);
         assertTrue(lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertFalse(lista.isEmpty());
@@ -228,9 +228,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha2);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, 2018);
         assertTrue(lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertFalse(lista.isEmpty());
@@ -244,9 +244,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha2);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, 2018);
         assertTrue(lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertFalse(lista.isEmpty());
@@ -260,9 +260,9 @@ public class SistemaTest {
         act1.setFecha(fecha);
         Actividad act2 = new ActividadCualquiera();
         act2.setFecha(fecha2);
-        sis.AnadirActividad(act1);
-        sis.AnadirActividad(act2);
-        ArrayList<Actividad> lista = sis.listaActividadesPorFecha(10, 2, 2018);
+        sis.anadirActividad(act1);
+        sis.anadirActividad(act2);
+        ArrayList<Actividad> lista = (ArrayList)sis.listaActividadesPorFecha(10, 2, 2018);
         assertTrue(lista.contains(act1));
         assertTrue(!lista.contains(act2));
         assertFalse(lista.isEmpty());
@@ -301,101 +301,101 @@ public class SistemaTest {
     }
 
     @Test
-    public void testAnadirPerro() {
+    public void testanadirPerro() {
         Perro perro = new Perro();
-        sis.AnadirPerro(perro);
+        sis.anadirPerro(perro);
         assertTrue(sis.getPerros().contains(perro));
     }
 
     @Test
-    public void testEliminarPerro() {
+    public void testeliminarPerro() {
         Perro perro = new Perro();
         sis.getPerros().add(perro);
-        sis.EliminarPerro(perro);
+        sis.eliminarPerro(perro);
         assertFalse(sis.getPerros().contains(perro));
     }
 
     @Test
-    public void testEliminarPerroQueNoEsta() {
+    public void testeliminarPerroQueNoEsta() {
         Perro perro = new Perro();
         Perro perro2 = new Perro();
-        sis.AnadirPerro(perro2);
-        sis.EliminarPerro(perro);
+        sis.anadirPerro(perro2);
+        sis.eliminarPerro(perro);
         assertFalse(sis.getPerros().contains(perro));
         assertTrue(sis.getPerros().contains(perro2));
     }
 
     @Test
-    public void testAnadirUsuario() {
+    public void testanadirUsuario() {
         Usuario usuario = new Usuario();
-        sis.AnadirUsuario(usuario);
+        sis.anadirUsuario(usuario);
         assertTrue(sis.getUsuarios().contains(usuario));
     }
 
     @Test
-    public void testEliminarUsuario() {
+    public void testeliminarUsuario() {
         Usuario usuario = new Usuario();
         sis.getUsuarios().add(usuario);
-        sis.EliminarUsuario(usuario);
+        sis.eliminarUsuario(usuario);
         assertFalse(sis.getUsuarios().contains(usuario));
     }
 
     @Test
-    public void testEliminarUsuarioQueNoEsta() {
+    public void testeliminarUsuarioQueNoEsta() {
         Usuario usuario = new Usuario();
         Usuario usuario2 = new Usuario();
-        sis.AnadirUsuario(usuario2);
-        sis.EliminarUsuario(usuario);
+        sis.anadirUsuario(usuario2);
+        sis.eliminarUsuario(usuario);
         assertFalse(sis.getUsuarios().contains(usuario));
         assertTrue(sis.getUsuarios().contains(usuario2));
     }
 
     @Test
-    public void testAnadirActividad() {
+    public void testanadirActividad() {
         Actividad act = new ActividadCualquiera();
-        sis.AnadirActividad(act);
+        sis.anadirActividad(act);
         assertTrue(sis.getActividades().contains(act));
     }
 
     @Test
-    public void testEliminarActividad() {
+    public void testeliminarActividad() {
         Actividad act = new ActividadCualquiera();
         sis.getActividades().add(act);
-        sis.EliminarActividad(act);
+        sis.eliminarActividad(act);
         assertFalse(sis.getActividades().contains(act));
     }
 
     @Test
-    public void testEliminarActividadQueNoEsta() {
+    public void testeliminarActividadQueNoEsta() {
         Actividad act = new ActividadCualquiera();
         Actividad act2 = new Alimentacion();
-        sis.AnadirActividad(act2);
-        sis.EliminarActividad(act);
+        sis.anadirActividad(act2);
+        sis.eliminarActividad(act);
         assertFalse(sis.getActividades().contains(act));
         assertTrue(sis.getActividades().contains(act2));
     }
 
     @Test
-    public void testAnadirFecha() {
+    public void testanadirFecha() {
         Fecha fecha = new Fecha();
-        sis.AnadirFecha(fecha);
+        sis.anadirFecha(fecha);
         assertTrue(sis.getFechas().contains(fecha));
     }
 
     @Test
-    public void testEliminarFecha() {
+    public void testeliminarFecha() {
         Fecha fecha = new Fecha();
         sis.getFechas().add(fecha);
-        sis.EliminarFecha(fecha);
+        sis.eliminarFecha(fecha);
         assertFalse(sis.getFechas().contains(fecha));
     }
 
     @Test
-    public void testEliminarFechaQueNoEsta() {
+    public void testeliminarFechaQueNoEsta() {
         Fecha fecha = new Fecha();
         Fecha fecha2 = new Fecha();
-        sis.AnadirFecha(fecha2);
-        sis.EliminarFecha(fecha);
+        sis.anadirFecha(fecha2);
+        sis.eliminarFecha(fecha);
         assertFalse(sis.getFechas().contains(fecha));
         assertTrue(sis.getFechas().contains(fecha2));
     }
@@ -420,7 +420,7 @@ public class SistemaTest {
     public void testBuscarUsuarioPorNombre() {
         Usuario usuario = new Usuario();
         usuario.setNombre("Marcel");
-        sis.AnadirUsuario(usuario);
+        sis.anadirUsuario(usuario);
         assertEquals(usuario, sis.buscarUsuarioPorNombre("Marcel"));
     }
     
@@ -428,7 +428,7 @@ public class SistemaTest {
     public void testBuscarUsuarioPorNombreDistintos() {
         Usuario usuario = new Usuario();
         usuario.setNombre("Marcel");
-        sis.AnadirUsuario(usuario);
+        sis.anadirUsuario(usuario);
         assertEquals(null, sis.buscarUsuarioPorNombre("Alejandro"));
     }
     
@@ -436,7 +436,7 @@ public class SistemaTest {
     public void testBuscarPerroPorNombre() {
         Perro perro = new Perro();
         perro.setNombre("Marcel");
-        sis.AnadirPerro(perro);
+        sis.anadirPerro(perro);
         assertEquals(perro, sis.buscarPerroPorNombre("Marcel"));
     }
     
@@ -444,7 +444,7 @@ public class SistemaTest {
     public void testBuscarPerroPorNombreDistintos() {
         Perro perro = new Perro();
         perro.setNombre("Marcel");
-        sis.AnadirPerro(perro);
+        sis.anadirPerro(perro);
         assertEquals(null, sis.buscarPerroPorNombre("Alejandro"));
     }
     

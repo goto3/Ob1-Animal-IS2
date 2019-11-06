@@ -59,7 +59,7 @@ public class UsuarioTest {
         Usuario unUsuario = new Usuario("nombre", "email@email.com");
         String resNom = unUsuario.getNombre();
         String resMail = unUsuario.getMail();
-        ArrayList<Actividad> resActividades = unUsuario.getActividades();
+        ArrayList<Actividad> resActividades = (ArrayList)unUsuario.getActividades();
         assertEquals("nombre", resNom);
         assertEquals("email@email.com", resMail);
         assertEquals(new ArrayList<>(), resActividades);

@@ -8,42 +8,53 @@ public class Fecha {
     private int mes;
     private int ano;
     private final ArrayList<Actividad> actividades;
+    
+    private final int PRIMER_DIA_MES = 1;
+    private final int ULTIMO_DIA_MES = 31;
+    private final int DIA_ANO_BISIESTO = 29;
+    private final int FEBRERO = 2;
+    private final int PRIMER_MES_ANO = 1;
+    private final int ULTIMO_MES_ANO = 12;
+
+    private void calcularDia(int diaRecibido) {
+        if (diaRecibido < PRIMER_DIA_MES) {
+            this.dia = PRIMER_DIA_MES;
+        } else if (diaRecibido > ULTIMO_DIA_MES) {
+            this.dia = ULTIMO_DIA_MES;
+        } else {
+            this.dia = diaRecibido;
+        }
+    }
+
+    private void calcularMes(int mesRecibido) {
+        if (mesRecibido < PRIMER_MES_ANO) {
+            this.mes = PRIMER_MES_ANO;
+        } else if (mesRecibido > ULTIMO_MES_ANO) {
+            this.mes = ULTIMO_MES_ANO;
+        } else if (mesRecibido >= PRIMER_MES_ANO && 
+                mesRecibido <= ULTIMO_MES_ANO) {
+            this.mes = mesRecibido;
+            if (mes == FEBRERO && dia > DIA_ANO_BISIESTO) {
+                this.dia = DIA_ANO_BISIESTO;
+            }
+        }
+    }
+
+    private void calcularAno(int anoRecibido) {
+        this.ano = anoRecibido > 0 ? anoRecibido : 2019;
+    }
 
     public Fecha(int dia, int mes, int ano) {
-        if (dia > 0) {
-            if (dia > 31) {
-                this.dia = 31;
-            } else {
-                this.dia = dia;
-            }
-        } else {
-            this.dia = 1;
-        }
-        if (mes > 0 && mes < 13) {
-            this.mes = mes;
-            if (mes == 2 && dia > 29) {
-                this.dia = 29;
-            }
-        } else {
-            if (mes < 1) {
-                this.mes = 1;
-            }
-            if (mes > 12) {
-                this.mes = 12;
-            }
-        }
-        if (ano > 0) {
-            this.ano = ano;
-        } else {
-            this.ano = 2018;
-        }
+        calcularDia(dia);
+        calcularMes(mes);
+        calcularAno(ano);
         this.actividades = new ArrayList<>();
     }
 
     public Fecha() {
         this.dia = 1;
         this.mes = 1;
-        this.ano = 2018;
+        this.ano = 2019;
         this.actividades = new ArrayList<>();
     }
 
@@ -53,11 +64,7 @@ public class Fecha {
 
     public void setDia(int dia) {
         if (dia > 0) {
-            if (dia > 31) {
-                this.dia = 31;
-            } else {
-                this.dia = dia;
-            }
+            this.dia = dia > 31 ? 31 : dia;
         } else {
             this.dia = 1;
         }
@@ -90,11 +97,7 @@ public class Fecha {
     }
 
     public void setAno(int ano) {
-        if (ano > 0) {
-            this.ano = ano;
-        } else {
-            this.ano = 2018;
-        }
+        this.ano = ano > 0 ? ano : 2019;
     }
 
     public ArrayList<Actividad> getActividades() {
