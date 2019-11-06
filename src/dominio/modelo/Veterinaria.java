@@ -1,7 +1,7 @@
 package dominio.modelo;
 
 import dominio.modelo.actividades.VisitaVeterinaria;
-import java.time.LocalDate;
+import excepciones.AnimalException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -53,10 +53,6 @@ public class Veterinaria {
         }
     }
 
-    public void setActividadesAgendadas(ArrayList<Actividad> actividadesAgendadas) {
-        this.actividades = actividadesAgendadas;
-    }
-
     public final void setHoraInicio(LocalTime time) {
         this.horaInicio = time;
     }
@@ -65,27 +61,24 @@ public class Veterinaria {
         this.horaFin = time;
     }
 
-    private boolean existeActividadEnEseMomento(LocalDateTime fecha) {
+    private boolean existeActividadHora(LocalDateTime fechaHora) {        
         for (Actividad actividad : actividades) {
-            LocalDate ld = actividad.getFechaHora().toLocalDate();
-            if (ld.equals(fecha)) {
+            LocalDateTime inicioActividad = actividad.getFechaHora();
+            LocalDateTime finActividad = actividad.getFechaHora().plusMinutes(actividad.duracion);
+            if(fechaHora.isAfter(inicioActividad) && fechaHora.isBefore(finActividad)){
                 return true;
-            }
+            }            
         }
         return false;
     }
 
-    public boolean agendarActividad(VisitaVeterinaria act) {
-        /*int hora = act.getHora().getHour();
-        if (hora >= horaInicial && hora <= horaFinal) {
-            Fecha fecha = act.getFechaHora();
-            if (!existeActividadEnEseMomento(fecha, hora)) {
-                actividades.add(act);
-                act.setVeterinaria(this);
-                return true;
-            }
-        }*/
-        return false;
+    public void agendarActividad(VisitaVeterinaria act) throws AnimalException {
+        if (!existeActividadHora(act.getFechaHora())) {
+            actividades.add(act);
+            act.setVeterinaria(this);
+        } else{
+            throw new AnimalException("fecha ocupada por otra actividad");
+        }
     }
 
     public void EliminarActividadAgendada(Actividad act) {
