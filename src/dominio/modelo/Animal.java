@@ -5,42 +5,70 @@ import javax.swing.ImageIcon;
 public class Animal {
 
     private String nombre;
+    private String tipo;
     private double altura;
     private double peso;
     private String comentarios;
     private ImageIcon foto;
 
-    public Animal(String nombre, double altura, double peso, String comentarios) { //Sin foto
-        setNombre(nombre);
-        setAltura(altura);
-        setPeso(peso);
-        setComentarios(comentarios);
-        this.foto = null;
-    }
-
-    public Animal() { //Sin foto
+    public Animal() {
         this.nombre = "Sin-Nombre";
+        this.tipo = "Sin-tipo";
         this.altura = 0;
         this.peso = 0;
         this.comentarios = "Sin-Comentarios";
         this.foto = null;
     }
 
+    public Animal(String nombre, String tipo, double altura, double peso, String comentarios) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.altura = altura;
+        this.peso = peso;
+        this.comentarios = comentarios;
+        this.foto = null;
+    }
+
+    /* GETTERS */
     public String getNombre() {
         return nombre;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public ImageIcon getFoto() {
+        return foto;
+    }
+
+    /* SETTERS */
     public void setNombre(String nombre) {
         if (nombre.equals("")) {
             this.nombre = "Sin-Nombre";
         } else {
             this.nombre = nombre;
         }
-
     }
 
-    public double getAltura() {
-        return altura;
+    public void setTipo(String tipo) {
+        if (tipo.equals("")) {
+            this.tipo = "Sin-Nombre";
+        } else {
+            this.tipo = tipo;
+        }
     }
 
     public void setAltura(double altura) {
@@ -49,11 +77,6 @@ public class Animal {
         } else {
             this.altura = altura;
         }
-
-    }
-
-    public double getPeso() {
-        return peso;
     }
 
     public void setPeso(double peso) {
@@ -64,10 +87,6 @@ public class Animal {
         }
     }
 
-    public String getComentarios() {
-        return comentarios;
-    }
-
     public void setComentarios(String comentarios) {
         if (comentarios.equals("")) {
             this.comentarios = "Sin-Comentarios";
@@ -75,10 +94,6 @@ public class Animal {
         } else {
             this.comentarios = comentarios;
         }
-    }
-
-    public ImageIcon getFoto() {
-        return foto;
     }
 
     public void setFoto(ImageIcon imagen) {

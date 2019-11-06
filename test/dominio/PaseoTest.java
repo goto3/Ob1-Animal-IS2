@@ -66,7 +66,7 @@ public class PaseoTest {
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Paseo unPaseo = new Paseo("Nombre", usuario, perro, 0, true, time, fecha);
-        assertEquals(fecha, unPaseo.getFecha());
+        assertEquals(fecha, unPaseo.getFechaHora());
         assertEquals(time, unPaseo.getHora());
         assertEquals("Nombre", unPaseo.getNombre());
         assertEquals(usuario, unPaseo.getUsuario());
@@ -82,7 +82,7 @@ public class PaseoTest {
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Paseo unPaseo = new Paseo("", usuario, perro, 0, true, time, fecha);
-        assertEquals(fecha, unPaseo.getFecha());
+        assertEquals(fecha, unPaseo.getFechaHora());
         assertEquals(time, unPaseo.getHora());
         assertEquals("Sin-Nombre", unPaseo.getNombre());
         assertEquals(usuario, unPaseo.getUsuario());
@@ -153,7 +153,7 @@ public class PaseoTest {
     public void testSetFecha() {
         Fecha fecha = new Fecha();
         paseo.setFecha(fecha);
-        assertEquals(fecha, paseo.getFecha());
+        assertEquals(fecha, paseo.getFechaHora());
     }
 
     @Test
@@ -175,7 +175,7 @@ public class PaseoTest {
         double distancia = paseo.getDistancia();
         boolean fueRealizado = paseo.getFueRealizado();
         LocalTime hora = paseo.getHora();
-        Fecha fecha = paseo.getFecha();
+        Fecha fecha = paseo.getFechaHora();
         String nombre = paseo.getNombre();
         String resString = paseo.toString();
         assertEquals("Paseo{" + "responsable=" + responsable + ", perro=" + perro + ", distancia=" + distancia + ", fueRealizado=" + fueRealizado + ", hora=" + hora + ", fecha=" + fecha + ", nombre=" + nombre + '}', resString);

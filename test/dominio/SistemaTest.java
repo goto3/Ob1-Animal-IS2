@@ -369,7 +369,7 @@ public class SistemaTest {
     public void testeliminarActividad() {
         Actividad act = new OtraActividad();
         sis.getActividades().add(act);
-        sis.eliminarActividad(act);
+        sis.deleteActividad(act);
         assertFalse(sis.getActividades().contains(act));
     }
 
@@ -378,7 +378,7 @@ public class SistemaTest {
         Actividad act = new OtraActividad();
         Actividad act2 = new Alimentacion();
         sis.addActividad(act2);
-        sis.eliminarActividad(act);
+        sis.deleteActividad(act);
         assertFalse(sis.getActividades().contains(act));
         assertTrue(sis.getActividades().contains(act2));
     }

@@ -1,6 +1,5 @@
 package dominio;
 
-import dominio.modelo.Persona;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.Actividad;
@@ -9,6 +8,7 @@ import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
 import dominio.modelo.usuarios.Responsable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,27 +18,23 @@ public class Sistema {
     private final ArrayList<Animal> animales;
     private final ArrayList<Actividad> actividades;
     private final List<Veterinaria> veterinarias;
-    private List<Fecha> fechas;
 
     public Sistema() {
         this.responsables = new ArrayList<>();
         this.animales = new ArrayList<>();
         this.actividades = new ArrayList<>();
-        this.fechas = new ArrayList<>();
         this.veterinarias = new ArrayList<>();
     }
 
-    public List<Actividad> listaActividadesPorFecha(int dia, int mes, int ano) {
-        ArrayList<Actividad> retLista = new ArrayList<>();
-        if (dia >= 1 && dia <= 31 && mes >= 0 && mes <= 12 && ano >= 1) {
-            for (int i = 0; i < actividades.size(); i++) {
-                Actividad act = actividades.get(i);
-                if (act.getFecha().getDia() == dia && act.getFecha().getMes() == mes && act.getFecha().getAno() == ano) {
-                    retLista.add(act);
-                }
+    public List<Actividad> listaActividadesPorFecha(LocalDate date) {
+        ArrayList<Actividad> activs = new ArrayList<>();
+        for (Actividad actividad : actividades) {
+            LocalDate ld = actividad.getFechaHora().toLocalDate();
+            if (ld.equals(date)){
+                activs.add(actividad);
             }
-        }
-        return retLista;
+        }        
+        return activs;
     }
 
     /* GETTERS */
@@ -56,10 +52,6 @@ public class Sistema {
 
     public List<Veterinaria> getVeterinarias() {
         return veterinarias;
-    }
-
-    public List<Fecha> getFechas() {
-        return fechas;
     }
 
     public Responsable getResponsable(String nombreBuscar) {
@@ -133,11 +125,6 @@ public class Sistema {
         return null;
     }
 
-    /* SETTERS */
-    public void setFechas(ArrayList<Fecha> fechas) {
-        this.fechas = fechas;
-    }
-
     /* ADDERS */
     public void addResponsable(Responsable personaAnadir) {
         responsables.add(personaAnadir);
@@ -152,41 +139,15 @@ public class Sistema {
         act.getUsuario().agregarActividad(act);
     }
 
-    public void anadirFecha(Fecha fecha) {
-        fechas.add(fecha);
-    }
-
     /* DELETERS */
-    public void eliminarPerro(Animal perro) {
-        if (animales.contains(perro)) {
-            animales.remove(perro);
-        } else {
-            System.out.println("No existe tal perro");
-        }
-    }
-
-    public void eliminarUsuario(Persona persona) {
-        if (responsables.contains(persona)) {
-            responsables.remove(persona);
-        } else {
-            System.out.println("No existe tal persona");
-        }
-    }
-
-    public void eliminarActividad(Actividad act) {
+    public void deleteActividad(Actividad act) {
         if (actividades.contains(act)) {
             actividades.remove(act);
         } else {
             System.out.println("No existe tal actividad");
+            //TODO
         }
     }
 
-    public void eliminarFecha(Fecha fecha) {
-        if (fechas.contains(fecha)) {
-            fechas.remove(fecha);
-        } else {
-            System.out.println("No existe tal fecha");
-        }
-    }
 
 }

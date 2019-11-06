@@ -1,9 +1,9 @@
 package dominio.modelo.actividades;
 
 import dominio.modelo.Actividad;
-import dominio.Fecha;
 import dominio.modelo.Animal;
 import dominio.modelo.usuarios.Responsable;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.swing.ImageIcon;
 
@@ -19,9 +19,9 @@ public class Paseo extends Actividad {
     }
 
     public Paseo(String nombre, Animal animal, Responsable responsable,
-            boolean fueRealizado, Fecha fecha, LocalTime hora,
-            double distancia, ImageIcon ruta) {
-        super(nombre, animal, responsable, fueRealizado, fecha, hora);
+            boolean fueRealizado, LocalDateTime fecha, LocalTime hora,
+            double distancia, ImageIcon ruta, int duracion) {
+        super(nombre, animal, responsable, fueRealizado, fecha, duracion);
         this.distancia = distancia;
         this.ruta = ruta;
     }
@@ -48,6 +48,6 @@ public class Paseo extends Actividad {
 
     @Override
     public String toString() {
-        return "Paseo{" + "responsable=" + this.responsable + ", perro=" + animal + ", distancia=" + distancia + ", fueRealizado=" + fueRealizado + ", hora=" + hora + ", fecha=" + fecha + ", nombre=" + nombre + '}';
+        return "Paseo{" + "responsable=" + this.responsable + ", perro=" + animal + ", distancia=" + distancia + ", fueRealizado=" + fueRealizado + ", hora=, nombre=" + nombre + '}';
     }
 }

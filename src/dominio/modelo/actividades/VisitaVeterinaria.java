@@ -1,11 +1,10 @@
 package dominio.modelo.actividades;
 
 import dominio.modelo.Actividad;
-import dominio.Fecha;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.usuarios.Responsable;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class VisitaVeterinaria extends Actividad {
 
@@ -19,9 +18,9 @@ public class VisitaVeterinaria extends Actividad {
     }
 
     public VisitaVeterinaria(String nombre, Animal animal,
-            Responsable responsable, boolean fueRealizado, Fecha fecha,
-            LocalTime hora, Veterinaria veterinaria, String motivo) {
-        super(nombre, animal, responsable, fueRealizado, fecha, hora);
+            Responsable responsable, boolean fueRealizado, LocalDateTime fecha,
+            Veterinaria veterinaria, String motivo, int duracion) {
+        super(nombre, animal, responsable, fueRealizado, fecha, duracion);
         this.veterinaria = veterinaria;
         this.motivo = motivo;
     }
@@ -56,7 +55,7 @@ public class VisitaVeterinaria extends Actividad {
 
     @Override
     public String toString() {
-        return "VisitaVeterinaria{" + "nombre=" + nombre + ", hora=" + hora + ", responsable=" + this.responsable + ", perro=" + animal + ", fueRealizado=" + fueRealizado + ", fecha=" + fecha + ", veterinaria=" + veterinaria + '}';
+        return "VisitaVeterinaria{" + "nombre=" + nombre + ", hora==" + this.responsable + ", perro=" + animal + ", fueRealizado=" + fueRealizado + ", fecherinaria=" + veterinaria + '}';
     }
 
 }

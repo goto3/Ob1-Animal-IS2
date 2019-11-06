@@ -70,7 +70,7 @@ public class VisitaVeterinariaTest {
         Animal resMascota = unaVisita.getMascota();
         String resNombreAct = unaVisita.getNombre();
         boolean resFueRealizada = unaVisita.getFueRealizado();
-        Fecha resFecha = unaVisita.getFecha();
+        Fecha resFecha = unaVisita.getFechaHora();
         LocalTime resHora = unaVisita.getHora();
         assertEquals(usuario, resResponsable);
         assertEquals(perro, resMascota);
@@ -94,7 +94,7 @@ public class VisitaVeterinariaTest {
         Animal resMascota = unaVisita.getMascota();
         String resNombreAct = unaVisita.getNombre();
         boolean resFueRealizada = unaVisita.getFueRealizado();
-        Fecha resFecha = unaVisita.getFecha();
+        Fecha resFecha = unaVisita.getFechaHora();
         LocalTime resHora = unaVisita.getHora();
         assertEquals(usuario, resResponsable);
         assertEquals(perro, resMascota);

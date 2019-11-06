@@ -65,7 +65,7 @@ public class AlimentacionTest {
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Alimentacion unaAlim = new Alimentacion("Nombre", usuario, perro, "Comida", true, time, fecha);
-        assertEquals(fecha, unaAlim.getFecha());
+        assertEquals(fecha, unaAlim.getFechaHora());
         assertEquals(time, unaAlim.getHora());
         assertEquals("Nombre", unaAlim.getNombre());
         assertEquals(usuario, unaAlim.getUsuario());
@@ -81,7 +81,7 @@ public class AlimentacionTest {
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Alimentacion unaAlim = new Alimentacion("", usuario, perro, "", true, time, fecha);
-        assertEquals(fecha, unaAlim.getFecha());
+        assertEquals(fecha, unaAlim.getFechaHora());
         assertEquals(time, unaAlim.getHora());
         assertEquals("Sin-Nombre", unaAlim.getNombre());
         assertEquals(usuario, unaAlim.getUsuario());
@@ -139,7 +139,7 @@ public class AlimentacionTest {
     public void testSetFecha() {
         Fecha fecha = new Fecha();
         alimentacion.setFecha(fecha);
-        assertEquals(fecha, alimentacion.getFecha());
+        assertEquals(fecha, alimentacion.getFechaHora());
     }
 
     @Test
@@ -149,7 +149,7 @@ public class AlimentacionTest {
         String tipoAlimento = alimentacion.getTipoAlimento();
         boolean fueRealizado = alimentacion.getFueRealizado();
         LocalTime hora = alimentacion.getHora();
-        Fecha fecha = alimentacion.getFecha();
+        Fecha fecha = alimentacion.getFechaHora();
         String nombre = alimentacion.getNombre();
         String resToString = alimentacion.toString();
         assertEquals("Alimentacion{" + "responsable=" + responsable + ", mascota=" + mascota + ", tipoAlimento=" + tipoAlimento + ", fueRealizado=" + fueRealizado + ", hora=" + hora + ", fecha=" + fecha + ", nombre=" + nombre + '}', resToString);

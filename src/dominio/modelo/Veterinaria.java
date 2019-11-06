@@ -1,35 +1,51 @@
 package dominio.modelo;
 
-import dominio.Fecha;
 import dominio.modelo.actividades.VisitaVeterinaria;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Veterinaria {
 
     private String nombre;
-    private ArrayList<Actividad> actividadesAgendadas;
-    private int horaInicial;
-    private int horaFinal;
+    private ArrayList<Actividad> actividades;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
 
     public Veterinaria() {
         this.nombre = "Sin-Nombre";
-        this.actividadesAgendadas = new ArrayList<>();
-        this.horaInicial = -1;
-        this.horaFinal = -1;
+        this.actividades = new ArrayList<>();
+        this.horaInicio = LocalTime.of(0, 0, 0, 0);
+        this.horaFin = LocalTime.of(0, 0, 0, 0);
     }
 
-    public Veterinaria(String nombre, ArrayList<Actividad> actividadesAgendadas, int horaInicial, int horaFinal) {
+    public Veterinaria(String nombre, LocalTime timeInicio, LocalTime timeFin) {
         setNombre(nombre);
-        this.actividadesAgendadas = actividadesAgendadas;
-        setHoraInicial(horaInicial);
-        setHoraFinal(horaFinal);
+        this.actividades = new ArrayList<>();
+        setHoraInicio(timeInicio);
+        setHoraFin(timeFin);
     }
 
+    /* GETTERS */
     public String getNombre() {
         return this.nombre;
     }
 
-    public void setNombre(String nombre) {
+    public ArrayList<Actividad> getActividadesAgendadas() {
+        return actividades;
+    }
+
+    public LocalTime getHoraInicio() {
+        return horaInicio;
+    }
+
+    public LocalTime getHoraFin() {
+        return horaFin;
+    }
+
+    /* SETTERS */
+    public final void setNombre(String nombre) {
         if (nombre.equals("")) {
             this.nombre = "Sin-Nombre";
         } else {
@@ -37,83 +53,50 @@ public class Veterinaria {
         }
     }
 
-    public ArrayList<Actividad> getActividadesAgendadas() {
-        return actividadesAgendadas;
-    }
-
     public void setActividadesAgendadas(ArrayList<Actividad> actividadesAgendadas) {
-        this.actividadesAgendadas = actividadesAgendadas;
+        this.actividades = actividadesAgendadas;
     }
 
-    private boolean existeActividadEnEseMomento(Fecha fecha, int hora) {
-        for (int i = 0; i < actividadesAgendadas.size(); i++) {
-            Actividad actAgendada = actividadesAgendadas.get(i);
-            if (fecha.getDia() == actAgendada.getFecha().getDia()
-                    && fecha.getMes() == actAgendada.getFecha().getMes()
-                    && fecha.getAno() == actAgendada.getFecha().getAno()
-                    && hora == actAgendada.getHora().getHour()) {
+    public final void setHoraInicio(LocalTime time) {
+        this.horaInicio = time;
+    }
+
+    public final void setHoraFin(LocalTime time) {
+        this.horaFin = time;
+    }
+
+    private boolean existeActividadEnEseMomento(LocalDateTime fecha) {
+        for (Actividad actividad : actividades) {
+            LocalDate ld = actividad.getFechaHora().toLocalDate();
+            if (ld.equals(fecha)) {
                 return true;
             }
         }
         return false;
-
     }
 
     public boolean agendarActividad(VisitaVeterinaria act) {
-        int hora = act.getHora().getHour();
+        /*int hora = act.getHora().getHour();
         if (hora >= horaInicial && hora <= horaFinal) {
-            Fecha fecha = act.getFecha();
+            Fecha fecha = act.getFechaHora();
             if (!existeActividadEnEseMomento(fecha, hora)) {
-                actividadesAgendadas.add(act);
+                actividades.add(act);
                 act.setVeterinaria(this);
                 return true;
             }
-        }
+        }*/
         return false;
     }
 
     public void EliminarActividadAgendada(Actividad act) {
-        if (actividadesAgendadas.contains(act)) {
-            actividadesAgendadas.remove(act);
-        }
-    }
-
-    public int getHoraInicial() {
-        return horaInicial;
-    }
-
-    public void setHoraInicial(int horaInicial) {
-        if (horaInicial < 0) {
-            this.horaInicial = 0;
-        } else {
-            if (horaInicial > 23) {
-                this.horaInicial = 23;
-            } else {
-                this.horaInicial = horaInicial;
-            }
-        }
-
-    }
-
-    public int getHoraFinal() {
-        return horaFinal;
-    }
-
-    public void setHoraFinal(int horaFinal) {
-        if (horaFinal < 0) {
-            this.horaFinal = 0;
-        } else {
-            if (horaFinal > 23) {
-                this.horaFinal = 23;
-            } else {
-                this.horaFinal = horaFinal;
-            }
+        if (actividades.contains(act)) {
+            actividades.remove(act);
         }
     }
 
     @Override
     public String toString() {
-        return "Veterinaria{" + "nombre=" + nombre + ", actividadesAgendadas=" + actividadesAgendadas + ", horaInicial=" + horaInicial + ", horaFinal=" + horaFinal + '}';
+        return "Veterinaria{" + "nombre=" + nombre + ", actividadesAgendadas=" + actividades + ", horaInicial=" + horaInicio + ", horaFinal=" + horaFin + '}';
     }
 
 }

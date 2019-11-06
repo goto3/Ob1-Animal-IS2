@@ -67,7 +67,7 @@ public class ActividadCualquieraTest {
         Animal resMascota = unaAct.getMascota();
         String resNombreAct = unaAct.getNombre();
         boolean resFueRealizada = unaAct.getFueRealizado();
-        Fecha resFecha = unaAct.getFecha();
+        Fecha resFecha = unaAct.getFechaHora();
         LocalTime resHora = unaAct.getHora();
         assertEquals(usuario, resResponsable);
         assertEquals(perro, resMascota);
@@ -88,7 +88,7 @@ public class ActividadCualquieraTest {
         Animal resMascota = unaAct.getMascota();
         String resNombreAct = unaAct.getNombre();
         boolean resFueRealizada = unaAct.getFueRealizado();
-        Fecha resFecha = unaAct.getFecha();
+        Fecha resFecha = unaAct.getFechaHora();
         LocalTime resHora = unaAct.getHora();
         assertEquals(usuario, resResponsable);
         assertEquals(perro, resMascota);
