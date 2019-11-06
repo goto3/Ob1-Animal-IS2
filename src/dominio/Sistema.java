@@ -1,21 +1,19 @@
 package dominio;
 
 import java.util.ArrayList;
-
-
-
+import java.util.List;
 
 public class Sistema {
 
     private ArrayList<Usuario> usuarios;
     private ArrayList<Perro> perros;
     private final ArrayList<Actividad> listaActividades;
-    private ArrayList<Fecha> listaFechas;
-    private ArrayList<Veterinaria> listaVeterinarias;
-    private ArrayList<ActividadCualquiera> listaActividadesCualquiera;
-    private ArrayList<Paseo> listaPaseos;
-    private ArrayList<Alimentacion> listaAlimentaciones;
-    private ArrayList<VisitaVeterinaria> listaVisitas;
+    private List <Fecha> listaFechas;
+    private List<Veterinaria> listaVeterinarias;
+    private List<ActividadCualquiera> listaActividadesCualquiera;
+    private List<Paseo> listaPaseos;
+    private List<Alimentacion> listaAlimentaciones;
+    private List<VisitaVeterinaria> listaVisitas;
 
     public Sistema() {
         this.usuarios = new ArrayList<>();
@@ -29,7 +27,7 @@ public class Sistema {
         this.listaActividadesCualquiera = new ArrayList<>();
     }
 
-    public ArrayList<Actividad> listaActividadesPorFecha(int dia, int mes, int ano) {
+    public List<Actividad> listaActividadesPorFecha(int dia, int mes, int ano) {
         ArrayList<Actividad> retLista = new ArrayList<>();
         if (dia >= 1 && dia <= 31 && mes >= 0 && mes <= 12 && ano >= 1) {
             for (int i = 0; i < listaActividades.size(); i++) {
@@ -42,7 +40,7 @@ public class Sistema {
         return retLista;
     }
 
-    public ArrayList<Veterinaria> getVeterinarias() {
+    public List<Veterinaria> getVeterinarias() {
         return listaVeterinarias;
     }
 
@@ -54,7 +52,7 @@ public class Sistema {
         this.usuarios = usuarios;
     }
 
-    public ArrayList<Usuario> getUsuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
@@ -62,19 +60,19 @@ public class Sistema {
         this.perros = perros;
     }
 
-    public ArrayList<Perro> getPerros() {
+    public List<Perro> getPerros() {
         return perros;
     }
 
-    public ArrayList<Actividad> getActividades() {
+    public List<Actividad> getActividades() {
         return listaActividades;
     }
 
-    public void AnadirPerro(Perro perroAnadir) {
+    public void anadirPerro(Perro perroAnadir) {
         perros.add(perroAnadir);
     }
 
-    public void EliminarPerro(Perro perro) {
+    public void eliminarPerro(Perro perro) {
         if (perros.contains(perro)) {
             perros.remove(perro);
         } else {
@@ -82,11 +80,11 @@ public class Sistema {
         }
     }
 
-    public void AnadirUsuario(Usuario personaAnadir) {
+    public void anadirUsuario(Usuario personaAnadir) {
         usuarios.add(personaAnadir);
     }
 
-    public void EliminarUsuario(Usuario persona) {
+    public void eliminarUsuario(Usuario persona) {
         if (usuarios.contains(persona)) {
             usuarios.remove(persona);
         } else {
@@ -94,12 +92,12 @@ public class Sistema {
         }
     }
 
-    public void AnadirActividad(Actividad act) {
+    public void anadirActividad(Actividad act) {
         listaActividades.add(act);
         act.getUsuario().agregarActividad(act);
     }
 
-    public void EliminarActividad(Actividad act) {
+    public void eliminarActividad(Actividad act) {
         if (listaActividades.contains(act)) {
             listaActividades.remove(act);
         } else {
@@ -107,11 +105,11 @@ public class Sistema {
         }
     }
 
-    public void AnadirFecha(Fecha fecha) {
+    public void anadirFecha(Fecha fecha) {
         listaFechas.add(fecha);
     }
 
-    public void EliminarFecha(Fecha fecha) {
+    public void eliminarFecha(Fecha fecha) {
         if (listaFechas.contains(fecha)) {
             listaFechas.remove(fecha);
         } else {
@@ -182,7 +180,7 @@ public class Sistema {
         return null;
     }
 
-    public ArrayList<ActividadCualquiera> getActsCualquieras() {
+    public List<ActividadCualquiera> getActsCualquieras() {
         return listaActividadesCualquiera;
     }
 
@@ -190,7 +188,7 @@ public class Sistema {
         this.listaActividadesCualquiera = actsCualquieras;
     }
 
-    public ArrayList<Paseo> getPaseos() {
+    public List<Paseo> getPaseos() {
         return listaPaseos;
     }
 
@@ -198,7 +196,7 @@ public class Sistema {
         this.listaPaseos = paseos;
     }
 
-    public ArrayList<Alimentacion> getAlimentaciones() {
+    public List<Alimentacion> getAlimentaciones() {
         return listaAlimentaciones;
     }
 
@@ -206,7 +204,7 @@ public class Sistema {
         this.listaAlimentaciones = alimentaciones;
     }
 
-    public ArrayList<VisitaVeterinaria> getVisitas() {
+    public List<VisitaVeterinaria> getVisitas() {
         return listaVisitas;
     }
 
@@ -214,7 +212,7 @@ public class Sistema {
         this.listaVisitas = visitas;
     }
 
-    public ArrayList<Fecha> getFechas() {
+    public List<Fecha> getFechas() {
         return listaFechas;
     }
 

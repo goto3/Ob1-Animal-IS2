@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+        * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -36,7 +36,7 @@ public class Veterinaria {
         return this.nombre;
     }
 
-    public final void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         if (nombre.equals("")) {
             this.nombre = "Sin-Nombre";
         } else {
@@ -51,25 +51,32 @@ public class Veterinaria {
     public void setActividadesAgendadas(ArrayList<Actividad> actividadesAgendadas) {
         this.actividadesAgendadas = actividadesAgendadas;
     }
+    
+    private boolean existeActividadEnEseMomento(Fecha fecha, int hora){
+        for (int i = 0; i < actividadesAgendadas.size(); i++) {
+                Actividad actAgendada = actividadesAgendadas.get(i);
+                if (fecha.getDia() == actAgendada.getFecha().getDia()
+                        && fecha.getMes() == actAgendada.getFecha().getMes()
+                        && fecha.getAno() == actAgendada.getFecha().getAno()
+                        && hora == actAgendada.getHora().getHour()) {
+                    return true;
+                }
+        }
+        return false;
+        
+    }
 
-    public boolean AgendarActividad(VisitaVeterinaria act) {
+    public boolean agendarActividad(VisitaVeterinaria act) {
         int hora = act.getHora().getHour();
         if (hora >= horaInicial && hora <= horaFinal) {
             Fecha fecha = act.getFecha();
-            for (int i = 0; i < actividadesAgendadas.size(); i++) {
-                Actividad actAgendada = actividadesAgendadas.get(i);
-                if (fecha.getDia() == actAgendada.getFecha().getDia() && fecha.getMes()== actAgendada.getFecha().getMes()&& fecha.getAno()== actAgendada.getFecha().getAno()) {
-                    if (hora == actAgendada.getHora().getHour()) {
-                        return false;
-                    }
-                }
+            if(!existeActividadEnEseMomento(fecha, hora)){
+                actividadesAgendadas.add(act);
+                act.setVeterinaria(this);
+                return true;
             }
-            actividadesAgendadas.add(act);
-            act.setVeterinaria(this);
-        } else {
-            return false;
         }
-        return true;
+        return false;
     }
 
     public void EliminarActividadAgendada(Actividad act) {
@@ -78,12 +85,11 @@ public class Veterinaria {
         }
     }
 
-
     public int getHoraInicial() {
         return horaInicial;
     }
 
-    public final void setHoraInicial(int horaInicial) {
+    public void setHoraInicial(int horaInicial) {
         if (horaInicial < 0) {
             this.horaInicial = 0;
         } else {
@@ -100,7 +106,7 @@ public class Veterinaria {
         return horaFinal;
     }
 
-    public final void setHoraFinal(int horaFinal) {
+    public void setHoraFinal(int horaFinal) {
         if (horaFinal < 0) {
             this.horaFinal = 0;
         } else {

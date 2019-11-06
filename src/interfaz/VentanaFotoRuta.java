@@ -31,16 +31,6 @@ public class VentanaFotoRuta extends javax.swing.JFrame {
         }
     }
 
-    private ImageIcon crearIcono(String ruta, int tamano) {
-        ImageIcon retorno = null;
-        try {
-            retorno = new ImageIcon(ImageIO.read(getClass().getResource(ruta)).getScaledInstance(tamano, -1, Image.SCALE_SMOOTH));
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        return retorno;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +46,6 @@ public class VentanaFotoRuta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
-			@Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }

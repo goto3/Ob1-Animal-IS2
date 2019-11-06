@@ -1,12 +1,13 @@
 package dominio;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
 
     private String nombre;
     private String mail;
-    private final ArrayList<Actividad> actividades;
+    private final List <Actividad> actividades;
 
     public Usuario(String nombre, String mail) {
         this.nombre = nombre;
@@ -20,7 +21,7 @@ public class Usuario {
         this.actividades = new ArrayList<>();
     }
 
-    public ArrayList<Actividad> getActividades() {
+    public List <Actividad> getActividades() {
         return actividades;
     }
 

@@ -3,33 +3,63 @@ package dominio;
 import java.time.LocalTime;
 
 public abstract class Actividad {
-
     
-    private Perro mascota;
-    private boolean fueRealizado;
-    private Fecha fecha;
-    private LocalTime hora;
-    private String nombre;
+    protected Perro mascota;
+    protected Usuario usuarioResponsable;
+    protected boolean fueRealizado;
+    protected Fecha fecha;
+    protected LocalTime hora;
+    protected String nombre;
 
-    public abstract String getNombre();
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        if(nombre.equals("")){
+            this.nombre = "Sin-Nombre";
+        }else{
+            this.nombre = nombre;
+        }
+    }
 
-    public abstract LocalTime getHora();
+    public LocalTime getHora(){
+        return hora;   
+    }
 
-    public abstract void setHora(LocalTime hora);
+    public void setHora(LocalTime hora){
+         this.hora = hora;
+    }
 
-    public abstract Usuario getUsuario();
+    public Usuario getUsuario() {
+        return usuarioResponsable;
+    }
 
-    public abstract void setUsuario(Usuario responasble);
+    public void setUsuario(Usuario responasble) {
+        this.usuarioResponsable = responasble;
+    }
 
-    public abstract Perro getMascota();
+    public Perro getMascota(){
+        return mascota;
+    }
 
-    public abstract void setMascota(Perro mascota);
+    public void setMascota(Perro mascotas) {
+        this.mascota = mascotas;
+    }
 
-    public abstract boolean getFueRealizado();
+    public boolean getFueRealizado() {
+        return fueRealizado;
+    }
 
-    public abstract void setFueRealizado(boolean seCompleto);
+    public void setFueRealizado(boolean seCompleto){
+        fueRealizado = seCompleto;
+    }
 
-    public abstract Fecha getFecha();
+    public Fecha getFecha() {
+        return fecha;
+    }
 
-    public abstract void setFecha(Fecha fecha);
+    public void setFecha(Fecha fecha) {
+        this.fecha = fecha;
+    }
 }
