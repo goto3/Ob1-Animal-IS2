@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Animal;
+import dominio.modelo.actividades.Alimentacion;
 import java.time.LocalTime;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -57,8 +60,8 @@ public class AlimentacionTest {
 
     @Test
     public void testConstructorPorParametros() {
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Alimentacion unaAlim = new Alimentacion("Nombre", usuario, perro, "Comida", true, time, fecha);
@@ -73,8 +76,8 @@ public class AlimentacionTest {
 
     @Test
     public void testConstructorPorParametrosVacios() {
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Alimentacion unaAlim = new Alimentacion("", usuario, perro, "", true, time, fecha);
@@ -89,7 +92,7 @@ public class AlimentacionTest {
 
     @Test
     public void testSetResponsable() {
-        Usuario usuario = new Usuario();
+        Persona usuario = new Persona();
         alimentacion.setUsuario(usuario);
         assertEquals(usuario, alimentacion.getUsuario());
     }
@@ -115,7 +118,7 @@ public class AlimentacionTest {
 
     @Test
     public void testSetMascota() {
-        Perro perro = new Perro();
+        Animal perro = new Animal();
         alimentacion.setMascota(perro);
         assertEquals(perro, alimentacion.getMascota());
     }
@@ -141,8 +144,8 @@ public class AlimentacionTest {
 
     @Test
     public void testToString() {
-        Usuario responsable = alimentacion.getUsuario();
-        Perro mascota = alimentacion.getMascota();
+        Persona responsable = alimentacion.getUsuario();
+        Animal mascota = alimentacion.getMascota();
         String tipoAlimento = alimentacion.getTipoAlimento();
         boolean fueRealizado = alimentacion.getFueRealizado();
         LocalTime hora = alimentacion.getHora();

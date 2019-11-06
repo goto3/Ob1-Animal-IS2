@@ -1,8 +1,8 @@
-package dominio;
+package dominio.modelo;
 
 import javax.swing.ImageIcon;
 
-public class Perro {
+public class Animal {
 
     private String nombre;
     private double altura;
@@ -10,7 +10,7 @@ public class Perro {
     private String comentarios;
     private ImageIcon foto;
 
-    public Perro(String nombre, double altura, double peso, String comentarios) { //Sin foto
+    public Animal(String nombre, double altura, double peso, String comentarios) { //Sin foto
         setNombre(nombre);
         setAltura(altura);
         setPeso(peso);
@@ -18,7 +18,7 @@ public class Perro {
         this.foto = null;
     }
 
-    public Perro() { //Sin foto
+    public Animal() { //Sin foto
         this.nombre = "Sin-Nombre";
         this.altura = 0;
         this.peso = 0;

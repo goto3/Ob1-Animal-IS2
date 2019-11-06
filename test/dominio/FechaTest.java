@@ -5,6 +5,8 @@
  */
 package dominio;
 
+import dominio.modelo.Actividad;
+import dominio.modelo.actividades.OtraActividad;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -154,14 +156,14 @@ public class FechaTest {
     //Pruebas de Actividades
     @Test
     public void testAgregarActividad() {
-        Actividad act = new ActividadCualquiera();
+        Actividad act = new OtraActividad();
         fecha.agregarActividad(act);
         assertTrue(fecha.getActividades().contains(act));
     }
 
     @Test
     public void testBorrarActividadAgregada() {
-        Actividad act = new ActividadCualquiera();
+        Actividad act = new OtraActividad();
         fecha.agregarActividad(act);
         fecha.borrarActividad(act);
         assertTrue(!fecha.getActividades().contains(act));
@@ -169,7 +171,7 @@ public class FechaTest {
 
     @Test
     public void testBorrarActividadNoAgregada() {
-        Actividad act = new ActividadCualquiera();
+        Actividad act = new OtraActividad();
         ArrayList<Actividad> aux = fecha.getActividades();
         fecha.borrarActividad(act);
         assertEquals(aux, fecha.getActividades());

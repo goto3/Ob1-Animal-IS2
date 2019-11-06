@@ -5,6 +5,11 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Animal;
+import dominio.modelo.Veterinaria;
+import dominio.modelo.Actividad;
+import dominio.modelo.actividades.VisitaVeterinaria;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import org.junit.After;
@@ -118,7 +123,7 @@ public class VeterinariaTest {
     public void testActividadesAgendadas() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         assertTrue(vet.getActividadesAgendadas().contains(act));
     }
@@ -127,7 +132,7 @@ public class VeterinariaTest {
     public void testActividadesAgendadasFueraDeHorarioTemprano() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(3, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(3, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         assertTrue(!vet.getActividadesAgendadas().contains(act));
     }
@@ -136,7 +141,7 @@ public class VeterinariaTest {
     public void testActividadesAgendadasFueraDeHorarioTarde() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(20, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(20, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         assertTrue(!vet.getActividadesAgendadas().contains(act));
     }
@@ -145,8 +150,8 @@ public class VeterinariaTest {
     public void testActividadesAgendadasMismaFechaDistintaHora() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(11, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(11, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         vet.agendarActividad(act2);
         assertTrue(vet.getActividadesAgendadas().contains(act));
@@ -157,8 +162,8 @@ public class VeterinariaTest {
     public void testActividadesAgendadasMismaFechaMismaHora() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         vet.agendarActividad(act2);
         assertTrue(vet.getActividadesAgendadas().contains(act));
@@ -169,8 +174,8 @@ public class VeterinariaTest {
     public void testActividadesAgendadasDistintosDias() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(11, 10, 2018), new Veterinaria(), "Medico");
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(11, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         vet.agendarActividad(act2);
         assertTrue(vet.getActividadesAgendadas().contains(act));
@@ -181,8 +186,8 @@ public class VeterinariaTest {
     public void testActividadesAgendadasDistintosMes() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 11, 2018), new Veterinaria(), "Medico");
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 11, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         vet.agendarActividad(act2);
         assertTrue(vet.getActividadesAgendadas().contains(act));
@@ -193,8 +198,8 @@ public class VeterinariaTest {
     public void testActividadesAgendadasDistintoAno() {
         vet.setHoraInicial(8);
         vet.setHoraFinal(16);
-        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2019), new Veterinaria(), "Medico");
-        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Usuario(), new Perro(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
+        VisitaVeterinaria act2 = new VisitaVeterinaria("Visita2", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2019), new Veterinaria(), "Medico");
+        VisitaVeterinaria act = new VisitaVeterinaria("Visita", LocalTime.of(10, 20), new Persona(), new Animal(), false, new Fecha(10, 10, 2018), new Veterinaria(), "Medico");
         vet.agendarActividad(act);
         vet.agendarActividad(act2);
         assertTrue(vet.getActividadesAgendadas().contains(act));

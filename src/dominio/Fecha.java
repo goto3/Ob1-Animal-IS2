@@ -1,5 +1,6 @@
 package dominio;
 
+import dominio.modelo.Actividad;
 import java.util.ArrayList;
 
 public class Fecha {

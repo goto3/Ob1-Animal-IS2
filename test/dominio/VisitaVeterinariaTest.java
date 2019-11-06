@@ -5,6 +5,10 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Animal;
+import dominio.modelo.Veterinaria;
+import dominio.modelo.actividades.VisitaVeterinaria;
 import java.time.LocalTime;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -58,12 +62,12 @@ public class VisitaVeterinariaTest {
     public void testConstructorPorParametros() {
         Fecha fecha = new Fecha();
         LocalTime time = LocalTime.now();
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         Veterinaria vet = new Veterinaria();
         VisitaVeterinaria unaVisita = new VisitaVeterinaria("Nombre", time, usuario, perro, false, fecha, vet, "medico");
-        Usuario resResponsable = unaVisita.getUsuario();
-        Perro resMascota = unaVisita.getMascota();
+        Persona resResponsable = unaVisita.getUsuario();
+        Animal resMascota = unaVisita.getMascota();
         String resNombreAct = unaVisita.getNombre();
         boolean resFueRealizada = unaVisita.getFueRealizado();
         Fecha resFecha = unaVisita.getFecha();
@@ -82,12 +86,12 @@ public class VisitaVeterinariaTest {
     public void testConstructorPorParametrosVacio() {
         Fecha fecha = new Fecha();
         LocalTime time = LocalTime.now();
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         Veterinaria vet = new Veterinaria();
         VisitaVeterinaria unaVisita = new VisitaVeterinaria("", time, usuario, perro, false, fecha, vet, "");
-        Usuario resResponsable = unaVisita.getUsuario();
-        Perro resMascota = unaVisita.getMascota();
+        Persona resResponsable = unaVisita.getUsuario();
+        Animal resMascota = unaVisita.getMascota();
         String resNombreAct = unaVisita.getNombre();
         boolean resFueRealizada = unaVisita.getFueRealizado();
         Fecha resFecha = unaVisita.getFecha();
@@ -130,8 +134,8 @@ public class VisitaVeterinariaTest {
         Fecha fecha = new Fecha();
         visita.setHora(time);
         visita.setFecha(fecha);
-        Usuario usuario = visita.getUsuario();
-        Perro perro = visita.getMascota();
+        Persona usuario = visita.getUsuario();
+        Animal perro = visita.getMascota();
         String nombre = visita.getNombre();
         boolean fueRealizado = visita.getFueRealizado();
         Veterinaria veterinaria = visita.getVeterinaria();
@@ -155,16 +159,16 @@ public class VisitaVeterinariaTest {
 
     @Test
     public void testSetMascota() {
-        Perro mascota;
-        mascota = new Perro();
+        Animal mascota;
+        mascota = new Animal();
         visita.setMascota(mascota);
         assertEquals(mascota, visita.getMascota());
     }
 
     @Test
     public void testSetResponsable() {
-        Usuario responsable;
-        responsable = new Usuario();
+        Persona responsable;
+        responsable = new Persona();
         visita.setUsuario(responsable);
         assertEquals(responsable, visita.getUsuario());
     }

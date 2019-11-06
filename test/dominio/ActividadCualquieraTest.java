@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Animal;
+import dominio.modelo.actividades.OtraActividad;
 import java.time.LocalTime;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class ActividadCualquieraTest {
     
-    private ActividadCualquiera actividad;
+    private OtraActividad actividad;
     public ActividadCualquieraTest() {
     }
     
@@ -33,7 +36,7 @@ public class ActividadCualquieraTest {
     
     @Before
     public void setUp() {
-        actividad = new ActividadCualquiera();
+        actividad = new OtraActividad();
     }
     
     @After
@@ -48,7 +51,7 @@ public class ActividadCualquieraTest {
     
      @Test
     public void testConstructorSinParametros() {
-        ActividadCualquiera unaAct = new ActividadCualquiera();
+        OtraActividad unaAct = new OtraActividad();
         assertEquals("Sin-Nombre", unaAct.getNombre());
         assertEquals(false, unaAct.getFueRealizado());
     }
@@ -57,11 +60,11 @@ public class ActividadCualquieraTest {
     public void testConstructorPorParametros() {
         Fecha fecha = new Fecha();
         LocalTime time = LocalTime.now();
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
-        ActividadCualquiera unaAct = new ActividadCualquiera("Nombre", usuario, perro, false, time, fecha);
-        Usuario resResponsable = unaAct.getUsuario();
-        Perro resMascota = unaAct.getMascota();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
+        OtraActividad unaAct = new OtraActividad("Nombre", usuario, perro, false, time, fecha);
+        Persona resResponsable = unaAct.getUsuario();
+        Animal resMascota = unaAct.getMascota();
         String resNombreAct = unaAct.getNombre();
         boolean resFueRealizada = unaAct.getFueRealizado();
         Fecha resFecha = unaAct.getFecha();
@@ -78,11 +81,11 @@ public class ActividadCualquieraTest {
     public void testConstructorPorParametrosVacio() {
         Fecha fecha = new Fecha();
         LocalTime time = LocalTime.now();
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
-        ActividadCualquiera unaAct = new ActividadCualquiera("", usuario, perro, false, time, fecha);
-        Usuario resResponsable = unaAct.getUsuario();
-        Perro resMascota = unaAct.getMascota();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
+        OtraActividad unaAct = new OtraActividad("", usuario, perro, false, time, fecha);
+        Persona resResponsable = unaAct.getUsuario();
+        Animal resMascota = unaAct.getMascota();
         String resNombreAct = unaAct.getNombre();
         boolean resFueRealizada = unaAct.getFueRealizado();
         Fecha resFecha = unaAct.getFecha();
@@ -123,8 +126,8 @@ public class ActividadCualquieraTest {
         Fecha fecha = new Fecha();
         actividad.setHora(time);
         actividad.setFecha(fecha);
-        Usuario usuario = actividad.getUsuario();
-        Perro perro = actividad.getMascota();
+        Persona usuario = actividad.getUsuario();
+        Animal perro = actividad.getMascota();
         String resToString = actividad.toString();
         assertEquals("ActividadCualquiera{" + "responsable=" + usuario + ", mascota=" + perro + ", fueRealizado=" + actividad.getFueRealizado() + ", hora=" + time + ", fecha=" + fecha + ", nombre=" + actividad.getNombre() + '}', resToString);
     }
@@ -145,16 +148,16 @@ public class ActividadCualquieraTest {
     
     @Test
     public void testSetMascota() {
-        Perro mascota;
-        mascota = new Perro();
+        Animal mascota;
+        mascota = new Animal();
        actividad.setMascota(mascota);
         assertEquals(mascota, actividad.getMascota());
     }
     
      @Test
     public void testSetResponsable() {
-        Usuario responsable;
-        responsable = new Usuario();
+        Persona responsable;
+        responsable = new Persona();
         actividad.setUsuario(responsable);
          assertEquals(responsable, actividad.getUsuario());
     }

@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Animal;
+import dominio.modelo.actividades.Paseo;
 import java.time.LocalTime;
 import javax.swing.ImageIcon;
 import org.junit.After;
@@ -58,8 +61,8 @@ public class PaseoTest {
 
     @Test
     public void testConstructorPorParametros() {
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Paseo unPaseo = new Paseo("Nombre", usuario, perro, 0, true, time, fecha);
@@ -74,8 +77,8 @@ public class PaseoTest {
 
     @Test
     public void testConstructorPorParametrosVacio() {
-        Usuario usuario = new Usuario();
-        Perro perro = new Perro();
+        Persona usuario = new Persona();
+        Animal perro = new Animal();
         LocalTime time = LocalTime.now();
         Fecha fecha = new Fecha();
         Paseo unPaseo = new Paseo("", usuario, perro, 0, true, time, fecha);
@@ -122,14 +125,14 @@ public class PaseoTest {
 
     @Test
     public void testSetReesponsable() {
-        Usuario usuario = new Usuario();
+        Persona usuario = new Persona();
         paseo.setUsuario(usuario);
         assertEquals(usuario, paseo.getUsuario());
     }
 
     @Test
     public void testSetMascota() {
-        Perro perro = new Perro();
+        Animal perro = new Animal();
         paseo.setMascota(perro);
         assertEquals(perro, paseo.getMascota());
     }
@@ -167,8 +170,8 @@ public class PaseoTest {
 
     @Test
     public void testToString() {
-        Usuario responsable = paseo.getUsuario();
-        Perro perro = paseo.getMascota();
+        Persona responsable = paseo.getUsuario();
+        Animal perro = paseo.getMascota();
         double distancia = paseo.getDistancia();
         boolean fueRealizado = paseo.getFueRealizado();
         LocalTime hora = paseo.getHora();

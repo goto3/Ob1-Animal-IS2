@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import dominio.modelo.Persona;
+import dominio.modelo.Actividad;
+import dominio.modelo.actividades.OtraActividad;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class UsuarioTest {
 
-    private Usuario usuario;
+    private Persona usuario;
 
     public UsuarioTest() {
     }
@@ -34,7 +37,7 @@ public class UsuarioTest {
 
     @Before
     public void setUp() {
-        usuario = new Usuario("Nombre", "mail@gmail.com");
+        usuario = new Persona("Nombre", "mail@gmail.com");
     }
 
     @After
@@ -48,7 +51,7 @@ public class UsuarioTest {
     // public void hello() {}
     @Test
     public void testConstructorSinParametros() {
-        Usuario unUsuario = new Usuario();
+        Persona unUsuario = new Persona();
         assertEquals("Sin-Nombre", unUsuario.getNombre());
         assertEquals("Sin-Mail", unUsuario.getMail());
         assertEquals(new ArrayList<>(), unUsuario.getActividades());
@@ -56,7 +59,7 @@ public class UsuarioTest {
 
     @Test
     public void testCosntructorPorParametros() {
-        Usuario unUsuario = new Usuario("nombre", "email@email.com");
+        Persona unUsuario = new Persona("nombre", "email@email.com");
         String resNom = unUsuario.getNombre();
         String resMail = unUsuario.getMail();
         ArrayList<Actividad> resActividades = (ArrayList)unUsuario.getActividades();
@@ -95,7 +98,7 @@ public class UsuarioTest {
 
     @Test
     public void testGetActividadesElementoAgregado() {
-        Actividad act = new ActividadCualquiera();
+        Actividad act = new OtraActividad();
         usuario.getActividades().add(act);
         assertEquals(act, usuario.getActividades().get(0));
     }

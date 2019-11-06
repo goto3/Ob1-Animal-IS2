@@ -1,28 +1,19 @@
-package dominio;
+package dominio.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+public abstract class Persona {
 
-public class Usuario {
+    protected String nombre;
+    protected String mail;
 
-    private String nombre;
-    private String mail;
-    private final List <Actividad> actividades;
-
-    public Usuario(String nombre, String mail) {
-        this.nombre = nombre;
-        this.mail = mail;
-        this.actividades = new ArrayList<>();
-    }
     
-    public Usuario() {
+    public Persona() {
         this.nombre = "Sin-Nombre";
         this.mail = "Sin-Mail";
-        this.actividades = new ArrayList<>();
     }
-
-    public List <Actividad> getActividades() {
-        return actividades;
+        
+    public Persona(String nombre, String mail) {
+        this.nombre = nombre;
+        this.mail = mail;
     }
 
     public String getNombre() {
@@ -49,10 +40,6 @@ public class Usuario {
         }
     }
     
-    public void agregarActividad(Actividad act){
-        actividades.add(act);
-    }
-
     @Override
     public String toString() {
         return "Nombre=" + nombre + ", mail=" + mail + '}';

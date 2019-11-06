@@ -5,7 +5,7 @@
  */
 package interfaz;
 
-import dominio.Paseo;
+import dominio.modelo.actividades.Paseo;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
