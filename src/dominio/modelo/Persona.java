@@ -3,16 +3,16 @@ package dominio.modelo;
 public abstract class Persona {
 
     protected String nombre;
-    protected String mail;
+    protected String email;
 
     public Persona() {
         this.nombre = "Sin-Nombre";
-        this.mail = "Sin-Mail";
+        this.email = "Sin-Mail";
     }
 
     public Persona(String nombre, String mail) {
         this.nombre = nombre;
-        this.mail = mail;
+        this.email = mail;
     }
 
     public String getNombre() {
@@ -27,21 +27,21 @@ public abstract class Persona {
         }
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
+    public void setEmail(String mail) {
         if (mail.equals("")) {
-            this.mail = "Sin-Mail";
+            this.email = "Sin-Mail";
         } else {
-            this.mail = mail;
+            this.email = mail;
         }
     }
 
     @Override
     public String toString() {
-        return "Nombre=" + nombre + ", mail=" + mail + '}';
+        return "Nombre=" + nombre + ", mail=" + email + '}';
     }
 
 }

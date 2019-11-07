@@ -30,6 +30,6 @@ public class Responsable extends Persona {
     @Override
     public String toString() {
         return "Persona => Responsable: Nombre = "
-                + this.nombre + ", mail = " + this.mail;
+                + this.nombre + ", mail = " + this.email;
     }
 }

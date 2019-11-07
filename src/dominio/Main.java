@@ -1,6 +1,5 @@
 package dominio;
 
-
 import interfaz.VentanaPrincipal;
 
 public class Main {

@@ -8,6 +8,7 @@ import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
 import dominio.modelo.usuarios.Responsable;
+import excepciones.AnimalException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +31,21 @@ public class Sistema {
         ArrayList<Actividad> activs = new ArrayList<>();
         for (Actividad actividad : actividades) {
             LocalDate ld = actividad.getFechaHora().toLocalDate();
-            if (ld.equals(date)){
+            if (ld.equals(date)) {
                 activs.add(actividad);
             }
-        }        
+        }
         return activs;
+    }
+
+    private boolean existeResponsable(Responsable responsable) {
+        for (Responsable res : responsables) {
+            if (res.getNombre().equals(responsable.getNombre())
+                    && res.getEmail().equals(responsable.getEmail())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* GETTERS */
@@ -126,8 +137,12 @@ public class Sistema {
     }
 
     /* ADDERS */
-    public void addResponsable(Responsable personaAnadir) {
-        responsables.add(personaAnadir);
+    public void addResponsable(Responsable resp) throws AnimalException {
+        if (existeResponsable(resp)) {
+            throw new AnimalException("ya existe un responsable con estos datos");
+        } else {
+            responsables.add(resp);
+        }
     }
 
     public void addAnimal(Animal perroAnadir) {
@@ -140,14 +155,12 @@ public class Sistema {
     }
 
     /* DELETERS */
-    public void deleteActividad(Actividad act) {
+    public void deleteActividad(Actividad act) throws AnimalException {
         if (actividades.contains(act)) {
             actividades.remove(act);
         } else {
-            System.out.println("No existe tal actividad");
-            //TODO
+            throw new AnimalException("no existe esa actividad");
         }
     }
-
 
 }
