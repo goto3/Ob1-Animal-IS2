@@ -7,9 +7,11 @@ import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
+import dominio.modelo.usuarios.Padrino;
 import dominio.modelo.usuarios.Responsable;
 import dominio.modelo.usuarios.Usuario;
 import excepciones.AnimalException;
+import excepciones.PadrinoException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +24,7 @@ public class Sistema {
     private final ArrayList<Animal> animales;
     private final ArrayList<Actividad> actividades;
     private final List<Veterinaria> veterinarias;
+    private final List<Padrino> padrinos;
 
     private Usuario usuarioLogeado;
 
@@ -31,6 +34,7 @@ public class Sistema {
         this.animales = new ArrayList<>();
         this.actividades = new ArrayList<>();
         this.veterinarias = new ArrayList<>();
+        this.padrinos = new ArrayList<>();
         usuarioLogeado = null;
     }
 
@@ -177,7 +181,19 @@ public class Sistema {
     public void addAnimal(Animal perroAnadir) {
         animales.add(perroAnadir);
     }
+    
+    public void addPadrino(Padrino padrinoAnadir) {
+        padrinos.add(padrinoAnadir);
+    }
 
+    public void deletePadrino(Padrino padrinoABorrar) throws PadrinoException{
+        if (padrinos.contains(padrinoABorrar)) {
+            padrinos.remove(padrinoABorrar);
+        } else {
+            throw new PadrinoException("No existe el padrino a borrar");
+        }
+    }
+    
     public void addActividad(Actividad act) {
         actividades.add(act);
         act.getUsuario().agregarActividad(act);
