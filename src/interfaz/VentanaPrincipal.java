@@ -15,6 +15,7 @@ import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
 import dominio.*;
 import dominio.modelo.usuarios.Responsable;
+import excepciones.AnimalException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,14 +52,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private boolean agregarPerroSeleccionado;
     private boolean agregarUsuarioSeleccionado;
     private String rutaImagenAgregar;
-    private Fecha fechaSeleccionada;
     private String rutaImagenRuta;
 
     private String RUTA_IMAGEN_PERRO_POR_DEFECTO = "images/perroPorDefecto.png";
 
     public VentanaPrincipal(Sistema sis) {
         sistema = sis;
-        fechaSeleccionada = new Fecha();
         initComponents();
         this.setLocationRelativeTo(null);
         try {
@@ -118,7 +117,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (UsuarioComboUsuarios.getItemCount() != 0) {
             Persona usuarioSeleccionado = sistema.getResponsable(UsuarioComboUsuarios.getSelectedItem().toString());
             UsuarioLblNombre.setText("Nombre: " + usuarioSeleccionado.getNombre());
-            UsuarioLblMail.setText("Mail: " + usuarioSeleccionado.getMail());
+            UsuarioLblMail.setText("Mail: " + usuarioSeleccionado.getEmail());
         } else {
             UsuarioLblNombre.setText("Nombre: ");
             UsuarioLblMail.setText("Mail: ");
@@ -1115,7 +1114,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 UsuarioLblAdvertencia.setText("Por favor ingrese un email correcto");
             } else {
                 Responsable usuarioAgregar = new Responsable(UsuarioTxtNombre.getText(), UsuarioTxtMail.getText());
-                sistema.addResponsable(usuarioAgregar);
+                try {
+                    sistema.addResponsable(usuarioAgregar);
+                } catch (AnimalException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 UsuarioTxtNombre.setText("");
                 UsuarioTxtMail.setText("");
                 ocultarAgregarUsuario();
@@ -1130,14 +1133,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (UsuarioComboUsuarios.getItemCount() > 0) {
             Responsable usuarioSeleccionado = sistema.getResponsable(UsuarioComboUsuarios.getSelectedItem().toString());
             UsuarioLblNombre.setText("Nombre: " + usuarioSeleccionado.getNombre());
-            UsuarioLblMail.setText("Mail: " + usuarioSeleccionado.getMail());
+            UsuarioLblMail.setText("Mail: " + usuarioSeleccionado.getEmail());
             String[] arrayActividades = new String[5];
             String[] arrayFechas = new String[5];
             int cantidadActividades = usuarioSeleccionado.getActividades().size();
             for (int i = 0; i < cantidadActividades; i++) {
                 arrayActividades[i] = usuarioSeleccionado.getActividades().get(i).getNombre();
-                Fecha fechaActividad = usuarioSeleccionado.getActividades().get(i).getFechaHora();
-                arrayFechas[i] = fechaActividad.getDia() + "/" + fechaActividad.getMes() + "/" + fechaActividad.getAno();
+                //Fecha fechaActividad = usuarioSeleccionado.getActividades().get(i).getFechaHora();
+                //arrayFechas[i] = fechaActividad.getDia() + "/" + fechaActividad.getMes() + "/" + fechaActividad.getAno();
             }
             UsuarioLstActividades.setListData(arrayActividades);
             UsuarioLstFechas.setListData(arrayFechas);
@@ -1314,7 +1317,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PerroBtnGuardarActionPerformed
 
     private void CalBtnAgregarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnAgregarDatosActionPerformed
-        try {
+        /*try {
             Responsable persona = new Responsable("Alex", "alexkmass@gmail.com");
             sistema.addResponsable(persona);
             Animal rasta = new Animal("Rasta", "", 50, 23, "Es un buen perro, le gusta comer");
@@ -1347,7 +1350,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             //sistema.getVisitas().add(visita);
         } catch (IOException ex) {
             System.out.println(ex);
-        }
+        }*/
         resetearPestanaPerros();
         inicializarPestanaUsuarios();
         setearListaDeVeterinarias();
@@ -1355,16 +1358,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int dia = CalDayChooser.getDay();
         int mes = CalMonthChooser.getMonth() + 1;
         int ano = CalYearChooser.getYear();
-        ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
+        /*ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
         String[] arrActividades = new String[listaActividades.size()];
         for (int i = 0; i < listaActividades.size(); i++) {
             Actividad act = listaActividades.get(i);
             arrActividades[i] = act.getNombre();
         }
-        CalLstActividades.setListData(arrActividades);
+        CalLstActividades.setListData(arrActividades);*/
 
         CalLblFechaResp.setText(dia + "/" + mes + "/" + ano);
-        fechaSeleccionada = new Fecha(dia, mes, ano);
     }//GEN-LAST:event_CalBtnAgregarDatosActionPerformed
 
     private void CalBtnRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnRutaActionPerformed
@@ -1393,7 +1395,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CalBtnRealizadaSiActionPerformed
 
     private void CalBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnEditarActionPerformed
-        CalLstActividades.setEnabled(false);
+        /*CalLstActividades.setEnabled(false);
         String nombreAct = CalLstActividades.getSelectedValue();
         Paseo paseo = sistema.getPaseo(nombreAct);
         CalBtnVeterinariaNo.setSelected(true);
@@ -1495,7 +1497,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     sistema.deleteActividad(actividad);
                 }
             }
-        }
+        }*/
         CalLblAdvertencia.setText("Edite la actividad y agreguela");
         CalBtnEditar.setVisible(false);
     }//GEN-LAST:event_CalBtnEditarActionPerformed
@@ -1507,7 +1509,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void CalComboVeterinariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalComboVeterinariaActionPerformed
         Veterinaria vet = sistema.getVeterinaria((String) CalComboVeterinaria.getSelectedItem());
         CalLblHorarios.setVisible(true);
-        CalLblHorarios.setText("Horarios: " + vet.getHoraInicial() + " - " + vet.getHoraFinal());
+        //CalLblHorarios.setText("Horarios: " + vet.getHoraInicial() + " - " + vet.getHoraFinal());
     }//GEN-LAST:event_CalComboVeterinariaActionPerformed
 
     private void CalBtnVeterinariaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnVeterinariaNoActionPerformed
@@ -1562,7 +1564,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CalComboTipoActionPerformed
 
     private void CalBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnAgregarActionPerformed
-        String nombreAct = CalTxtNombreResp.getText();
+        /*String nombreAct = CalTxtNombreResp.getText();
         boolean fueRealizada = true;
         if (CalBtnRealizadaNo.isSelected()) {
             fueRealizada = false;
@@ -1669,11 +1671,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         CalLstActividades.setListData(arrActividades);
 
         CalLblFechaResp.setText(dia + "/" + mes + "/" + ano);
-        fechaSeleccionada = new Fecha(dia, mes, ano);
+        fechaSeleccionada = new Fecha(dia, mes, ano);*/
     }//GEN-LAST:event_CalBtnAgregarActionPerformed
 
     private void CalLstActividadesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_CalLstActividadesValueChanged
-        String nombreAct = CalLstActividades.getSelectedValue();
+        /*String nombreAct = CalLstActividades.getSelectedValue();
         String cero = "";
         CalBtnVerRuta.setVisible(false);
         if (nombreAct != null) {
@@ -1760,11 +1762,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } else {
             CalTxtAreaInfoAct.setText("Seleccione un paseo para" + "\n"
                     + "poder ver su información");
-        }
+        }*/
     }//GEN-LAST:event_CalLstActividadesValueChanged
 
     private void CalDayChooserPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_CalDayChooserPropertyChange
-        int dia = CalDayChooser.getDay();
+        /*int dia = CalDayChooser.getDay();
         int mes = CalMonthChooser.getMonth() + 1;
         int ano = CalYearChooser.getYear();
         ArrayList<Actividad> listaActividades = (ArrayList) sistema.listaActividadesPorFecha(dia, mes, ano);
@@ -1776,7 +1778,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         CalLstActividades.setListData(arrActividades);
 
         CalLblFechaResp.setText(dia + "/" + mes + "/" + ano);
-        fechaSeleccionada = new Fecha(dia, mes, ano);
+        fechaSeleccionada = new Fecha(dia, mes, ano);*/
     }//GEN-LAST:event_CalDayChooserPropertyChange
 
     private void CalBtnVerRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalBtnVerRutaActionPerformed
@@ -1826,7 +1828,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     private void enviarMail(Actividad actividad) {
-        String nombreAct = actividad.getNombre();
+        /*String nombreAct = actividad.getNombre();
         Paseo paseo = sistema.getPaseo(nombreAct);
         String tipoActividad;
         String cuerpo;
@@ -1915,11 +1917,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
     public void timerNuevo(final Actividad act) {
-        int horaActividad = act.getHora().getHour() * 60 + act.getHora().getMinute();
+        /*int horaActividad = act.getHora().getHour() * 60 + act.getHora().getMinute();
         int horaActual = LocalTime.now().getHour() * 60 + LocalTime.now().getMinute();
         int tiempoRestanteMinutos = horaActividad - horaActual;
         try {
@@ -1936,11 +1938,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             timer.start();
         } catch (ArithmeticException e) {
 
-        }
+        }*/
     }
 
     public void mostrarNotificacion(Actividad actividad) {
-        String nombreAct = actividad.getNombre();
+        /*String nombreAct = actividad.getNombre();
         Paseo paseo = sistema.getPaseo(nombreAct);
         String cuerpo;
         String cero = "";
@@ -1990,7 +1992,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
         JFrame ventana = this;
-        JOptionPane.showMessageDialog(ventana, cuerpo, "Notificación", 1);
+        JOptionPane.showMessageDialog(ventana, cuerpo, "Notificación", 1);*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

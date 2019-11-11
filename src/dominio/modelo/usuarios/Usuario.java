@@ -6,9 +6,13 @@ public class Usuario extends Persona {
 
     String password;
 
-    Usuario(String nombre, String mail) {
+    public Usuario(String nombre, String mail, String pass) {
         super(nombre, mail);
-        password = "";
+        password = pass;
+    }
+    
+    public String getPassword(){
+        return password;
     }
 
 }

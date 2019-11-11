@@ -8,23 +8,52 @@ import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
 import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.usuarios.Usuario;
 import excepciones.AnimalException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Sistema {
 
+    private ArrayList<Usuario> usuarios;
     private final ArrayList<Responsable> responsables;
     private final ArrayList<Animal> animales;
     private final ArrayList<Actividad> actividades;
     private final List<Veterinaria> veterinarias;
 
+    private Usuario usuarioLogeado;
+
     public Sistema() {
+        this.usuarios = new ArrayList<>();
         this.responsables = new ArrayList<>();
         this.animales = new ArrayList<>();
         this.actividades = new ArrayList<>();
         this.veterinarias = new ArrayList<>();
+        usuarioLogeado = null;
+    }
+
+    public void loadUsers() throws AnimalException {
+        LogInController lc = new LogInController();
+        usuarios = lc.LoadUsers();
+    }
+
+    public boolean logIn(Usuario user) throws AnimalException {
+        if (user == null) {
+            throw new AnimalException("Usuario vacío");
+        } else {
+            Iterator<Usuario> itUsers = usuarios.iterator();
+            while (itUsers.hasNext()) {
+                Usuario usuarioList = itUsers.next();
+                if (usuarioList.getEmail().equals(user.getEmail())
+                        && usuarioList.getPassword().equals(user.getPassword())) {
+                    usuarioLogeado = usuarioList;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public List<Actividad> listaActividadesPorFecha(LocalDate date) {
