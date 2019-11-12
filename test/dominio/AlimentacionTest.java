@@ -8,6 +8,8 @@ package dominio;
 import dominio.modelo.Persona;
 import dominio.modelo.Animal;
 import dominio.modelo.actividades.Alimentacion;
+import dominio.modelo.usuarios.Responsable;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,11 +62,11 @@ public class AlimentacionTest {
 
     @Test
     public void testConstructorPorParametros() {
-        Persona usuario = new Persona();
+        Persona responsable = new Responsable();
         Animal perro = new Animal();
         LocalTime time = LocalTime.now();
-        Fecha fecha = new Fecha();
-        Alimentacion unaAlim = new Alimentacion("Nombre", usuario, perro, "Comida", true, time, fecha);
+        LocalDateTime fecha = LocalDateTime.of(2019, 12, 29, 18, 30);
+        Alimentacion unaAlim = new Alimentacion("Nombre", responsable, perro, "Comida", true, time, fecha, 1);
         assertEquals(fecha, unaAlim.getFechaHora());
         assertEquals(time, unaAlim.getHora());
         assertEquals("Nombre", unaAlim.getNombre());
