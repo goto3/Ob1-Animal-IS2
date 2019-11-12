@@ -7,9 +7,11 @@ import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
+import dominio.modelo.usuarios.Adoptante;
 import dominio.modelo.usuarios.Padrino;
 import dominio.modelo.usuarios.Responsable;
 import dominio.modelo.usuarios.Usuario;
+import dominio.tools.EstadoAnimal;
 import excepciones.AnimalException;
 import excepciones.PadrinoException;
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ public class Sistema {
     private final ArrayList<Actividad> actividades;
     private final List<Veterinaria> veterinarias;
     private final List<Padrino> padrinos;
+    private final List<Adoptante> adoptantes;
 
     private Usuario usuarioLogeado;
 
@@ -35,6 +38,7 @@ public class Sistema {
         this.actividades = new ArrayList<>();
         this.veterinarias = new ArrayList<>();
         this.padrinos = new ArrayList<>();
+        this.adoptantes = new ArrayList<>();
         usuarioLogeado = null;
     }
 
@@ -58,6 +62,21 @@ public class Sistema {
             }
         }
         return false;
+    }
+
+    public void adoptarAnimal(Adoptante adoptante, Animal animal) throws AnimalException {
+        if (adoptante == null || animal == null) {
+            throw new AnimalException("Parámetro nulo.");
+        }
+        if (animal.getEstado() == EstadoAnimal.NO_ADOPTABLE) {
+            throw new AnimalException("Animal no puede ser adoptado.");
+        }
+        if (animal.getEstado() == EstadoAnimal.ADOPTADO) {
+            throw new AnimalException("Animal ya fue adoptado.");
+        }
+        animal.setEstado(EstadoAnimal.ADOPTADO);
+        adoptante.addAnimal(animal);
+        adoptantes.add(adoptante);
     }
 
     public List<Actividad> listaActividadesPorFecha(LocalDate date) {
@@ -181,19 +200,19 @@ public class Sistema {
     public void addAnimal(Animal perroAnadir) {
         animales.add(perroAnadir);
     }
-    
+
     public void addPadrino(Padrino padrinoAnadir) {
         padrinos.add(padrinoAnadir);
     }
 
-    public void deletePadrino(Padrino padrinoABorrar) throws PadrinoException{
+    public void deletePadrino(Padrino padrinoABorrar) throws PadrinoException {
         if (padrinos.contains(padrinoABorrar)) {
             padrinos.remove(padrinoABorrar);
         } else {
             throw new PadrinoException("No existe el padrino a borrar");
         }
     }
-    
+
     public void addActividad(Actividad act) {
         actividades.add(act);
         act.getUsuario().agregarActividad(act);

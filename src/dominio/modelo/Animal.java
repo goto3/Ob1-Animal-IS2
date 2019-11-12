@@ -1,35 +1,47 @@
 package dominio.modelo;
 
+import dominio.tools.EstadoAnimal;
+import java.util.UUID;
 import javax.swing.ImageIcon;
 
 public class Animal {
 
+    private String id;
     private String nombre;
     private String tipo;
     private double altura;
     private double peso;
     private String comentarios;
     private ImageIcon foto;
+    private EstadoAnimal estado;
 
     public Animal() {
+        this.id = UUID.randomUUID().toString();
         this.nombre = "Sin-Nombre";
         this.tipo = "Sin-tipo";
         this.altura = 0;
         this.peso = 0;
         this.comentarios = "Sin-Comentarios";
         this.foto = null;
+        this.estado = EstadoAnimal.NO_ADOPTABLE;
     }
 
     public Animal(String nombre, String tipo, double altura, double peso, String comentarios) {
+        this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
         this.tipo = tipo;
         this.altura = altura;
         this.peso = peso;
         this.comentarios = comentarios;
         this.foto = null;
+        this.estado = EstadoAnimal.NO_ADOPTABLE;
     }
 
     /* GETTERS */
+    public String getId() {
+        return id;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -52,6 +64,10 @@ public class Animal {
 
     public ImageIcon getFoto() {
         return foto;
+    }
+    
+    public EstadoAnimal getEstado(){
+        return estado;
     }
 
     /* SETTERS */
@@ -98,6 +114,10 @@ public class Animal {
 
     public void setFoto(ImageIcon imagen) {
         this.foto = imagen;
+    }
+    
+    public void setEstado(EstadoAnimal est){
+        this.estado = est;
     }
 
     @Override
