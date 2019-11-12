@@ -14,6 +14,7 @@ import dominio.modelo.usuarios.Usuario;
 import dominio.tools.EstadoAnimal;
 import excepciones.AnimalException;
 import excepciones.PadrinoException;
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,7 +45,9 @@ public class Sistema {
 
     public void loadUsers() throws AnimalException {
         LogInController lc = new LogInController();
-        usuarios = lc.LoadUsers();
+        String filePath = new File("").getAbsolutePath();
+        String csvFile = filePath + "/Usuarios.csv";
+        usuarios = lc.LoadUsers(csvFile);
     }
 
     public boolean logIn(Usuario user) throws AnimalException {
