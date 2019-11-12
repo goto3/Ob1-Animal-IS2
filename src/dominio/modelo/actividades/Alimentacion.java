@@ -11,7 +11,7 @@ public class Alimentacion extends Actividad {
     private String tipoAlimento;
 
     public Alimentacion(String nombre, Persona responasble, Animal mascota,
-            String tipoAlimento, boolean fueRealizado, LocalTime hora,
+            String tipoAlimento, boolean fueRealizado,
             LocalDateTime fecha, int duracion) {
         super();
     }
@@ -35,7 +35,9 @@ public class Alimentacion extends Actividad {
 
     @Override
     public String toString() {
-        return "Alimentacion{" + "responsable=" + this.responsable + ", mascota=" + animal + ", tipoAlimento=" + tipoAlimento + ", fueRealizado=" + fueRealizado + ", nombre=" + nombre + '}';
+        return "Alimentacion{" + "responsable=" + this.responsable +
+                ", mascota=" + animal + ", tipoAlimento=" + tipoAlimento +
+                ", fueRealizado=" + fueRealizado + ", nombre=" + nombre + '}';
     }
 
     

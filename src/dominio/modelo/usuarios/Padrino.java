@@ -30,9 +30,9 @@ public class Padrino extends Persona {
     
     Padrino(String nombre, String mail, String telefono, String apellido,
         String ciudad, String pais, String moneda, String periodoPago,
-        String tipoPago) {
+        String tipoPago, ArrayList<Animal> listaAnimales) {
         super(nombre, mail);
-        listaAnimales = new ArrayList<Animal>();
+        this.listaAnimales = listaAnimales;
         this.apellido = apellido;
         this.ciudad = ciudad;
         this.pais = pais;
