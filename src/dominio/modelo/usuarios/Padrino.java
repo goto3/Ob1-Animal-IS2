@@ -60,7 +60,7 @@ public class Padrino extends Persona {
     public String imprimirListaAnimales(){
         String list = "";
         for (int i = 0; i < listaAnimales.size(); i++) {
-            list =  listaAnimales.get(i).toString() + "\n";
+            list +=  listaAnimales.get(i).toString() + "\n";
         }
         return list;
     }
@@ -99,16 +99,17 @@ public class Padrino extends Persona {
     
     @Override
     public String toString() {
-        String g = "Persona => Padrino: \n  Nombre = "
-                + this.nombre + "\n  Apellido = " + this.apellido
-                + "\n  Email = " + this.email + "\n  Ciudad = " + this.ciudad
-                + "\n  Pais = " + this.pais + "\n  Valor = " + this.valor +
-                "\n  Telefono = "+ this.telefono +
-                "\n  Moneda = " + this.moneda.toString() +
-                "\n  Periodo de pago = " + this.periodoPago.toString() +
-                "\n  Tipo de pago = " + this.tipoPago.toString() +
-                "\n  Animales que apadrina: " + imprimirListaAnimales();
-        System.out.println(g);
-        return g;
+        return "Persona => Padrino " + 
+                "\nNombre = " + this.nombre + 
+                "\nApellido = " + this.apellido + 
+                "\nEmail = " + this.email +
+                "\nCiudad = " + this.ciudad + 
+                "\nPais = " + this.pais + 
+                "\nValor = " + this.valor +
+                "\nTelefono = "+ this.telefono +
+                "\nMoneda = " + this.moneda.toString() +
+                "\nPeriodo de pago = " + this.periodoPago.toString() +
+                "\nTipo de pago = " + this.tipoPago.toString() +
+                "\nAnimales que apadrina:\n" + imprimirListaAnimales();
     }
 }

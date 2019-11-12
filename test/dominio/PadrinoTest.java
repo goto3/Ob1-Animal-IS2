@@ -117,35 +117,47 @@ public class PadrinoTest {
     
     @Test
     public void imprimirListaAnimalesNoVacia() {
-        Animal juanjo = new Animal();
-        Animal ramiro = new Animal();
+        Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
+        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
         padrino.agregarAnimal(ramiro);
         padrino.agregarAnimal(juanjo);
-        String impresion = "Perro{nombre=Sin-Nombre" + ", altura=" 
-                + 0.0 + ", peso=" + 0.0 + ", comentarios=" + "Sin-Comentarios"
-                + '}' + "\n"
-                + "Perro{nombre=Sin-Nombre" + ", altura=" 
-                + 0.0 + ", peso=" + 0.0 + ", comentarios=" + "Sin-Comentarios"
-                + '}';
+        String impresion = "Gato {"
+                + "\n  nombre = Ramiro"
+                + "\n  altura = 15.0"
+                + "\n  peso = 2.0" 
+                + "\n  comentarios = Blanco"
+                + "\n" + '}' + "\n"
+                +"Perro {"
+                + "\n  nombre = Juanjo"
+                + "\n  altura = 30.0"
+                + "\n  peso = 3.0" 
+                + "\n  comentarios = Marron"
+                + "\n" +'}' + "\n";
         assertEquals(impresion, padrino.imprimirListaAnimales());
     }
     
     @Test
     public void toStringPadrino() {
         ArrayList<Animal> animalesApadrinados = new ArrayList<>();
+        Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
+        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
+        animalesApadrinados.add(ramiro);
+        animalesApadrinados.add(juanjo);
         padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
                 "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
                 Periodo.MENSUAL, Moneda.DOLAR_AMERICANO, animalesApadrinados, 
                 300);
-        String impresion = "Persona => Padrino: \n  Nombre = "
-                + "Pedro" + "\n  Apellido = " +  "González"
-                + "\n  Email = " + "pedro12@gmail.com" + "\n  Ciudad = " + 
-                "Montevideo" + "\n  Pais = " + "Uruguay" + "\n  Valor = " + 300
-                + "\n Telefono = " + "098 775 234"
-                + "\n  Moneda = " + "DOLAR_AMERICANO"
-                +"\n  Periodo de pago = " + "MENSUAL" +
-                "\n  Tipo de pago = " + "TARJETA_CREDITO" +
-                "\n  Animales que apadrina: ";
+        String impresion = "Persona => Padrino \nNombre = "
+                + "Pedro" + "\nApellido = " +  "González"
+                + "\nEmail = " + "pedro12@gmail.com" + "\nCiudad = " + 
+                "Montevideo" + "\nPais = " + "Uruguay" + "\nValor = " + 300
+                + "\nTelefono = " + "098 775 234"
+                + "\nMoneda = " + "DOLAR_AMERICANO"
+                +"\nPeriodo de pago = " + "MENSUAL" +
+                "\nTipo de pago = " + "TARJETA_CREDITO" +
+                "\nAnimales que apadrina:\n"
+                + padrino.imprimirListaAnimales();
+        System.out.println(impresion);
         assertEquals(impresion, padrino.toString());
     }
    
