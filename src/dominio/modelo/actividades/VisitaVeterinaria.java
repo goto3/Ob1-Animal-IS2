@@ -3,7 +3,7 @@ package dominio.modelo.actividades;
 import dominio.modelo.Actividad;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
-import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
 
 public class VisitaVeterinaria extends Actividad {

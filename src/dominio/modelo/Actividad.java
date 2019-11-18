@@ -1,6 +1,6 @@
 package dominio.modelo;
 
-import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
 
 public abstract class Actividad {

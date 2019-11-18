@@ -1,6 +1,6 @@
 package dominio;
 
-import dominio.modelo.usuarios.Usuario;
+import dominio.modelo.personas.Usuario;
 import excepciones.AnimalException;
 import java.io.BufferedReader;
 import java.io.FileReader;

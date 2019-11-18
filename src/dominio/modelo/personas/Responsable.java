@@ -1,4 +1,4 @@
-package dominio.modelo.usuarios;
+package dominio.modelo.personas;
 
 import dominio.modelo.Actividad;
 import dominio.modelo.Persona;

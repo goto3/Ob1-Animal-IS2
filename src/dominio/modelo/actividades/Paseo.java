@@ -2,7 +2,7 @@ package dominio.modelo.actividades;
 
 import dominio.modelo.Actividad;
 import dominio.modelo.Animal;
-import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.swing.ImageIcon;

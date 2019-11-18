@@ -6,7 +6,7 @@
 package dominio;
 
 import dominio.modelo.Animal;
-import dominio.modelo.usuarios.Padrino;
+import dominio.modelo.personas.Padrino;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

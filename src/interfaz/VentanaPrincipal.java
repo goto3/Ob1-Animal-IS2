@@ -14,7 +14,7 @@ import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
 import dominio.*;
-import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.personas.Responsable;
 import excepciones.AnimalException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;

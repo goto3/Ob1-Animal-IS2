@@ -7,10 +7,10 @@ import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
 import dominio.modelo.actividades.Alimentacion;
-import dominio.modelo.usuarios.Adoptante;
-import dominio.modelo.usuarios.Padrino;
-import dominio.modelo.usuarios.Responsable;
-import dominio.modelo.usuarios.Usuario;
+import dominio.modelo.personas.Adoptante;
+import dominio.modelo.personas.Padrino;
+import dominio.modelo.personas.Responsable;
+import dominio.modelo.personas.Usuario;
 import dominio.tools.EstadoAnimal;
 import excepciones.AnimalException;
 import excepciones.PadrinoException;
@@ -22,6 +22,8 @@ import java.util.List;
 
 public class Sistema {
 
+    private static Sistema Instance;
+
     private ArrayList<Usuario> usuarios;
     private final ArrayList<Responsable> responsables;
     private final ArrayList<Animal> animales;
@@ -31,6 +33,13 @@ public class Sistema {
     private final List<Adoptante> adoptantes;
 
     private Usuario usuarioLogeado;
+
+    public static Sistema getInstance() {
+        if (Instance == null) {
+            Instance = new Sistema();
+        }
+        return Instance;
+    }
 
     public Sistema() {
         this.usuarios = new ArrayList<>();
@@ -50,18 +59,14 @@ public class Sistema {
         usuarios = lc.LoadUsers(csvFile);
     }
 
-    public boolean logIn(Usuario user) throws AnimalException {
-        if (user == null) {
-            throw new AnimalException("Usuario vacío");
-        } else {
-            Iterator<Usuario> itUsers = usuarios.iterator();
-            while (itUsers.hasNext()) {
-                Usuario usuarioList = itUsers.next();
-                if (usuarioList.getEmail().equals(user.getEmail())
-                        && usuarioList.getPassword().equals(user.getPassword())) {
-                    usuarioLogeado = usuarioList;
-                    return true;
-                }
+    public boolean logIn(Usuario user) {
+        Iterator<Usuario> itUsers = usuarios.iterator();
+        while (itUsers.hasNext()) {
+            Usuario usuarioList = itUsers.next();
+            if (usuarioList.getEmail().equals(user.getEmail())
+                    && usuarioList.getPassword().equals(user.getPassword())) {
+                usuarioLogeado = usuarioList;
+                return true;
             }
         }
         return false;

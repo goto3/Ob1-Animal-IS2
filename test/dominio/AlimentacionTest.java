@@ -8,7 +8,7 @@ package dominio;
 import dominio.modelo.Persona;
 import dominio.modelo.Animal;
 import dominio.modelo.actividades.Alimentacion;
-import dominio.modelo.usuarios.Responsable;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.junit.After;
