@@ -54,7 +54,7 @@ public class PadrinoTest {
         assertEquals("Sin-Telefono", padrino.getTelefono());
         assertEquals("Sin-Ciudad", padrino.getCiudad());
         assertEquals("Sin-Pais", padrino.getPais());
-        assertEquals(Moneda.NO_ESPECIFICADA, padrino.getMoneda());
+        assertEquals(Moneda.SIN_MONEDA, padrino.getMoneda());
         assertEquals(Periodo.NO_ESPECIFICADO, padrino.getPeriodoPago());
         assertEquals(Pago.NO_ESPECIFICADO, padrino.getTipoPago());
         assertEquals(0, padrino.getValor());
@@ -70,7 +70,7 @@ public class PadrinoTest {
         animalesApadrinados.add(juanjo);
         padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
                 "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLAR_AMERICANO, animalesApadrinados, 
+                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
                 300);
         assertEquals("Pedro", padrino.getNombre());
         assertEquals("González", padrino.getApellido());
@@ -78,7 +78,7 @@ public class PadrinoTest {
         assertEquals("098 775 234", padrino.getTelefono());
         assertEquals("Montevideo", padrino.getCiudad());
         assertEquals("Uruguay", padrino.getPais());
-        assertEquals(Moneda.DOLAR_AMERICANO, padrino.getMoneda());
+        assertEquals(Moneda.DOLARES, padrino.getMoneda());
         assertEquals(Periodo.MENSUAL, padrino.getPeriodoPago());
         assertEquals(Pago.TARJETA_CREDITO, padrino.getTipoPago());
         assertEquals(300, padrino.getValor());
@@ -102,7 +102,7 @@ public class PadrinoTest {
         animalesApadrinados.add(ramiro);
         padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
                 "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLAR_AMERICANO, animalesApadrinados, 
+                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
                 300);
         Animal juanjo = new Animal();
         padrino.agregarAnimal(juanjo);
@@ -145,7 +145,7 @@ public class PadrinoTest {
         animalesApadrinados.add(juanjo);
         padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
                 "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLAR_AMERICANO, animalesApadrinados, 
+                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
                 300);
         String impresion = "Persona => Padrino \nNombre = "
                 + "Pedro" + "\nApellido = " +  "González"

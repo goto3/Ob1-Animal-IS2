@@ -46,9 +46,9 @@ public class MainWindow extends javax.swing.JFrame {
         Adoptante ad2 = new Adoptante("Nombre5", "Apellido5", "email5", "tel5");
         Adoptante ad3 = new Adoptante("Nombre6", "Apellido6", "email6", "tel6");
 
-        Padrino p1 = new Padrino("Nombre7", "Apellido7", "email7", "telefono7", "Ciudad7", "Pais7", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 7);
-        Padrino p2 = new Padrino("Nombre8", "Apellido8", "email8", "telefono8", "Ciudad8", "Pais8", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 8);
-        Padrino p3 = new Padrino("Nombre9", "Apellido9", "email9", "telefono9", "Ciudad9", "Pais9", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 9);
+        Padrino p1 = new Padrino("Nombre7", "Apellido7", "email7", "telefono7", "Ciudad7", "Pais7", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 7);
+        Padrino p2 = new Padrino("Nombre8", "Apellido8", "email8", "telefono8", "Ciudad8", "Pais8", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 8);
+        Padrino p3 = new Padrino("Nombre9", "Apellido9", "email9", "telefono9", "Ciudad9", "Pais9", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 9);
         try {
             sistema.getResponsables().add(r1);
             sistema.getResponsables().add(r2);
@@ -91,8 +91,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
+        setMinimumSize(new java.awt.Dimension(900, 640));
+        setPreferredSize(new java.awt.Dimension(900, 640));
 
         jTabbedPane1.setFocusable(false);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

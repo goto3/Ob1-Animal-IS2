@@ -75,32 +75,40 @@ public class Padrino extends Persona {
 
     public int getValor() {
         return valor;
+    }    
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
-    public String getApellido() {
-        return apellido;
+    public void setListaAnimales(List<Animal> listaAnimales) {
+        this.listaAnimales = listaAnimales;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
-    public String getEmail() {
-        return email;
+    public void setMoneda(Moneda moneda) {
+        this.moneda = moneda;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPeriodoPago(Periodo periodoPago) {
+        this.periodoPago = periodoPago;
     }
 
+    public void setTipoPago(Pago tipoPago) {
+        this.tipoPago = tipoPago;
+    }    
+    
     @Override
     public String toString() {
         return "Persona => Padrino "
