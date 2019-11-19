@@ -1,21 +1,23 @@
 package dominio.modelo;
 
+import dominio.tools.RandomID;
+
 public abstract class Persona {
 
+    protected String id;
     protected String nombre;
     protected String apellido;
     protected String email;
 
-    public Persona() {
-        this.nombre = "Sin-Nombre";
-        this.apellido = "Sin-Apellido";
-        this.email = "Sin-Mail";
-    }
-
     public Persona(String nombre, String apellido, String mail) {
+        this.id = RandomID.getInstance().getNewID();
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = mail;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNombre() {

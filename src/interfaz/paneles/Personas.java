@@ -2,6 +2,9 @@ package interfaz.paneles;
 
 import dominio.Sistema;
 import dominio.modelo.Animal;
+import dominio.modelo.personas.Adoptante;
+import dominio.modelo.personas.Padrino;
+import dominio.modelo.personas.Responsable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
@@ -17,48 +20,52 @@ public class Personas extends javax.swing.JPanel {
     public Personas() {
         initComponents();
 
-        /* Tabla de animales */
+        /* Tabla de personas */
         TablePersonas.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
             if (tableModel.getRowCount() > 0) {
                 creatingNew = false;
                 int row = TablePersonas.getSelectedRow();
                 String id = tableModel.getValueAt(row, 0).toString();
-                displayData(sistema.getAnimal(id));
+                //displayData(sistema.getPersona);
             }
         });
         tableModel = (DefaultTableModel) TablePersonas.getModel();
         FillTable();
 
-        TablePersonas.getColumnModel().getColumn(0).setMaxWidth(65);
-        TablePersonas.getColumnModel().getColumn(0).setMinWidth(65);
-        TablePersonas.getColumnModel().getColumn(1).setPreferredWidth(300);
+        TablePersonas.getColumnModel().getColumn(0).setMaxWidth(90);
+        TablePersonas.getColumnModel().getColumn(0).setMinWidth(90);
+        TablePersonas.getColumnModel().getColumn(1).setPreferredWidth(100);
         TablePersonas.getColumnModel().getColumn(1).setMinWidth(100);
         TablePersonas.getColumnModel().getColumn(2).setPreferredWidth(100);
         TablePersonas.getColumnModel().getColumn(2).setMinWidth(100);
-        TablePersonas.getColumnModel().getColumn(3).setMaxWidth(75);
-        TablePersonas.getColumnModel().getColumn(3).setMinWidth(75);
-        TablePersonas.getColumnModel().getColumn(4).setMaxWidth(75);
-        TablePersonas.getColumnModel().getColumn(4).setMinWidth(75);
-        TablePersonas.getColumnModel().getColumn(5).setMaxWidth(100);
-        TablePersonas.getColumnModel().getColumn(5).setMinWidth(100);
+        TablePersonas.getColumnModel().getColumn(3).setPreferredWidth(200);
+        TablePersonas.getColumnModel().getColumn(3).setMinWidth(200);
 
         TablePersonas.setRowSelectionInterval(0, 0);
 
     }
 
     private void FillTable() {
-        for (Animal a : sistema.getAnimales()) {
+        for (Responsable r : sistema.getResponsables()) {
             Object[] o = new Object[]{
-                a.getId(), a.getNombre(), a.getTipo(),
-                a.getAltura(), a.getPeso(), a.getEstado()
-            };
+                r.getClass().getSimpleName(), r.getNombre(), r.getApellido(), r.getEmail()};
+            tableModel.insertRow(tableModel.getRowCount(), o);
+        }
+        for (Adoptante a : sistema.getAdoptantes()) {
+            Object[] o = new Object[]{
+                a.getClass().getSimpleName(), a.getNombre(), a.getApellido(), a.getEmail()};
+            tableModel.insertRow(tableModel.getRowCount(), o);
+        }
+        for (Padrino p : sistema.getPadrinos()) {
+            Object[] o = new Object[]{
+                p.getClass().getSimpleName(), p.getNombre(), p.getApellido(), p.getEmail()};
             tableModel.insertRow(tableModel.getRowCount(), o);
         }
     }
 
     private void displayData(Animal a) {
         selectedAnimalID = a.getId();
-        
+
     }
 
     private void cleanFields() {
@@ -86,11 +93,11 @@ public class Personas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Tipo", "Nombre", "Apellido", "Email", "Peso", "Estado"
+                "Tipo", "Nombre", "Apellido", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -108,10 +115,6 @@ public class Personas extends javax.swing.JPanel {
             TablePersonas.getColumnModel().getColumn(2).setPreferredWidth(30);
             TablePersonas.getColumnModel().getColumn(3).setResizable(false);
             TablePersonas.getColumnModel().getColumn(3).setPreferredWidth(10);
-            TablePersonas.getColumnModel().getColumn(4).setResizable(false);
-            TablePersonas.getColumnModel().getColumn(4).setPreferredWidth(10);
-            TablePersonas.getColumnModel().getColumn(5).setResizable(false);
-            TablePersonas.getColumnModel().getColumn(5).setPreferredWidth(30);
         }
 
         PanelFields.setMaximumSize(new java.awt.Dimension(300, 32767));
@@ -160,7 +163,7 @@ public class Personas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setAnimalValues(Animal a) {
-        
+
     }
 
 

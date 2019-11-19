@@ -113,6 +113,10 @@ public class Sistema {
         return responsables;
     }
 
+    public List<Padrino> getPadrinos() {
+        return padrinos;
+    }
+
     public List<Animal> getAnimales() {
         return animales;
     }
@@ -123,6 +127,10 @@ public class Sistema {
 
     public List<Veterinaria> getVeterinarias() {
         return veterinarias;
+    }
+
+    public List<Adoptante> getAdoptantes() {
+        return adoptantes;
     }
 
     public Responsable getResponsable(String nombreBuscar) {
@@ -224,6 +232,10 @@ public class Sistema {
     public void addActividad(Actividad act) {
         actividades.add(act);
         act.getUsuario().agregarActividad(act);
+    }
+
+    public void addAdoptante(Adoptante ad) {
+        adoptantes.add(ad);
     }
 
     /* DELETERS */

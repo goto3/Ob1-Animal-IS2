@@ -2,6 +2,12 @@ package interfaz;
 
 import dominio.Sistema;
 import dominio.modelo.Animal;
+import dominio.modelo.personas.Adoptante;
+import dominio.modelo.personas.Responsable;
+import dominio.modelo.personas.Padrino;
+import dominio.tools.Moneda;
+import dominio.tools.Pago;
+import dominio.tools.Periodo;
 import interfaz.paneles.*;
 import javax.swing.ImageIcon;
 
@@ -31,6 +37,32 @@ public class MainWindow extends javax.swing.JFrame {
         sistema.addAnimal(a8);
         sistema.addAnimal(a9);
         sistema.addAnimal(a10);
+
+        Responsable r1 = new Responsable("Nombre1", "Apellido1", "email1");
+        Responsable r2 = new Responsable("Nombre2", "Apellido2", "email2");
+        Responsable r3 = new Responsable("Nombre3", "Apellido3", "email3");
+
+        Adoptante ad1 = new Adoptante("Nombre4", "Apellido4", "email4", "tel4");
+        Adoptante ad2 = new Adoptante("Nombre5", "Apellido5", "email5", "tel5");
+        Adoptante ad3 = new Adoptante("Nombre6", "Apellido6", "email6", "tel6");
+
+        Padrino p1 = new Padrino("Nombre7", "Apellido7", "email7", "telefono7", "Ciudad7", "Pais7", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 7);
+        Padrino p2 = new Padrino("Nombre8", "Apellido8", "email8", "telefono8", "Ciudad8", "Pais8", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 8);
+        Padrino p3 = new Padrino("Nombre9", "Apellido9", "email9", "telefono9", "Ciudad9", "Pais9", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 9);
+        try {
+            sistema.addResponsable(r1);
+            sistema.addResponsable(r2);
+            sistema.addResponsable(r3);
+
+            sistema.addAdoptante(ad1);
+            sistema.addAdoptante(ad2);
+            sistema.addAdoptante(ad3);
+
+            sistema.addPadrino(p1);
+            sistema.addPadrino(p2);
+            sistema.addPadrino(p3);
+        } catch (Exception ex) {
+        }
 
         initComponents();
 
