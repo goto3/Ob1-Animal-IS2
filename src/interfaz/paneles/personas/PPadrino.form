@@ -26,36 +26,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ComForma" alignment="1" max="32767" attributes="0"/>
-                          <Component id="ComTipo" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="TxtCantidad" min="-2" pref="77" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="LblMoneda" min="-2" pref="68" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="BtnGuardar" alignment="1" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -91,6 +68,24 @@
                                   <Component id="TxtTelefono" min="-2" pref="207" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="TxtCantidad" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="ComMoneda" min="-2" pref="93" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ComForma" pref="167" max="32767" attributes="0"/>
+                          <Component id="ComTipo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -141,7 +136,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TxtCantidad" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LblMoneda" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="ComMoneda" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -205,6 +200,9 @@
     <Component class="javax.swing.JTextField" name="TxtCiudad">
     </Component>
     <Component class="javax.swing.JTextField" name="TxtCantidad">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtCantidadKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="ComForma">
       <Properties>
@@ -216,6 +214,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -231,6 +230,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -251,8 +251,6 @@
         <Property name="text" type="java.lang.String" value="Cantidad donada:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LblMoneda">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tipo de donaci&#xf3;n:"/>
@@ -269,6 +267,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pais:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="ComMoneda">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

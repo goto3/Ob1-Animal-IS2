@@ -31,7 +31,8 @@ public class PPadrino extends javax.swing.JPanel {
         TxtCiudad.setText(p.getCiudad());
         TxtPais.setText(p.getPais());
         TxtCantidad.setText(String.valueOf(p.getValor()));
-        LblMoneda.setText(p.getMoneda().name());
+        ComMoneda.setModel(new DefaultComboBoxModel(Moneda.values()));
+        ComMoneda.setSelectedItem(p.getMoneda());
         ComForma.setModel(new DefaultComboBoxModel(Periodo.values()));
         ComForma.setSelectedItem(p.getPeriodoPago());
         ComTipo.setModel(new DefaultComboBoxModel(Pago.values()));
@@ -58,11 +59,11 @@ public class PPadrino extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        LblMoneda = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         TxtPais = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        ComMoneda = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(300, 30000));
         setMinimumSize(new java.awt.Dimension(300, 300));
@@ -85,9 +86,17 @@ public class PPadrino extends javax.swing.JPanel {
 
         jLabel2.setText("Apellido:");
 
+        TxtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCantidadKeyTyped(evt);
+            }
+        });
+
         ComForma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComForma.setFocusable(false);
 
         ComTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComTipo.setFocusable(false);
 
         jLabel6.setText("Teléfono:");
 
@@ -101,36 +110,22 @@ public class PPadrino extends javax.swing.JPanel {
 
         jLabel9.setText("Pais:");
 
+        ComMoneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComMoneda.setFocusable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(3, 3, 3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ComForma, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(3, 3, 3)
-                        .addComponent(TxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(LblMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BtnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel1)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,7 +151,21 @@ public class PPadrino extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(ComMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ComForma, 0, 167, Short.MAX_VALUE)
+                            .addComponent(ComTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -194,7 +203,7 @@ public class PPadrino extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(LblMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComForma, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,6 +226,7 @@ public class PPadrino extends javax.swing.JPanel {
         p.setCiudad(TxtCiudad.getText());
         p.setPais(TxtPais.getText());
         p.setValor(Integer.parseInt(TxtCantidad.getText()));
+        p.setMoneda((Moneda) ComMoneda.getSelectedItem());
         p.setPeriodoPago((Periodo) ComForma.getSelectedItem());
         p.setTipoPago((Pago) ComTipo.getSelectedItem());
         if (newPersona) {
@@ -227,12 +237,22 @@ public class PPadrino extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
+    private void TxtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCantidadKeyTyped
+                char vChar = evt.getKeyChar();
+        if (!(Character.isDigit(vChar)
+                || (vChar == evt.VK_BACK_SPACE)
+                || (vChar == evt.VK_DELETE))
+                || TxtCantidad.getText().length() > 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TxtCantidadKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JComboBox<String> ComForma;
+    private javax.swing.JComboBox<String> ComMoneda;
     private javax.swing.JComboBox<String> ComTipo;
-    private javax.swing.JLabel LblMoneda;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtCantidad;
     private javax.swing.JTextField TxtCiudad;
