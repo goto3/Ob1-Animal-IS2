@@ -3,6 +3,7 @@ package dominio;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.Actividad;
+import dominio.modelo.Persona;
 import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.actividades.OtraActividad;
 import dominio.modelo.actividades.Paseo;
@@ -133,6 +134,34 @@ public class Sistema {
         return adoptantes;
     }
 
+    public Persona getPersona(String id, String tipo) {
+        Persona p = null;
+        switch (tipo) {
+            case ("Adoptante"):
+                for (Adoptante a : adoptantes) {
+                    if (a.getId().equals(id)) {
+                        p = a;
+                    }
+                }
+                break;
+            case ("Responsable"):
+                for (Responsable r : responsables) {
+                    if (r.getId().equals(id)) {
+                        p = r;
+                    }
+                }
+                break;
+            case ("Padrino"):
+                for (Padrino pa : padrinos) {
+                    if (pa.getId().equals(id)) {
+                        p = pa;
+                    }
+                }
+                break;
+        }
+        return p;
+    }
+
     public Responsable getResponsable(String nombreBuscar) {
         for (int i = 0; i < responsables.size(); i++) {
             if (nombreBuscar.equals(responsables.get(i).getNombre())) {
@@ -205,20 +234,22 @@ public class Sistema {
     }
 
     /* ADDERS */
-    public void addResponsable(Responsable resp) throws AnimalException {
-        if (existeResponsable(resp)) {
-            throw new AnimalException("ya existe un responsable con estos datos");
-        } else {
-            responsables.add(resp);
+    public void addPersona(Persona p) {
+        switch (p.getClass().getSimpleName()) {
+            case ("Adoptante"):
+                adoptantes.add((Adoptante) p);
+                break;
+            case ("Responsable"):
+                responsables.add((Responsable) p);
+                break;
+            case ("Padrino"):
+                padrinos.add((Padrino) p);
+                break;
         }
     }
 
     public void addAnimal(Animal perroAnadir) {
         animales.add(perroAnadir);
-    }
-
-    public void addPadrino(Padrino padrinoAnadir) {
-        padrinos.add(padrinoAnadir);
     }
 
     public void deletePadrino(Padrino padrinoABorrar) throws PadrinoException {
@@ -232,10 +263,6 @@ public class Sistema {
     public void addActividad(Actividad act) {
         actividades.add(act);
         act.getUsuario().agregarActividad(act);
-    }
-
-    public void addAdoptante(Adoptante ad) {
-        adoptantes.add(ad);
     }
 
     /* DELETERS */

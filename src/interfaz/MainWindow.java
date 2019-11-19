@@ -50,17 +50,17 @@ public class MainWindow extends javax.swing.JFrame {
         Padrino p2 = new Padrino("Nombre8", "Apellido8", "email8", "telefono8", "Ciudad8", "Pais8", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 8);
         Padrino p3 = new Padrino("Nombre9", "Apellido9", "email9", "telefono9", "Ciudad9", "Pais9", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.NO_ESPECIFICADA, 9);
         try {
-            sistema.addResponsable(r1);
-            sistema.addResponsable(r2);
-            sistema.addResponsable(r3);
+            sistema.getResponsables().add(r1);
+            sistema.getResponsables().add(r2);
+            sistema.getResponsables().add(r3);
 
-            sistema.addAdoptante(ad1);
-            sistema.addAdoptante(ad2);
-            sistema.addAdoptante(ad3);
+            sistema.getAdoptantes().add(ad1);
+            sistema.getAdoptantes().add(ad2);
+            sistema.getAdoptantes().add(ad3);
 
-            sistema.addPadrino(p1);
-            sistema.addPadrino(p2);
-            sistema.addPadrino(p3);
+            sistema.getPadrinos().add(p1);
+            sistema.getPadrinos().add(p2);
+            sistema.getPadrinos().add(p3);
         } catch (Exception ex) {
         }
 

@@ -340,6 +340,7 @@ public class Animales extends javax.swing.JPanel {
             };
             tableModel.insertRow(tableModel.getRowCount(), o);
             sistema.addAnimal(a);
+            TableAnimales.setRowSelectionInterval(TableAnimales.getRowCount() - 1, TableAnimales.getRowCount() - 1);
         }
     }//GEN-LAST:event_TxtGuardarActionPerformed
 
