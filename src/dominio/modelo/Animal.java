@@ -1,7 +1,7 @@
 package dominio.modelo;
 
 import dominio.tools.EstadoAnimal;
-import java.util.UUID;
+import dominio.tools.RandomID;
 import javax.swing.ImageIcon;
 
 public class Animal {
@@ -9,25 +9,18 @@ public class Animal {
     private String id;
     private String nombre;
     private String tipo;
-    private double altura;
-    private double peso;
+    private int altura;
+    private int peso;
     private String comentarios;
     private ImageIcon foto;
     private EstadoAnimal estado;
 
     public Animal() {
-        this.id = UUID.randomUUID().toString();
-        this.nombre = "Sin-Nombre";
-        this.tipo = "Sin-tipo";
-        this.altura = 0;
-        this.peso = 0;
-        this.comentarios = "Sin-Comentarios";
-        this.foto = null;
-        this.estado = EstadoAnimal.NO_ADOPTABLE;
+        this.id = RandomID.getInstance().getNewID();
     }
 
-    public Animal(String nombre, String tipo, double altura, double peso, String comentarios) {
-        this.id = UUID.randomUUID().toString();
+    public Animal(String nombre, String tipo, int altura, int peso, String comentarios) {
+        this.id = RandomID.getInstance().getNewID();
         this.nombre = nombre;
         this.tipo = tipo;
         this.altura = altura;
@@ -50,11 +43,11 @@ public class Animal {
         return tipo;
     }
 
-    public double getAltura() {
+    public int getAltura() {
         return altura;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
@@ -81,23 +74,23 @@ public class Animal {
 
     public void setTipo(String tipo) {
         if (tipo.equals("")) {
-            this.tipo = "Sin-Nombre";
+            this.tipo = "Sin-Tipo";
         } else {
             this.tipo = tipo;
         }
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(int altura) {
         if (altura < 0) {
-            this.altura = 0.0;
+            this.altura = 0;
         } else {
             this.altura = altura;
         }
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(int peso) {
         if (peso < 0) {
-            this.peso = 0.0;
+            this.peso = 0;
         } else {
             this.peso = peso;
         }

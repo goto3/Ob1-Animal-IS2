@@ -1,21 +1,49 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
-/**
- *
- * @author goto
- */
+import dominio.Sistema;
+import dominio.modelo.Animal;
+import interfaz.paneles.*;
+import javax.swing.ImageIcon;
+
 public class MainWindow extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainWindow
-     */
+    Sistema sistema = Sistema.getInstance();
+
     public MainWindow() {
+        Animal a1 = new Animal("Nombre1", "tipo1", 120, 5000, "Comentario1");
+        Animal a2 = new Animal("Nombre2", "tipo2", 120, 5000, "Comentario2");
+        Animal a3 = new Animal("Nombre3", "tipo3", 120, 5000, "Comentario3");
+        Animal a4 = new Animal("Nombre4", "tipo4", 120, 5000, "Comentario4");
+        Animal a5 = new Animal("Nombre5", "tipo5", 120, 5000, "Comentario5");
+        Animal a6 = new Animal("Nombre6", "tipo6", 120, 5000, "Comentario6");
+        Animal a7 = new Animal("Nombre7", "tipo7", 120, 5000, "Comentario7");
+        Animal a8 = new Animal("Nombre8", "tipo8", 120, 5000, "Comentario8");
+        Animal a9 = new Animal("Nombre9", "tipo9", 120, 5000, "Comentario9");
+        Animal a10 = new Animal("Nombre10", "tipo10", 120, 5000, "Comentario10");
+
+        sistema.addAnimal(a1);
+        sistema.addAnimal(a2);
+        sistema.addAnimal(a3);
+        sistema.addAnimal(a4);
+        sistema.addAnimal(a5);
+        sistema.addAnimal(a6);
+        sistema.addAnimal(a7);
+        sistema.addAnimal(a8);
+        sistema.addAnimal(a9);
+        sistema.addAnimal(a10);
+
         initComponents();
+
+        Calendario pCal = new Calendario();
+        Animales pAnim = new Animales();
+        Veterinarias pVeter = new Veterinarias();
+        Personas pPers = new Personas();
+
+        jTabbedPane1.addTab("Calendario", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-calendar-32.png")), pCal);
+        jTabbedPane1.addTab("Animales", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-32.png")), pAnim);
+        jTabbedPane1.addTab("Veterinarias", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-veterinarian-32.png")), pVeter);
+        jTabbedPane1.addTab("Personas", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-people-32.png")), pPers);
+
     }
 
     /**
@@ -27,18 +55,28 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(900, 600));
+        setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jTabbedPane1.setFocusable(false);
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Calendario");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +117,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

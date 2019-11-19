@@ -41,7 +41,7 @@ public class Sistema {
         return Instance;
     }
 
-    public Sistema() {
+    private Sistema() {
         this.usuarios = new ArrayList<>();
         this.responsables = new ArrayList<>();
         this.animales = new ArrayList<>();
@@ -134,9 +134,9 @@ public class Sistema {
         return null;
     }
 
-    public Animal getAnimal(String nombreBuscar) {
+    public Animal getAnimal(String idBuscar) {
         for (int i = 0; i < animales.size(); i++) {
-            if (nombreBuscar.equals(animales.get(i).getNombre())) {
+            if (idBuscar.equals(animales.get(i).getId())) {
                 return animales.get(i);
             }
         }
