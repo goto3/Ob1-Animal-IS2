@@ -4,24 +4,17 @@ import dominio.modelo.Actividad;
 import dominio.modelo.Animal;
 import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import javax.swing.ImageIcon;
 
 public class Paseo extends Actividad {
 
-    private double distancia;
+    private int distancia;
     private ImageIcon ruta;
 
-    public Paseo() {
-        super();
-        this.distancia = 0;
-        this.ruta = null;
-    }
-
-    public Paseo(String nombre, Animal animal, Responsable responsable,
-            boolean fueRealizado, LocalDateTime fecha, LocalTime hora,
-            double distancia, ImageIcon ruta, int duracion) {
-        super(nombre, animal, responsable, fueRealizado, fecha, duracion);
+    public Paseo(String nombre, Animal mascota, Responsable responsable,
+            boolean fueRealizado, LocalDateTime fecha, int duracion,
+            int distancia, ImageIcon ruta) {
+        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
         this.distancia = distancia;
         this.ruta = ruta;
     }
@@ -34,13 +27,13 @@ public class Paseo extends Actividad {
         this.ruta = ruta;
     }
 
-    public double getDistancia() {
+    public int getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(double distancia) {
+    public void setDistancia(int distancia) {
         if (distancia < 0) {
-            this.distancia = 0.0;
+            this.distancia = 0;
         } else {
             this.distancia = distancia;
         }

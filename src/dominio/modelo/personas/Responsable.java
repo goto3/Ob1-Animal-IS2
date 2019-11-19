@@ -7,15 +7,10 @@ import java.util.List;
 
 public class Responsable extends Persona {
 
-    List<Actividad> actividades;
+    private List<Actividad> actividades;
 
-    public Responsable() {
-        super("Sin-Nombre", "Sin-Email");
-        actividades = new ArrayList<>();
-    }
-
-    public Responsable(String nombre, String mail) {
-        super(nombre, mail);
+    public Responsable(String nombre, String apellido, String mail) {
+        super(nombre, apellido, mail);
         actividades = new ArrayList<>();
     }
 

@@ -8,16 +8,14 @@ import java.util.List;
 
 public class Adoptante extends Persona {
 
-    private String apellido;
     private String telefono;
     private List<Animal> animales;
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
+    public Adoptante(String nombre, String apellido, String email, String telefono) {
+        super(nombre, apellido, email);
         this.apellido = apellido;
+        this.telefono = telefono;
+        this.animales = new ArrayList<>();
     }
 
     public String getTelefono() {
@@ -31,25 +29,13 @@ public class Adoptante extends Persona {
     public List<Animal> getAnimales() {
         return animales;
     }
-    
-    public void addAnimal(Animal animal) throws AnimalException{
-        if (animales.contains(animal)){
+
+    public void addAnimal(Animal animal) throws AnimalException {
+        if (animales.contains(animal)) {
             throw new AnimalException("Animal ya adoptado por este adoptante.");
-        }else{
+        } else {
             animales.add(animal);
         }
     }
 
-    public Adoptante(String apellido, String telefono) {
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.animales = new ArrayList<>();
-    }
-
-    public Adoptante(String apellido, String telefono, String nombre, String mail) {
-        super(nombre, mail);
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.animales = new ArrayList<>();
-    }
 }

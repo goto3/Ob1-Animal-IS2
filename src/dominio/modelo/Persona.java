@@ -3,15 +3,18 @@ package dominio.modelo;
 public abstract class Persona {
 
     protected String nombre;
+    protected String apellido;
     protected String email;
 
     public Persona() {
         this.nombre = "Sin-Nombre";
+        this.apellido = "Sin-Apellido";
         this.email = "Sin-Mail";
     }
 
-    public Persona(String nombre, String mail) {
+    public Persona(String nombre, String apellido, String mail) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.email = mail;
     }
 
@@ -25,6 +28,14 @@ public abstract class Persona {
         } else {
             this.nombre = nombre;
         }
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEmail() {

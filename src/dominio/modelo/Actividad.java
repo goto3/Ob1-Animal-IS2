@@ -12,15 +12,6 @@ public abstract class Actividad {
     protected LocalDateTime fechaHora;
     protected int duracion;
 
-    public Actividad() {
-        this.nombre = "Sin-Nombre";
-        this.responsable = new Responsable();
-        this.animal = new Animal();
-        this.fueRealizado = false;
-        this.fechaHora = LocalDateTime.now();
-        this.duracion = 0;
-    }
-
     public Actividad(String nombre, Animal animal, Responsable responsable,
             boolean fueRealizado, LocalDateTime fecha, int dur) {
         this.nombre = nombre;

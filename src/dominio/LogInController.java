@@ -15,8 +15,8 @@ public class LogInController {
         
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
             while ((line = br.readLine()) != null) {
-                String[] country = line.split(cvsSplitBy);
-                Usuario user = new Usuario(country[0], country[1], country[2]);
+                String[] userText = line.split(cvsSplitBy);
+                Usuario user = new Usuario(userText[0],userText[1], userText[2], userText[3]);
                 users.add(user);
             }
         } catch (Exception e) {

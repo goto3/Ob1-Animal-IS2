@@ -125,7 +125,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void BtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIniciarActionPerformed
         
-        Usuario user = new Usuario("", TxtEmail.getText(), new String(PassField.getPassword()));
+        Usuario user = new Usuario("", "",TxtEmail.getText(), new String(PassField.getPassword()));
         if (sistema.logIn(user)) {
             dispose();
             MainWindow.main(null);

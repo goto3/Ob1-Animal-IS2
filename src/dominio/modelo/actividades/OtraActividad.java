@@ -2,20 +2,14 @@ package dominio.modelo.actividades;
 
 import dominio.modelo.Actividad;
 import dominio.modelo.Animal;
-import dominio.modelo.Persona;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class OtraActividad extends Actividad {
 
-    public OtraActividad() {
-        super();
-    }
-
-    public OtraActividad(String nombre, Persona responasble, Animal mascota,
-            boolean fueRealizado, LocalTime hora, LocalDateTime fecha,
-            int duracion) {
-        super();
+    public OtraActividad(String nombre, Animal mascota, Responsable responsable,
+            boolean fueRealizado, LocalDateTime fecha, int duracion) {
+        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
     }
 
     @Override

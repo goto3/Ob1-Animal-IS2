@@ -2,23 +2,18 @@ package dominio.modelo.actividades;
 
 import dominio.modelo.Actividad;
 import dominio.modelo.Animal;
-import dominio.modelo.Persona;
+import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class Alimentacion extends Actividad {
     
     private String tipoAlimento;
 
-    public Alimentacion(String nombre, Persona responasble, Animal mascota,
-            String tipoAlimento, boolean fueRealizado,
-            LocalDateTime fecha, int duracion) {
-        super();
-    }
-
-    public Alimentacion(){
-        super();
-        this.tipoAlimento = "Sin tipo de alimento.";
+    public Alimentacion(String nombre, Animal mascota, Responsable responsable,
+            boolean fueRealizado, LocalDateTime fecha, int duracion, 
+            String tipoAlimento) {
+        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
+        this.tipoAlimento = tipoAlimento;
     }
 
     public String getTipoAlimento() {

@@ -5,23 +5,18 @@ import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.personas.Responsable;
 import java.time.LocalDateTime;
+import javax.swing.ImageIcon;
 
 public class VisitaVeterinaria extends Actividad {
 
     private Veterinaria veterinaria;
     private String motivo;
 
-    public VisitaVeterinaria() {
-        super();
-        this.veterinaria = new Veterinaria();
-        this.motivo = "Sin-motivo";
-    }
-
-    public VisitaVeterinaria(String nombre, Animal animal,
-            Responsable responsable, boolean fueRealizado, LocalDateTime fecha,
-            Veterinaria veterinaria, String motivo, int duracion) {
-        super(nombre, animal, responsable, fueRealizado, fecha, duracion);
-        this.veterinaria = veterinaria;
+    public VisitaVeterinaria(String nombre, Animal mascota, Responsable responsable,
+            boolean fueRealizado, LocalDateTime fecha, int duracion,
+            Veterinaria vet, String motivo) {
+        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
+        this.veterinaria = vet;
         this.motivo = motivo;
     }
 
