@@ -12,8 +12,8 @@ public abstract class Actividad {
     protected LocalDateTime fechaHora;
     protected int duracion;
 
-    public Actividad(String nombre, Animal animal, Responsable responsable,
-            boolean fueRealizado, LocalDateTime fecha, int dur) {
+    public Actividad(String nombre, Animal animal, Responsable responsable, 
+            LocalDateTime fecha, int dur) {
         this.nombre = nombre;
         this.responsable = responsable;
         this.animal = animal;

@@ -5,11 +5,13 @@
  */
 package dominio;
 
-import dominio.modelo.Persona;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.actividades.VisitaVeterinaria;
+import dominio.modelo.personas.Responsable;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,138 +40,50 @@ public class VisitaVeterinariaTest {
 
     @Before
     public void setUp() {
-        visita = new VisitaVeterinaria();
+        Animal unPerro = new Animal("Joaco", "perro", 1, 2, "Es marron");
+        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
+                "pr@gmail.com");
+        LocalTime inicio = LocalTime.of(9, 30);
+        LocalTime fin = LocalTime.of(17, 30);
+        Veterinaria vet = new Veterinaria("ANIMALS", inicio, fin);
+        LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
+        visita = new VisitaVeterinaria("Chequeo perro", unPerro, 
+                personaResponsable, fecha1, 30, vet,"Chequeo anual");
     }
 
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-    @Test
-    public void testConstructorSinParametros() {
-        VisitaVeterinaria unaVisita = new VisitaVeterinaria();
-        assertEquals("Sin-Nombre", unaVisita.getNombre());
-        assertEquals("Sin-Motivo", unaVisita.getMotivo());
-        assertEquals(false, unaVisita.getFueRealizado());
-    }
-
     @Test
     public void testConstructorPorParametros() {
-        Fecha fecha = new Fecha();
-        LocalTime time = LocalTime.now();
-        Persona usuario = new Persona();
-        Animal perro = new Animal();
-        Veterinaria vet = new Veterinaria();
-        VisitaVeterinaria unaVisita = new VisitaVeterinaria("Nombre", time, usuario, perro, false, fecha, vet, "medico");
-        Persona resResponsable = unaVisita.getUsuario();
-        Animal resMascota = unaVisita.getMascota();
-        String resNombreAct = unaVisita.getNombre();
-        boolean resFueRealizada = unaVisita.getFueRealizado();
-        Fecha resFecha = unaVisita.getFechaHora();
-        LocalTime resHora = unaVisita.getHora();
-        assertEquals(usuario, resResponsable);
-        assertEquals(perro, resMascota);
-        assertEquals("Nombre", resNombreAct);
-        assertEquals(false, resFueRealizada);
-        assertEquals(fecha, resFecha);
-        assertEquals(time, resHora);
-        assertEquals(vet, unaVisita.getVeterinaria());
-        assertEquals("medico", unaVisita.getMotivo());
-    }
-
-    @Test
-    public void testConstructorPorParametrosVacio() {
-        Fecha fecha = new Fecha();
-        LocalTime time = LocalTime.now();
-        Persona usuario = new Persona();
-        Animal perro = new Animal();
-        Veterinaria vet = new Veterinaria();
-        VisitaVeterinaria unaVisita = new VisitaVeterinaria("", time, usuario, perro, false, fecha, vet, "");
-        Persona resResponsable = unaVisita.getUsuario();
-        Animal resMascota = unaVisita.getMascota();
-        String resNombreAct = unaVisita.getNombre();
-        boolean resFueRealizada = unaVisita.getFueRealizado();
-        Fecha resFecha = unaVisita.getFechaHora();
-        LocalTime resHora = unaVisita.getHora();
-        assertEquals(usuario, resResponsable);
-        assertEquals(perro, resMascota);
-        assertEquals("Sin-Nombre", resNombreAct);
-        assertEquals(false, resFueRealizada);
-        assertEquals(fecha, resFecha);
-        assertEquals(time, resHora);
-        assertEquals(vet, unaVisita.getVeterinaria());
-        assertEquals("Sin-Motivo", unaVisita.getMotivo());
-    }
-
-    @Test
-    public void testSetNombreActiidad() {
-        visita.setNombre("Nombre");
-        String resNombre = visita.getNombre();
-        assertEquals("Nombre", resNombre);
-    }
-
-    @Test
-    public void testSetNombreVacio() {
-        visita.setNombre("");
-        String resNombre = visita.getNombre();
-        assertEquals("Sin-Nombre", resNombre);
-    }
-
-    @Test
-    public void testSetHora() {
-        LocalTime time = LocalTime.now();
-        visita.setHora(time);
-        LocalTime resHora = visita.getHora();
-        assertEquals(time, resHora);
+        Animal unPerro = new Animal("Joaco", "perro", 1, 2, "Es marron");
+        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
+                "pr@gmail.com");
+        LocalTime inicio = LocalTime.of(9, 30);
+        LocalTime fin = LocalTime.of(17, 30);
+        Veterinaria vet = new Veterinaria("ANIMALS", inicio, fin);
+        LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
+        
+        assertEquals("Chequeo perro", visita.getNombre());
+        assertEquals(unPerro.getNombre(), visita.getMascota().getNombre());
+        assertEquals(unPerro.getTipo(), visita.getMascota().getTipo());
+        assertEquals(unPerro.getComentarios(), 
+                visita.getMascota().getComentarios());
+        assertEquals(personaResponsable.getEmail(), 
+                visita.getUsuario().getEmail());
+        assertEquals(fecha1, visita.getFechaHora());
+        assertEquals(30, visita.getDuracion());
+        assertEquals(vet.getNombre(), visita.getVeterinaria().getNombre());
+        assertEquals("Chequeo anual", visita.getMotivo());
     }
 
     @Test
     public void testToString() {
-        LocalTime time = LocalTime.now();
-        Fecha fecha = new Fecha();
-        visita.setHora(time);
-        visita.setFecha(fecha);
-        Persona usuario = visita.getUsuario();
-        Animal perro = visita.getMascota();
-        String nombre = visita.getNombre();
-        boolean fueRealizado = visita.getFueRealizado();
-        Veterinaria veterinaria = visita.getVeterinaria();
-        String resToString = visita.toString();
-        assertEquals("VisitaVeterinaria{" + "nombre=" + nombre + ", hora=" + time + ", responsable=" + usuario + ", perro=" + perro + ", fueRealizado=" + fueRealizado + ", fecha=" + fecha + ", veterinaria=" + veterinaria + '}', resToString);
-    }
-
-    @Test
-    public void testSetFueRealizadoTrue() {
-        visita.setFueRealizado(true);
-        boolean resFueRealizado = visita.getFueRealizado();
-        assertEquals(true, resFueRealizado);
-    }
-
-    @Test
-    public void testSetFueRealizadoFalse() {
-        visita.setFueRealizado(false);
-        boolean resFueRealizado = visita.getFueRealizado();
-        assertEquals(false, resFueRealizado);
-    }
-
-    @Test
-    public void testSetMascota() {
-        Animal mascota;
-        mascota = new Animal();
-        visita.setMascota(mascota);
-        assertEquals(mascota, visita.getMascota());
-    }
-
-    @Test
-    public void testSetResponsable() {
-        Persona responsable;
-        responsable = new Persona();
-        visita.setUsuario(responsable);
-        assertEquals(responsable, visita.getUsuario());
+        assertEquals("VisitaVeterinaria{" + "nombre=" + visita.getNombre() +
+                ", responsable=" + visita.getUsuario() + ", mascota=" + 
+                visita.getMascota() + ", fueRealizado=" + visita.getFueRealizado() +
+                ", fecha = " + visita.getFechaHora() + "veterinaria=" +
+                visita.getVeterinaria() + '}', visita.toString());
     }
 }

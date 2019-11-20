@@ -16,7 +16,6 @@ import static org.junit.Assert.*;
 import dominio.tools.Moneda;
 import dominio.tools.Pago;
 import dominio.tools.Periodo;
-import java.util.ArrayList;
 
 /**
  *
@@ -39,39 +38,23 @@ public class PadrinoTest {
     
     @Before
     public void setUp() {
-        padrino = new Padrino();
+         padrino = new Padrino("Pedro","González", "pedro12@gmail.com",
+                 "098 775 234", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
+                Periodo.MENSUAL, Moneda.DOLARES,300);
     }
+    
+//    String nombre, String apellido, String mail, String telefono,
+//            String ciudad, String pais, Pago tipoPago,
+//            Periodo tipoPeriodo, Moneda tipoMoneda, int valor
     
     @After
     public void tearDown() {
+        
     }
     
-    @Test
-    public void constructorVacio() {
-        assertEquals("Sin-Nombre", padrino.getNombre());
-        assertEquals("Sin-Apellido", padrino.getApellido());
-        assertEquals("Sin-Email", padrino.getEmail());
-        assertEquals("Sin-Telefono", padrino.getTelefono());
-        assertEquals("Sin-Ciudad", padrino.getCiudad());
-        assertEquals("Sin-Pais", padrino.getPais());
-        assertEquals(Moneda.SIN_MONEDA, padrino.getMoneda());
-        assertEquals(Periodo.NO_ESPECIFICADO, padrino.getPeriodoPago());
-        assertEquals(Pago.NO_ESPECIFICADO, padrino.getTipoPago());
-        assertEquals(0, padrino.getValor());
-        assertEquals(0, padrino.getListaAnimales().size());
-    }
     
     @Test
     public void constructorConParametros() {
-        ArrayList<Animal> animalesApadrinados = new ArrayList<>();
-        Animal juanjo = new Animal();
-        Animal ramiro = new Animal();
-        animalesApadrinados.add(ramiro);
-        animalesApadrinados.add(juanjo);
-        padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
-                "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
-                300);
         assertEquals("Pedro", padrino.getNombre());
         assertEquals("González", padrino.getApellido());
         assertEquals("pedro12@gmail.com", padrino.getEmail());
@@ -82,31 +65,14 @@ public class PadrinoTest {
         assertEquals(Periodo.MENSUAL, padrino.getPeriodoPago());
         assertEquals(Pago.TARJETA_CREDITO, padrino.getTipoPago());
         assertEquals(300, padrino.getValor());
-        assertEquals(2, padrino.getListaAnimales().size());
-        assertTrue(padrino.getListaAnimales().contains(juanjo));
-        assertTrue(padrino.getListaAnimales().contains(ramiro));   
+        assertEquals(0, padrino.getListaAnimales().size()); 
     }
     
     @Test
-    public void agregarAnimalListaAnimalesVacia() {
+    public void agregarAnimalTest() {
         Animal juanjo = new Animal();
         padrino.agregarAnimal(juanjo);
         assertEquals(1, padrino.getListaAnimales().size());
-        assertTrue(padrino.getListaAnimales().contains(juanjo));
-    }
-    
-    @Test
-    public void agregarAnimalListaAnimalesNoVacia() {
-        ArrayList<Animal> animalesApadrinados = new ArrayList<>();
-        Animal ramiro = new Animal();
-        animalesApadrinados.add(ramiro);
-        padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
-                "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
-                300);
-        Animal juanjo = new Animal();
-        padrino.agregarAnimal(juanjo);
-        assertEquals(2, padrino.getListaAnimales().size());
         assertTrue(padrino.getListaAnimales().contains(juanjo));
     }
     
@@ -123,14 +89,14 @@ public class PadrinoTest {
         padrino.agregarAnimal(juanjo);
         String impresion = "Gato {"
                 + "\n  nombre = Ramiro"
-                + "\n  altura = 15.0"
-                + "\n  peso = 2.0" 
+                + "\n  altura = 15"
+                + "\n  peso = 2" 
                 + "\n  comentarios = Blanco"
                 + "\n" + '}' + "\n"
                 +"Perro {"
                 + "\n  nombre = Juanjo"
-                + "\n  altura = 30.0"
-                + "\n  peso = 3.0" 
+                + "\n  altura = 30"
+                + "\n  peso = 3" 
                 + "\n  comentarios = Marron"
                 + "\n" +'}' + "\n";
         assertEquals(impresion, padrino.imprimirListaAnimales());
@@ -138,26 +104,20 @@ public class PadrinoTest {
     
     @Test
     public void toStringPadrino() {
-        ArrayList<Animal> animalesApadrinados = new ArrayList<>();
         Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
         Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
-        animalesApadrinados.add(ramiro);
-        animalesApadrinados.add(juanjo);
-        padrino = new Padrino("Pedro","pedro12@gmail.com", "098 775 234",
-                "González", "Montevideo", "Uruguay", Pago.TARJETA_CREDITO, 
-                Periodo.MENSUAL, Moneda.DOLARES, animalesApadrinados, 
-                300);
+        padrino.agregarAnimal(ramiro);
+        padrino.agregarAnimal(juanjo);
         String impresion = "Persona => Padrino \nNombre = "
                 + "Pedro" + "\nApellido = " +  "González"
                 + "\nEmail = " + "pedro12@gmail.com" + "\nCiudad = " + 
                 "Montevideo" + "\nPais = " + "Uruguay" + "\nValor = " + 300
                 + "\nTelefono = " + "098 775 234"
-                + "\nMoneda = " + "DOLAR_AMERICANO"
+                + "\nMoneda = " + "DOLARES"
                 +"\nPeriodo de pago = " + "MENSUAL" +
                 "\nTipo de pago = " + "TARJETA_CREDITO" +
                 "\nAnimales que apadrina:\n"
                 + padrino.imprimirListaAnimales();
-        System.out.println(impresion);
         assertEquals(impresion, padrino.toString());
     }
    

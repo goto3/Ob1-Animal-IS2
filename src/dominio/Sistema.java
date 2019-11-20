@@ -73,6 +73,10 @@ public class Sistema {
         return false;
     }
 
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    
     public void adoptarAnimal(Adoptante adoptante, Animal animal) throws AnimalException {
         if (adoptante == null || animal == null) {
             throw new AnimalException("Parámetro nulo.");
