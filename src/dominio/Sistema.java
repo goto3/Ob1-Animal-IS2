@@ -162,9 +162,9 @@ public class Sistema {
         return p;
     }
 
-    public Responsable getResponsable(String nombreBuscar) {
+    public Responsable getResponsable(String idBuscar) {
         for (int i = 0; i < responsables.size(); i++) {
-            if (nombreBuscar.equals(responsables.get(i).getNombre())) {
+            if (idBuscar.equals(responsables.get(i).getId())) {
                 return responsables.get(i);
             }
         }
@@ -263,6 +263,10 @@ public class Sistema {
     public void addActividad(Actividad act) {
         actividades.add(act);
         act.getUsuario().agregarActividad(act);
+    }
+
+    public void addVeterinaria(Veterinaria v) {
+        veterinarias.add(v);
     }
 
     /* DELETERS */

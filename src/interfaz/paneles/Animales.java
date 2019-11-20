@@ -1,12 +1,10 @@
 package interfaz.paneles;
 
+import interfaz.paneles.helpers.Foto;
 import dominio.Sistema;
 import dominio.modelo.Animal;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +27,7 @@ public class Animales extends javax.swing.JPanel {
         PanelImagen.add(LblFoto);
 
         /* Tabla de animales */
+        tableModel = (DefaultTableModel) TableAnimales.getModel();
         TableAnimales.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
             if (tableModel.getRowCount() > 0) {
                 creatingNew = false;
@@ -37,7 +36,6 @@ public class Animales extends javax.swing.JPanel {
                 displayData(sistema.getAnimal(id));
             }
         });
-        tableModel = (DefaultTableModel) TableAnimales.getModel();
         FillTable();
 
         TableAnimales.getColumnModel().getColumn(0).setMaxWidth(65);
@@ -119,7 +117,7 @@ public class Animales extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setText("Animales");
 
-        TableAnimales.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        TableAnimales.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TableAnimales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -137,6 +135,7 @@ public class Animales extends javax.swing.JPanel {
             }
         });
         TableAnimales.setFocusable(false);
+        TableAnimales.setRowHeight(20);
         TableAnimales.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TableAnimales.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableAnimales);

@@ -1,4 +1,4 @@
-package interfaz.paneles;
+package interfaz.paneles.helpers;
 
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -14,7 +14,7 @@ public class Foto extends JLabel {
     private JFileChooser subirAvatar;
     public ImageIcon imageShowing;
 
-    Foto(ImageIcon image, int width, int height) {
+    public Foto(ImageIcon image, int width, int height) {
         imageShowing = image;
         
         subirAvatar = new JFileChooser();

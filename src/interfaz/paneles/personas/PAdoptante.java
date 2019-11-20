@@ -121,7 +121,7 @@ public class PAdoptante extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addGap(220, 220, 220)
                 .addComponent(BtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addGap(121, 121, 121))
         );
     }// </editor-fold>//GEN-END:initComponents
 

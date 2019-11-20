@@ -89,7 +89,7 @@ public class Veterinaria {
 
     @Override
     public String toString() {
-        return "Veterinaria{" + "nombre=" + nombre + ", actividadesAgendadas=" + actividades + ", horaInicial=" + horaInicio + ", horaFinal=" + horaFin + '}';
+        return nombre;
     }
 
 }

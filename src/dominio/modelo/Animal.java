@@ -115,10 +115,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return tipo + " {" + "\n  nombre = " + nombre + 
-                            "\n  altura = " + altura + 
-                            "\n  peso = " + peso +
-                            "\n  comentarios = " + comentarios + "\n" + '}';
+        return tipo + " - " + nombre;
     }
 
 }

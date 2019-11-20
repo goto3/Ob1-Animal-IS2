@@ -1,13 +1,6 @@
 package interfaz;
 
 import dominio.Sistema;
-import dominio.modelo.Animal;
-import dominio.modelo.personas.Adoptante;
-import dominio.modelo.personas.Responsable;
-import dominio.modelo.personas.Padrino;
-import dominio.tools.Moneda;
-import dominio.tools.Pago;
-import dominio.tools.Periodo;
 import interfaz.paneles.*;
 import javax.swing.ImageIcon;
 
@@ -15,67 +8,26 @@ public class MainWindow extends javax.swing.JFrame {
 
     Sistema sistema = Sistema.getInstance();
 
+    public Calendario pCal;
+    public Animales pAnim;
+    public Personas pPers;
+    public Veterinarias pVeter;
+
     public MainWindow() {
-        Animal a1 = new Animal("Nombre1", "tipo1", 120, 5000, "Comentario1");
-        Animal a2 = new Animal("Nombre2", "tipo2", 120, 5000, "Comentario2");
-        Animal a3 = new Animal("Nombre3", "tipo3", 120, 5000, "Comentario3");
-        Animal a4 = new Animal("Nombre4", "tipo4", 120, 5000, "Comentario4");
-        Animal a5 = new Animal("Nombre5", "tipo5", 120, 5000, "Comentario5");
-        Animal a6 = new Animal("Nombre6", "tipo6", 120, 5000, "Comentario6");
-        Animal a7 = new Animal("Nombre7", "tipo7", 120, 5000, "Comentario7");
-        Animal a8 = new Animal("Nombre8", "tipo8", 120, 5000, "Comentario8");
-        Animal a9 = new Animal("Nombre9", "tipo9", 120, 5000, "Comentario9");
-        Animal a10 = new Animal("Nombre10", "tipo10", 120, 5000, "Comentario10");
 
-        sistema.addAnimal(a1);
-        sistema.addAnimal(a2);
-        sistema.addAnimal(a3);
-        sistema.addAnimal(a4);
-        sistema.addAnimal(a5);
-        sistema.addAnimal(a6);
-        sistema.addAnimal(a7);
-        sistema.addAnimal(a8);
-        sistema.addAnimal(a9);
-        sistema.addAnimal(a10);
-
-        Responsable r1 = new Responsable("Nombre1", "Apellido1", "email1");
-        Responsable r2 = new Responsable("Nombre2", "Apellido2", "email2");
-        Responsable r3 = new Responsable("Nombre3", "Apellido3", "email3");
-
-        Adoptante ad1 = new Adoptante("Nombre4", "Apellido4", "email4", "tel4");
-        Adoptante ad2 = new Adoptante("Nombre5", "Apellido5", "email5", "tel5");
-        Adoptante ad3 = new Adoptante("Nombre6", "Apellido6", "email6", "tel6");
-
-        Padrino p1 = new Padrino("Nombre7", "Apellido7", "email7", "telefono7", "Ciudad7", "Pais7", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 7);
-        Padrino p2 = new Padrino("Nombre8", "Apellido8", "email8", "telefono8", "Ciudad8", "Pais8", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 8);
-        Padrino p3 = new Padrino("Nombre9", "Apellido9", "email9", "telefono9", "Ciudad9", "Pais9", Pago.NO_ESPECIFICADO, Periodo.NO_ESPECIFICADO, Moneda.SIN_MONEDA, 9);
-        try {
-            sistema.getResponsables().add(r1);
-            sistema.getResponsables().add(r2);
-            sistema.getResponsables().add(r3);
-
-            sistema.getAdoptantes().add(ad1);
-            sistema.getAdoptantes().add(ad2);
-            sistema.getAdoptantes().add(ad3);
-
-            sistema.getPadrinos().add(p1);
-            sistema.getPadrinos().add(p2);
-            sistema.getPadrinos().add(p3);
-        } catch (Exception ex) {
-        }
+        new CargarDatos().Cargar();
 
         initComponents();
 
-        Calendario pCal = new Calendario();
-        Animales pAnim = new Animales();
-        Veterinarias pVeter = new Veterinarias();
-        Personas pPers = new Personas();
+        pCal = new Calendario();
+        pAnim = new Animales();
+        pPers = new Personas();
+        pVeter = new Veterinarias();
 
         jTabbedPane1.addTab("Calendario", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-calendar-32.png")), pCal);
         jTabbedPane1.addTab("Animales", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-32.png")), pAnim);
-        jTabbedPane1.addTab("Veterinarias", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-veterinarian-32.png")), pVeter);
         jTabbedPane1.addTab("Personas", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-people-32.png")), pPers);
-
+        jTabbedPane1.addTab("Veterinarias", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-veterinarian-32.png")), pVeter);
     }
 
     /**
@@ -91,8 +43,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(900, 640));
-        setPreferredSize(new java.awt.Dimension(900, 640));
+        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setPreferredSize(new java.awt.Dimension(1024, 720));
 
         jTabbedPane1.setFocusable(false);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -108,9 +60,10 @@ public class MainWindow extends javax.swing.JFrame {
             .addComponent(jTabbedPane1)
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("Calendario");
+        jTabbedPane1.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -149,6 +102,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
