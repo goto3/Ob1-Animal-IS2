@@ -166,7 +166,7 @@ public class POtras extends javax.swing.JPanel {
             Date date = TxtFecha.getDatoFecha();
             LocalDate ld = new java.sql.Date(date.getTime()).toLocalDate();
             LocalDateTime ldt = LocalDateTime.of(ld, LocalTime.parse(TxtHora.getText()));
-            OtraActividad a = new OtraActividad(TxtNombre.getText(), null, null, false, ldt, duracion);
+            OtraActividad a = new OtraActividad(TxtNombre.getText(), null, null, ldt, duracion);
             na.guardarActividad(a);
         } catch (Exception ex) {
             showMessageDialog(null, "Debe ingresar una fecha y hora válida.");

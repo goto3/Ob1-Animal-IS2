@@ -227,7 +227,7 @@ public class PPaseo extends javax.swing.JPanel {
             Date date = TxtFecha.getDatoFecha();
             LocalDate ld = new java.sql.Date(date.getTime()).toLocalDate();
             LocalDateTime ldt = LocalDateTime.of(ld, LocalTime.parse(TxtHora.getText()));
-            Paseo a = new Paseo(TxtNombre.getText(), null, null, false, ldt, duracion, distancia, LblFoto.imageShowing);
+            Paseo a = new Paseo(TxtNombre.getText(), null, null, ldt, duracion, distancia, LblFoto.imageShowing);
             na.guardarActividad(a);
         } catch (Exception ex) {
             showMessageDialog(null, "Debe ingresar una fecha y hora válida.");

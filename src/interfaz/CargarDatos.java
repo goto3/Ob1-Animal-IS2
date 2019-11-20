@@ -75,9 +75,9 @@ public class CargarDatos {
         sistema.addVeterinaria(v3);
         
         LocalDateTime ldt = LocalDateTime.now();
-        Alimentacion al1 = new Alimentacion("Alimentacion1", a1, r1, false, ldt, 11, "Alimento1");
-        Alimentacion al2 = new Alimentacion("Alimentacion2", a2, r2, false, ldt, 12, "Alimento2");
-        Alimentacion al3 = new Alimentacion("Alimentacion3", a3, r3, false, ldt, 13, "Alimento3");
+        Alimentacion al1 = new Alimentacion("Alimentacion1", a1, r1, ldt, 11, "Alimento1");
+        Alimentacion al2 = new Alimentacion("Alimentacion2", a2, r2, ldt, 12, "Alimento2");
+        Alimentacion al3 = new Alimentacion("Alimentacion3", a3, r3, ldt, 13, "Alimento3");
 
         sistema.addActividad(al1);
         sistema.addActividad(al2);
