@@ -8,13 +8,14 @@ import java.time.LocalDateTime;
 public class OtraActividad extends Actividad {
 
     public OtraActividad(String nombre, Animal mascota, Responsable responsable,
-            boolean fueRealizado, LocalDateTime fecha, int duracion) {
-        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
+            LocalDateTime fecha, int duracion) {
+        super(nombre, mascota, responsable, fecha, duracion);
     }
 
     @Override
     public String toString() {
-        return "ActividadCualquiera{" + "responsable=" + this.responsable + ", mascota=" + animal + ", fueRealizado=" + fueRealizado + ", hora=bre=" + nombre + '}';
+        return "ActividadCualquiera{" + "responsable = " + this.responsable + 
+                ", mascota = " + animal + ", fueRealizado = " + fueRealizado
+                + ", fecha = " + fechaHora + ", nombre = " + nombre + '}';
     }
-
 }

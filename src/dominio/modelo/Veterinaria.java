@@ -13,12 +13,12 @@ public class Veterinaria {
     private LocalTime horaInicio;
     private LocalTime horaFin;
 
-    public Veterinaria() {
-        this.nombre = "Sin-Nombre";
-        this.actividades = new ArrayList<>();
-        this.horaInicio = LocalTime.of(0, 0, 0, 0);
-        this.horaFin = LocalTime.of(0, 0, 0, 0);
-    }
+//    public Veterinaria() {
+//        this.nombre = "Sin-Nombre";
+//        this.actividades = new ArrayList<>();
+//        this.horaInicio = LocalTime.of(0, 0, 0, 0);
+//        this.horaFin = LocalTime.of(0, 0, 0, 0);
+//    }
 
     public Veterinaria(String nombre, LocalTime timeInicio, LocalTime timeFin) {
         setNombre(nombre);
@@ -89,7 +89,14 @@ public class Veterinaria {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return nombre;
+=======
+        return "Veterinaria{" + "nombre = " + nombre +
+                ", actividadesAgendadas = " + actividades + 
+                ", horaInicial = " + horaInicio + 
+                ", horaFinal = " + horaFin + '}';
+>>>>>>> 0eb771c1bd56a9af8c96f68c6e615c756009d41d
     }
 
 }

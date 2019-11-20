@@ -24,6 +24,12 @@ public class Responsable extends Persona {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return this.nombre + " " + this.apellido;
+=======
+        return "Persona => Responsable: Nombre = "
+                + this.nombre + ", apellido = " + this.apellido +
+                ", mail = " + this.email;
+>>>>>>> 0eb771c1bd56a9af8c96f68c6e615c756009d41d
     }
 }

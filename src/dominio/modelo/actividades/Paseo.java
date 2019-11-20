@@ -11,10 +11,10 @@ public class Paseo extends Actividad {
     private int distancia;
     private ImageIcon ruta;
 
-    public Paseo(String nombre, Animal mascota, Responsable responsable,
-            boolean fueRealizado, LocalDateTime fecha, int duracion,
+    public Paseo(String nombre, Animal mascota, Responsable responsable
+             , LocalDateTime fecha, int duracion,
             int distancia, ImageIcon ruta) {
-        super(nombre, mascota, responsable, fueRealizado, fecha, duracion);
+        super(nombre, mascota, responsable, fecha, duracion);
         this.distancia = distancia;
         this.ruta = ruta;
     }
@@ -41,6 +41,9 @@ public class Paseo extends Actividad {
 
     @Override
     public String toString() {
-        return "Paseo{" + "responsable=" + this.responsable + ", perro=" + animal + ", distancia=" + distancia + ", fueRealizado=" + fueRealizado + ", hora=, nombre=" + nombre + '}';
+        return "Paseo{" + "responsable=" + responsable + 
+                ", mascota = " + animal + ", distancia=" + distancia +
+                ", fueRealizado=" + fueRealizado + ", fecha=" + fechaHora +
+                ", nombre=" + nombre + '}';
     }
 }
