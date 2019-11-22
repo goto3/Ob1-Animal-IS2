@@ -36,7 +36,6 @@ public class Calendario extends javax.swing.JPanel {
             }
         });
         FillTable();
-
         TableActividades.getColumnModel().getColumn(0).setMaxWidth(115);
         TableActividades.getColumnModel().getColumn(0).setMinWidth(115);
         TableActividades.getColumnModel().getColumn(1).setPreferredWidth(90);
@@ -54,7 +53,6 @@ public class Calendario extends javax.swing.JPanel {
         String tipoActividad = ComTipoActividad.getSelectedItem().toString();
         LocalDate selDate = LocalDate.now();
         if (RSCalender.getFechaSeleccionada() != null) {
-            System.out.println(RSCalender.getFechaSeleccionada());
             selDate = LocalDate.parse(RSCalender.getFechaSeleccionada(), formatDate);
         }
         for (Actividad a : sistema.getActividades()) {
@@ -95,6 +93,9 @@ public class Calendario extends javax.swing.JPanel {
                     break;
             }
         }
+        if (TableActividades.getRowCount() > 0) {
+            TableActividades.setRowSelectionInterval(0, 0);
+        }
     }
 
     private void displayData(Actividad a) {
@@ -106,17 +107,17 @@ public class Calendario extends javax.swing.JPanel {
                 PanelView.add(pav, BorderLayout.CENTER);
                 break;
             case ("OtraActividad"):
-                POtrasView pov = new POtrasView();
+                POtrasView pov = new POtrasView(mw, a);
                 PanelView.setLayout(new BorderLayout());
                 PanelView.add(pov, BorderLayout.CENTER);
                 break;
             case ("Paseo"):
-                PPaseoView ppv = new PPaseoView();
+                PPaseoView ppv = new PPaseoView(mw, a);
                 PanelView.setLayout(new BorderLayout());
                 PanelView.add(ppv, BorderLayout.CENTER);
                 break;
             case ("VisitaVeterinaria"):
-                PVisitaVetView pvv = new PVisitaVetView();
+                PVisitaVetView pvv = new PVisitaVetView(mw, a);
                 PanelView.setLayout(new BorderLayout());
                 PanelView.add(pvv, BorderLayout.CENTER);
                 break;

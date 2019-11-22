@@ -59,7 +59,6 @@ public class Animales extends javax.swing.JPanel {
     private void FillTable() {
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
-        System.out.println(tableModel.getRowCount());
         for (Animal a : sistema.getAnimales()) {
             Object[] o = new Object[]{
                 a.getId(), a.getNombre(), a.getTipo(),

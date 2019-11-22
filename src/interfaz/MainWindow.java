@@ -13,7 +13,6 @@ public class MainWindow extends javax.swing.JFrame {
     public Calendario pCal;
     public Animales pAnim;
     public Personas pPers;
-    public Veterinarias pVeter;
 
     public MainWindow() {
 
@@ -24,12 +23,10 @@ public class MainWindow extends javax.swing.JFrame {
         pCal = new Calendario(this);
         pAnim = new Animales();
         pPers = new Personas();
-        pVeter = new Veterinarias();
 
         jTabbedPane1.addTab("Calendario", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-calendar-32.png")), pCal);
         jTabbedPane1.addTab("Animales", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-32.png")), pAnim);
         jTabbedPane1.addTab("Personas", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-people-32.png")), pPers);
-        jTabbedPane1.addTab("Veterinarias", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-veterinarian-32.png")), pVeter);
     }
     
     public void MostrarAnimal(Animal a){

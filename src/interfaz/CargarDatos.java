@@ -4,6 +4,9 @@ import dominio.Sistema;
 import dominio.modelo.Animal;
 import dominio.modelo.Veterinaria;
 import dominio.modelo.actividades.Alimentacion;
+import dominio.modelo.actividades.OtraActividad;
+import dominio.modelo.actividades.Paseo;
+import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.personas.Adoptante;
 import dominio.modelo.personas.Padrino;
 import dominio.modelo.personas.Responsable;
@@ -73,15 +76,39 @@ public class CargarDatos {
         sistema.addVeterinaria(v1);
         sistema.addVeterinaria(v2);
         sistema.addVeterinaria(v3);
-        
+
         LocalDateTime ldt = LocalDateTime.now();
         Alimentacion al1 = new Alimentacion("Alimentacion1", a1, r1, ldt, 11, "Alimento1");
         Alimentacion al2 = new Alimentacion("Alimentacion2", a2, r2, ldt, 12, "Alimento2");
         Alimentacion al3 = new Alimentacion("Alimentacion3", a3, r3, ldt, 13, "Alimento3");
 
+        Paseo pas1 = new Paseo("Paseo1", a1, r1, ldt, 11, 122, null);
+        Paseo pas2 = new Paseo("Paseo2", a2, r2, ldt, 12, 150, null);
+        Paseo pas3 = new Paseo("Paseo3", a3, r3, ldt, 13, 300, null);
+
+        OtraActividad ot1 = new OtraActividad("Otra actividad1", a1, r1, ldt, 11);
+        OtraActividad ot2 = new OtraActividad("Otra actividad2", a2, r2, ldt, 11);
+        OtraActividad ot3 = new OtraActividad("Otra actividad3", a3, r3, ldt, 11);
+
+        VisitaVeterinaria vv1 = new VisitaVeterinaria("VisitaVeterinaria1", a1, r1, ldt, 11, v1, "Motivo1");
+        VisitaVeterinaria vv2 = new VisitaVeterinaria("VisitaVeterinaria2", a2, r2, ldt, 12, v2, "Motivo2");
+        VisitaVeterinaria vv3 = new VisitaVeterinaria("VisitaVeterinaria3", a3, r3, ldt, 13, v3, "Motivo3");
+
         sistema.addActividad(al1);
         sistema.addActividad(al2);
         sistema.addActividad(al3);
+
+        sistema.addActividad(pas1);
+        sistema.addActividad(pas2);
+        sistema.addActividad(pas3);
+
+        sistema.addActividad(ot1);
+        sistema.addActividad(ot2);
+        sistema.addActividad(ot3);
+
+        sistema.addActividad(vv1);
+        sistema.addActividad(vv2);
+        sistema.addActividad(vv3);
 
     }
 

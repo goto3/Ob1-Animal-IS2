@@ -157,6 +157,7 @@ public class Personas extends javax.swing.JPanel {
             }
         });
         TablePersonas.setFocusable(false);
+        TablePersonas.setRowHeight(20);
         TablePersonas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TablePersonas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablePersonas);
