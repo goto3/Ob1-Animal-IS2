@@ -53,6 +53,8 @@ public class Personas extends javax.swing.JPanel {
     }
 
     private void FillTable() {
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
         for (Responsable r : sistema.getResponsables()) {
             Object[] o = new Object[]{
                 r.getId(), r.getClass().getSimpleName(), r.getNombre(), r.getApellido(), r.getEmail()};
@@ -108,6 +110,15 @@ public class Personas extends javax.swing.JPanel {
         tableModel.insertRow(tableModel.getRowCount(), o);
         sistema.addPersona(p);
         TablePersonas.setRowSelectionInterval(TablePersonas.getRowCount() - 1, TablePersonas.getRowCount() - 1);
+    }
+
+    public void SeleccionarPersona(Responsable r) {
+        FillTable();
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            if (tableModel.getValueAt(i, 0).equals(r.getId())) {
+                TablePersonas.setRowSelectionInterval(i, i);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -276,4 +287,5 @@ public class Personas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
 }

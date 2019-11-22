@@ -2,10 +2,7 @@ package interfaz.paneles;
 
 import dominio.Sistema;
 import dominio.modelo.Actividad;
-import dominio.modelo.Animal;
-import dominio.modelo.actividades.Alimentacion;
-import static interfaz.paneles.NuevaActividad.dateActividad;
-import interfaz.paneles.actividades.PAlimentacion;
+import interfaz.MainWindow;
 import interfaz.paneles.actividades.PAlimentacionView;
 import interfaz.paneles.actividades.POtrasView;
 import interfaz.paneles.actividades.PPaseoView;
@@ -19,13 +16,15 @@ import javax.swing.table.DefaultTableModel;
 public class Calendario extends javax.swing.JPanel {
 
     Sistema sistema = Sistema.getInstance();
+    MainWindow mw;
     public DefaultTableModel tableModel;
     Object[] actividades;
     DateTimeFormatter formatDateTime;
     DateTimeFormatter formatDate;
 
-    public Calendario() {
-        formatDateTime = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    public Calendario(MainWindow mw) {
+        this.mw = mw;
+        formatDateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         formatDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         initComponents();
 
@@ -50,7 +49,8 @@ public class Calendario extends javax.swing.JPanel {
     }
 
     public void FillTable() {
-        tableModel.setNumRows(0);
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
         String tipoActividad = ComTipoActividad.getSelectedItem().toString();
         LocalDate selDate = LocalDate.now();
         if (RSCalender.getFechaSeleccionada() != null) {
@@ -101,7 +101,7 @@ public class Calendario extends javax.swing.JPanel {
         PanelView.removeAll();
         switch (a.getClass().getSimpleName()) {
             case ("Alimentacion"):
-                PAlimentacionView pav = new PAlimentacionView();
+                PAlimentacionView pav = new PAlimentacionView(mw, a);
                 PanelView.setLayout(new BorderLayout());
                 PanelView.add(pav, BorderLayout.CENTER);
                 break;
@@ -138,7 +138,6 @@ public class Calendario extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        RSCalender.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 67, 135)));
         RSCalender.setForeground(new java.awt.Color(255, 255, 255));
         RSCalender.setAltoFilas(40);
         RSCalender.setColorBackground(new java.awt.Color(31, 67, 135));
@@ -146,13 +145,20 @@ public class Calendario extends javax.swing.JPanel {
         RSCalender.setColorDiaActual(new java.awt.Color(217, 217, 217));
         RSCalender.setColorTextDiaActual(new java.awt.Color(24, 24, 24));
         RSCalender.setFgText(new java.awt.Color(50, 50, 50));
-        RSCalender.setFocusable(false);
         RSCalender.setFormatoFecha("dd/MM/yyyy");
         RSCalender.setFuenteHead(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         RSCalender.setMinimumSize(new java.awt.Dimension(275, 130));
         RSCalender.setOpaque(false);
         RSCalender.setPreferredSize(new java.awt.Dimension(380, 456));
         RSCalender.setTextMayusculas(false);
+        RSCalender.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RSCalenderFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RSCalenderFocusLost(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setText("Calendario");
@@ -176,6 +182,7 @@ public class Calendario extends javax.swing.JPanel {
         });
         TableActividades.setFocusable(false);
         TableActividades.setRowHeight(20);
+        TableActividades.setSelectionBackground(new java.awt.Color(28, 62, 122));
         TableActividades.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TableActividades.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableActividades);
@@ -270,6 +277,14 @@ public class Calendario extends javax.swing.JPanel {
     private void ComTipoActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComTipoActividadActionPerformed
         FillTable();
     }//GEN-LAST:event_ComTipoActividadActionPerformed
+
+    private void RSCalenderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RSCalenderFocusGained
+        System.out.println("Focus gained");
+    }//GEN-LAST:event_RSCalenderFocusGained
+
+    private void RSCalenderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RSCalenderFocusLost
+        System.out.println("Focus lost");
+    }//GEN-LAST:event_RSCalenderFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

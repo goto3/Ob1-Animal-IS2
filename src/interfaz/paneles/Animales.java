@@ -32,6 +32,7 @@ public class Animales extends javax.swing.JPanel {
             if (tableModel.getRowCount() > 0) {
                 creatingNew = false;
                 int row = TableAnimales.getSelectedRow();
+                System.out.println(tableModel.getRowCount());
                 String id = tableModel.getValueAt(row, 0).toString();
                 displayData(sistema.getAnimal(id));
             }
@@ -56,6 +57,9 @@ public class Animales extends javax.swing.JPanel {
     }
 
     private void FillTable() {
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        System.out.println(tableModel.getRowCount());
         for (Animal a : sistema.getAnimales()) {
             Object[] o = new Object[]{
                 a.getId(), a.getNombre(), a.getTipo(),
@@ -85,6 +89,15 @@ public class Animales extends javax.swing.JPanel {
         TxtPeso.setText("0");
         TxtAltura.setText("0");
         TxtComentarios.setText("");
+    }
+
+    public void SeleccionarAnimal(Animal a) {
+        FillTable();
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            if (tableModel.getValueAt(i, 0).equals(a.getId())) {
+                TableAnimales.setRowSelectionInterval(i, i);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
