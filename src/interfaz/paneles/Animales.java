@@ -25,7 +25,7 @@ public class Animales extends javax.swing.JPanel {
         initComponents();
 
         /* Panel de foto */
-        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 266, 176);
+        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 280, 176);
         PanelImagen.setLayout(new FlowLayout());
         PanelImagen.add(LblFoto);
 
@@ -83,7 +83,7 @@ public class Animales extends javax.swing.JPanel {
         if (a.getFoto() != null) {
             LblFoto.UpdatePhoto(a.getFoto(), 226, 166);
         } else {
-            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 266, 176);
+            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 280, 176);
         }
     }
 
@@ -198,15 +198,15 @@ public class Animales extends javax.swing.JPanel {
             }
         });
 
-        PanelImagen.setMaximumSize(new java.awt.Dimension(236, 176));
-        PanelImagen.setMinimumSize(new java.awt.Dimension(236, 176));
-        PanelImagen.setPreferredSize(new java.awt.Dimension(266, 176));
+        PanelImagen.setMaximumSize(new java.awt.Dimension(280, 176));
+        PanelImagen.setMinimumSize(new java.awt.Dimension(280, 176));
+        PanelImagen.setPreferredSize(new java.awt.Dimension(280, 176));
 
         javax.swing.GroupLayout PanelImagenLayout = new javax.swing.GroupLayout(PanelImagen);
         PanelImagen.setLayout(PanelImagenLayout);
         PanelImagenLayout.setHorizontalGroup(
             PanelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         PanelImagenLayout.setVerticalGroup(
             PanelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,12 +259,6 @@ public class Animales extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -301,7 +295,12 @@ public class Animales extends javax.swing.JPanel {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(15, 15, 15)))
+                        .addGap(15, 15, 15))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PanelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

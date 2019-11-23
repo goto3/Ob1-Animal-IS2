@@ -27,7 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="BtnGuardar1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -54,15 +59,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="TxtTelefono" min="-2" pref="207" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="BtnSeleccionMascotas" max="32767" attributes="0"/>
+                          <Component id="TxtTelefono" pref="207" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="BtnGuardar1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,7 +98,9 @@
                   <Component id="TxtTelefono" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="336" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="BtnSeleccionMascotas" min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace pref="296" max="32767" attributes="0"/>
               <Component id="BtnGuardar1" min="-2" pref="42" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -154,6 +159,21 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnGuardar1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="rojeru_san.complementos.ButtonHover" name="BtnSeleccionMascotas">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="7a" green="3e" red="1c" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Mascotas adoptadas"/>
+        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a0" green="50" red="24" type="rgb"/>
+        </Property>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSeleccionMascotasActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

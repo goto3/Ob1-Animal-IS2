@@ -10,6 +10,7 @@ import dominio.modelo.actividades.VisitaVeterinaria;
 import dominio.modelo.personas.Adoptante;
 import dominio.modelo.personas.Padrino;
 import dominio.modelo.personas.Responsable;
+import dominio.tools.EstadoAnimal;
 import dominio.tools.Moneda;
 import dominio.tools.Pago;
 import dominio.tools.Periodo;
@@ -31,6 +32,12 @@ public class CargarDatos {
         Animal a8 = new Animal("Nombre8", "tipo8", 120, 5000, "Comentario8");
         Animal a9 = new Animal("Nombre9", "tipo9", 120, 5000, "Comentario9");
         Animal a10 = new Animal("Nombre10", "tipo10", 120, 5000, "Comentario10");
+
+        a6.setEstado(EstadoAnimal.SIN_ADOPTAR);
+        a7.setEstado(EstadoAnimal.SIN_ADOPTAR);
+        a8.setEstado(EstadoAnimal.SIN_ADOPTAR);
+        a9.setEstado(EstadoAnimal.SIN_ADOPTAR);
+        a10.setEstado(EstadoAnimal.SIN_ADOPTAR);
 
         sistema.addAnimal(a1);
         sistema.addAnimal(a2);

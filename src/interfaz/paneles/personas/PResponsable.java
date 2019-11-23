@@ -3,6 +3,7 @@ package interfaz.paneles.personas;
 import dominio.modelo.Persona;
 import dominio.modelo.personas.Responsable;
 import interfaz.paneles.Personas;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class PResponsable extends javax.swing.JPanel {
 
@@ -127,6 +128,7 @@ public class PResponsable extends javax.swing.JPanel {
         } else {
             panelPersonas.editPersona(r);
         }
+        showMessageDialog(null, "Cambios guardados exitosamente.");
     }//GEN-LAST:event_BtnGuardar1ActionPerformed
 
 

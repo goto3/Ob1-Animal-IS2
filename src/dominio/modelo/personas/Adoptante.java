@@ -29,13 +29,13 @@ public class Adoptante extends Persona {
     public List<Animal> getAnimales() {
         return animales;
     }
-
-    public void addAnimal(Animal animal) throws AnimalException {
-        if (animales.contains(animal)) {
-            throw new AnimalException("Animal ya adoptado por este adoptante.");
-        } else {
-            animales.add(animal);
-        }
+    
+    public void setAnimales(List<Animal> animales){
+        this.animales = animales;
+    }
+    
+    public void addAnimal(Animal a){
+        this.animales.add(a);
     }
 
 }

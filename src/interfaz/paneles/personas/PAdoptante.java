@@ -1,14 +1,23 @@
 package interfaz.paneles.personas;
 
+import dominio.Sistema;
+import dominio.modelo.Animal;
 import dominio.modelo.Persona;
 import dominio.modelo.personas.Adoptante;
+import dominio.tools.EstadoAnimal;
 import interfaz.paneles.Personas;
+import interfaz.paneles.helpers.SeleccionMultipleMascotasEnAdopcion;
+import java.util.ArrayList;
+import java.util.List;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class PAdoptante extends javax.swing.JPanel {
 
     private Adoptante a;
     private Personas panelPersonas;
     private boolean newPersona;
+    Sistema sistema = Sistema.getInstance();
+    List<Animal> mascotas = new ArrayList<>();
 
     public PAdoptante(Personas pPersonas, Persona p) {
         if (p == null) {
@@ -27,6 +36,12 @@ public class PAdoptante extends javax.swing.JPanel {
         TxtTelefono.setText(a.getTelefono());
     }
 
+    public void setMascotas(List<String> lm) {
+        for (String s : lm) {
+            mascotas.add(sistema.getAnimal(s));
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,6 +56,7 @@ public class PAdoptante extends javax.swing.JPanel {
         TxtTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         BtnGuardar1 = new rojeru_san.complementos.ButtonHover();
+        BtnSeleccionMascotas = new rojeru_san.complementos.ButtonHover();
 
         setMaximumSize(new java.awt.Dimension(300, 32767));
         setMinimumSize(new java.awt.Dimension(300, 0));
@@ -69,10 +85,24 @@ public class PAdoptante extends javax.swing.JPanel {
             }
         });
 
+        BtnSeleccionMascotas.setBackground(new java.awt.Color(28, 62, 122));
+        BtnSeleccionMascotas.setText("Mascotas adoptadas");
+        BtnSeleccionMascotas.setColorHover(new java.awt.Color(36, 80, 160));
+        BtnSeleccionMascotas.setFocusable(false);
+        BtnSeleccionMascotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeleccionMascotasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BtnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -95,12 +125,10 @@ public class PAdoptante extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnSeleccionMascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TxtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +153,9 @@ public class PAdoptante extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(BtnSeleccionMascotas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
                 .addComponent(BtnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -136,17 +166,28 @@ public class PAdoptante extends javax.swing.JPanel {
         a.setApellido(TxtApellido.getText());
         a.setEmail(TxtEmail.getText());
         a.setTelefono(TxtTelefono.getText());
+        a.setAnimales(mascotas);
+        for (Animal a : mascotas){
+            a.setEstado(EstadoAnimal.ADOPTADO);
+        }
         if (newPersona) {
             newPersona = false;
             panelPersonas.addPersona(a);
         } else {
             panelPersonas.editPersona(a);
         }
+        showMessageDialog(null, "Cambios guardados exitosamente.");
     }//GEN-LAST:event_BtnGuardar1ActionPerformed
+
+    private void BtnSeleccionMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionMascotasActionPerformed
+        SeleccionMultipleMascotasEnAdopcion pSMM = new SeleccionMultipleMascotasEnAdopcion(a.getAnimales(), this);
+        pSMM.setVisible(true);
+    }//GEN-LAST:event_BtnSeleccionMascotasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.ButtonHover BtnGuardar1;
+    private rojeru_san.complementos.ButtonHover BtnSeleccionMascotas;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtEmail;
     private javax.swing.JTextField TxtNombre;
@@ -157,4 +198,5 @@ public class PAdoptante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
+
 }

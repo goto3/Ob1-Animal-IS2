@@ -1,18 +1,26 @@
 package interfaz.paneles.personas;
 
+import dominio.Sistema;
+import dominio.modelo.Animal;
 import dominio.modelo.Persona;
 import dominio.modelo.personas.Padrino;
 import dominio.tools.Moneda;
 import dominio.tools.Pago;
 import dominio.tools.Periodo;
 import interfaz.paneles.Personas;
+import interfaz.paneles.helpers.SeleccionMultipleMascotas;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class PPadrino extends javax.swing.JPanel {
 
     private Padrino p;
     private Personas panelPersonas;
     private boolean newPersona;
+    Sistema sistema = Sistema.getInstance();
+    List<Animal> mascotas = new ArrayList<>();
 
     public PPadrino(Personas pPersonas, Persona pers) {
         if (pers == null) {
@@ -37,6 +45,12 @@ public class PPadrino extends javax.swing.JPanel {
         ComForma.setSelectedItem(p.getPeriodoPago());
         ComTipo.setModel(new DefaultComboBoxModel(Pago.values()));
         ComTipo.setSelectedItem(p.getTipoPago());
+    }
+
+    public void setMascotas(List<String> lm) {
+        for (String s : lm) {
+            mascotas.add(sistema.getAnimal(s));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -64,6 +78,7 @@ public class PPadrino extends javax.swing.JPanel {
         TxtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         BtnGuardar1 = new rojeru_san.complementos.ButtonHover();
+        BtnSeleccionMascotas = new rojeru_san.complementos.ButtonHover();
 
         setMaximumSize(new java.awt.Dimension(300, 30000));
         setMinimumSize(new java.awt.Dimension(300, 300));
@@ -116,10 +131,24 @@ public class PPadrino extends javax.swing.JPanel {
             }
         });
 
+        BtnSeleccionMascotas.setBackground(new java.awt.Color(28, 62, 122));
+        BtnSeleccionMascotas.setText("Mascotas");
+        BtnSeleccionMascotas.setColorHover(new java.awt.Color(36, 80, 160));
+        BtnSeleccionMascotas.setFocusable(false);
+        BtnSeleccionMascotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeleccionMascotasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BtnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -168,12 +197,9 @@ public class PPadrino extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ComForma, 0, 167, Short.MAX_VALUE)
-                            .addComponent(ComTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ComTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(BtnSeleccionMascotas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,14 +243,16 @@ public class PPadrino extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnSeleccionMascotas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(BtnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCantidadKeyTyped
-                char vChar = evt.getKeyChar();
+        char vChar = evt.getKeyChar();
         if (!(Character.isDigit(vChar)
                 || (vChar == evt.VK_BACK_SPACE)
                 || (vChar == evt.VK_DELETE))
@@ -240,7 +268,8 @@ public class PPadrino extends javax.swing.JPanel {
         p.setTelefono(TxtTelefono.getText());
         p.setCiudad(TxtCiudad.getText());
         p.setPais(TxtPais.getText());
-        if (TxtCantidad.getText().length() == 0){
+        p.setListaAnimales(mascotas);
+        if (TxtCantidad.getText().length() == 0) {
             TxtCantidad.setText("0");
         }
         p.setValor(Integer.parseInt(TxtCantidad.getText()));
@@ -253,11 +282,18 @@ public class PPadrino extends javax.swing.JPanel {
         } else {
             panelPersonas.editPersona(p);
         }
+        showMessageDialog(null, "Cambios guardados exitosamente.");
     }//GEN-LAST:event_BtnGuardar1ActionPerformed
+
+    private void BtnSeleccionMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionMascotasActionPerformed
+        SeleccionMultipleMascotas pSMM = new SeleccionMultipleMascotas(p.getListaAnimales(), this);
+        pSMM.setVisible(true);
+    }//GEN-LAST:event_BtnSeleccionMascotasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.ButtonHover BtnGuardar1;
+    private rojeru_san.complementos.ButtonHover BtnSeleccionMascotas;
     private javax.swing.JComboBox<String> ComForma;
     private javax.swing.JComboBox<String> ComMoneda;
     private javax.swing.JComboBox<String> ComTipo;
