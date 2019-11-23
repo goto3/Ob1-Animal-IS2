@@ -8,6 +8,7 @@ import interfaz.paneles.actividades.POtrasView;
 import interfaz.paneles.actividades.PPaseoView;
 import interfaz.paneles.actividades.PVisitaVetView;
 import java.awt.BorderLayout;
+import java.awt.event.ComponentListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.event.ListSelectionEvent;
@@ -36,6 +37,7 @@ public class Calendario extends javax.swing.JPanel {
             }
         });
         FillTable();
+                
         TableActividades.getColumnModel().getColumn(0).setMaxWidth(115);
         TableActividades.getColumnModel().getColumn(0).setMinWidth(115);
         TableActividades.getColumnModel().getColumn(1).setPreferredWidth(90);
@@ -230,13 +232,8 @@ public class Calendario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(RSCalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(RSCalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -248,6 +245,10 @@ public class Calendario extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(PanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

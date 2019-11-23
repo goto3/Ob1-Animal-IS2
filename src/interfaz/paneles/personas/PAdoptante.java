@@ -35,12 +35,12 @@ public class PAdoptante extends javax.swing.JPanel {
         TxtNombre = new javax.swing.JTextField();
         TxtApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        BtnGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TxtEmail = new javax.swing.JTextField();
         TxtTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        BtnGuardar1 = new rojeru_san.complementos.ButtonHover();
 
         setMaximumSize(new java.awt.Dimension(300, 32767));
         setMinimumSize(new java.awt.Dimension(300, 0));
@@ -53,18 +53,21 @@ public class PAdoptante extends javax.swing.JPanel {
         jLabel5.setText("Adoptante");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        BtnGuardar.setText("Guardar");
-        BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnGuardarActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Nombre:");
 
         jLabel2.setText("Apellido:");
 
         jLabel6.setText("Teléfono:");
+
+        BtnGuardar1.setBackground(new java.awt.Color(28, 62, 122));
+        BtnGuardar1.setText("Guardar");
+        BtnGuardar1.setColorHover(new java.awt.Color(36, 80, 160));
+        BtnGuardar1.setFocusable(false);
+        BtnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,14 +90,17 @@ public class PAdoptante extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BtnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BtnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,13 +125,13 @@ public class PAdoptante extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(220, 220, 220)
-                .addComponent(BtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                .addComponent(BtnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
+    private void BtnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardar1ActionPerformed
         a.setNombre(TxtNombre.getText());
         a.setApellido(TxtApellido.getText());
         a.setEmail(TxtEmail.getText());
@@ -136,11 +142,11 @@ public class PAdoptante extends javax.swing.JPanel {
         } else {
             panelPersonas.editPersona(a);
         }
-    }//GEN-LAST:event_BtnGuardarActionPerformed
+    }//GEN-LAST:event_BtnGuardar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnGuardar;
+    private rojeru_san.complementos.ButtonHover BtnGuardar1;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtEmail;
     private javax.swing.JTextField TxtNombre;

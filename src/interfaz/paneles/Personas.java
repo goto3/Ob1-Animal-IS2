@@ -80,17 +80,17 @@ public class Personas extends javax.swing.JPanel {
             case ("Adoptante"):
                 PAdoptante pad = new PAdoptante(this, p);
                 PanelFields.setLayout(new BorderLayout());
-                PanelFields.add(pad, BorderLayout.NORTH);
+                PanelFields.add(pad, BorderLayout.CENTER);
                 break;
             case ("Responsable"):
                 PResponsable pre = new PResponsable(this, p);
                 PanelFields.setLayout(new BorderLayout());
-                PanelFields.add(pre, BorderLayout.NORTH);
+                PanelFields.add(pre, BorderLayout.CENTER);
                 break;
             case ("Padrino"):
                 PPadrino ppa = new PPadrino(this, p);
                 PanelFields.setLayout(new BorderLayout());
-                PanelFields.add(ppa, BorderLayout.NORTH);
+                PanelFields.add(ppa, BorderLayout.CENTER);
                 break;
         }
         PanelFields.revalidate();
@@ -129,9 +129,9 @@ public class Personas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablePersonas = new javax.swing.JTable();
         PanelFields = new javax.swing.JPanel();
-        BtnNewResponsable = new javax.swing.JButton();
-        BtnNewAdoptante = new javax.swing.JButton();
-        BtnNewPadrino = new javax.swing.JButton();
+        BtnNewResponsable = new rojeru_san.complementos.ButtonHover();
+        BtnNewAdoptante = new rojeru_san.complementos.ButtonHover();
+        BtnNewPadrino = new rojeru_san.complementos.ButtonHover();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 633));
@@ -158,6 +158,7 @@ public class Personas extends javax.swing.JPanel {
         });
         TablePersonas.setFocusable(false);
         TablePersonas.setRowHeight(20);
+        TablePersonas.setSelectionBackground(new java.awt.Color(28, 62, 122));
         TablePersonas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TablePersonas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablePersonas);
@@ -186,7 +187,9 @@ public class Personas extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        BtnNewResponsable.setBackground(new java.awt.Color(28, 62, 122));
         BtnNewResponsable.setText("Nuevo Responsable");
+        BtnNewResponsable.setColorHover(new java.awt.Color(36, 80, 160));
         BtnNewResponsable.setFocusable(false);
         BtnNewResponsable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +197,9 @@ public class Personas extends javax.swing.JPanel {
             }
         });
 
+        BtnNewAdoptante.setBackground(new java.awt.Color(28, 62, 122));
         BtnNewAdoptante.setText("Nuevo Adoptante");
+        BtnNewAdoptante.setColorHover(new java.awt.Color(36, 80, 160));
         BtnNewAdoptante.setFocusable(false);
         BtnNewAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +207,9 @@ public class Personas extends javax.swing.JPanel {
             }
         });
 
+        BtnNewPadrino.setBackground(new java.awt.Color(28, 62, 122));
         BtnNewPadrino.setText("Nuevo Padrino");
+        BtnNewPadrino.setColorHover(new java.awt.Color(36, 80, 160));
         BtnNewPadrino.setFocusable(false);
         BtnNewPadrino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,34 +222,33 @@ public class Personas extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnNewResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnNewAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnNewPadrino, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addComponent(PanelFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(20, 20, 20)
+                        .addComponent(BtnNewResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnNewPadrino, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(BtnNewAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BtnNewResponsable)
-                        .addComponent(BtnNewAdoptante)
-                        .addComponent(BtnNewPadrino))
-                    .addComponent(jLabel1))
-                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(BtnNewResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNewAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNewPadrino, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelFields, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE))
@@ -250,29 +256,29 @@ public class Personas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnNewPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewPadrinoActionPerformed
+    private void BtnNewResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewResponsableActionPerformed
         PanelFields.removeAll();
-        PPadrino pad = new PPadrino(this, null);
+        PResponsable res = new PResponsable(this, null);
         PanelFields.setLayout(new BorderLayout());
-        PanelFields.add(pad, BorderLayout.NORTH);
+        PanelFields.add(res, BorderLayout.CENTER);
         PanelFields.revalidate();
-    }//GEN-LAST:event_BtnNewPadrinoActionPerformed
+    }//GEN-LAST:event_BtnNewResponsableActionPerformed
 
     private void BtnNewAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewAdoptanteActionPerformed
         PanelFields.removeAll();
         PAdoptante ad = new PAdoptante(this, null);
         PanelFields.setLayout(new BorderLayout());
-        PanelFields.add(ad, BorderLayout.NORTH);
+        PanelFields.add(ad, BorderLayout.CENTER);
         PanelFields.revalidate();
     }//GEN-LAST:event_BtnNewAdoptanteActionPerformed
 
-    private void BtnNewResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewResponsableActionPerformed
+    private void BtnNewPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewPadrinoActionPerformed
         PanelFields.removeAll();
-        PResponsable res = new PResponsable(this, null);
+        PPadrino pad = new PPadrino(this, null);
         PanelFields.setLayout(new BorderLayout());
-        PanelFields.add(res, BorderLayout.NORTH);
+        PanelFields.add(pad, BorderLayout.CENTER);
         PanelFields.revalidate();
-    }//GEN-LAST:event_BtnNewResponsableActionPerformed
+    }//GEN-LAST:event_BtnNewPadrinoActionPerformed
 
     private void setAnimalValues(Animal a) {
 
@@ -280,9 +286,9 @@ public class Personas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnNewAdoptante;
-    private javax.swing.JButton BtnNewPadrino;
-    private javax.swing.JButton BtnNewResponsable;
+    private rojeru_san.complementos.ButtonHover BtnNewAdoptante;
+    private rojeru_san.complementos.ButtonHover BtnNewPadrino;
+    private rojeru_san.complementos.ButtonHover BtnNewResponsable;
     private javax.swing.JPanel PanelFields;
     private javax.swing.JTable TablePersonas;
     private javax.swing.JLabel jLabel1;
