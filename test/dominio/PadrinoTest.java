@@ -43,10 +43,6 @@ public class PadrinoTest {
                 Periodo.MENSUAL, Moneda.DOLARES,300);
     }
     
-//    String nombre, String apellido, String mail, String telefono,
-//            String ciudad, String pais, Pago tipoPago,
-//            Periodo tipoPeriodo, Moneda tipoMoneda, int valor
-    
     @After
     public void tearDown() {
         
@@ -89,23 +85,23 @@ public class PadrinoTest {
         assertEquals(impresion, padrino.imprimirListaAnimales());
     }
     
-    @Test
-    public void toStringPadrino() {
-        Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
-        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
-        padrino.agregarAnimal(ramiro);
-        padrino.agregarAnimal(juanjo);
-        String impresion = "Persona => Padrino \nNombre = "
-                + "Pedro" + "\nApellido = " +  "González"
-                + "\nEmail = " + "pedro12@gmail.com" + "\nCiudad = " + 
-                "Montevideo" + "\nPais = " + "Uruguay" + "\nValor = " + 300
-                + "\nTelefono = " + "098 775 234"
-                + "\nMoneda = " + "DOLARES"
-                +"\nPeriodo de pago = " + "MENSUAL" +
-                "\nTipo de pago = " + "TARJETA_CREDITO" +
-                "\nAnimales que apadrina:\n"
-                + padrino.imprimirListaAnimales();
-        assertEquals(impresion, padrino.toString());
-    }
+//    @Test
+//    public void toStringPadrino() {
+//        Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
+//        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
+//        padrino.agregarAnimal(ramiro);
+//        padrino.agregarAnimal(juanjo);
+//        String impresion = "Persona => Padrino \nNombre = "
+//                + "Pedro" + "\nApellido = " +  "González"
+//                + "\nEmail = " + "pedro12@gmail.com" + "\nCiudad = " + 
+//                "Montevideo" + "\nPais = " + "Uruguay" + "\nValor = " + 300
+//                + "\nTelefono = " + "098 775 234"
+//                + "\nMoneda = " + "DOLARES"
+//                +"\nPeriodo de pago = " + "MENSUAL" +
+//                "\nTipo de pago = " + "TARJETA_CREDITO" +
+//                "\nAnimales que apadrina:\n"
+//                + padrino.imprimirListaAnimales();
+//        assertEquals(impresion, padrino.toString());
+//    }
    
 }

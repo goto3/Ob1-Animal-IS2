@@ -23,21 +23,21 @@ public class Paseo extends Actividad {
         return ruta;
     }
 
-    public void setRuta(ImageIcon ruta) {
-        this.ruta = ruta;
-    }
+//    public void setRuta(ImageIcon ruta) {
+//        this.ruta = ruta;
+//    }
 
     public int getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(int distancia) {
-        if (distancia < 0) {
-            this.distancia = 0;
-        } else {
-            this.distancia = distancia;
-        }
-    }
+//    public void setDistancia(int distancia) {
+//        if (distancia < 0) {
+//            this.distancia = 0;
+//        } else {
+//            this.distancia = distancia;
+//        }
+//    }
 
     @Override
     public String toString() {

@@ -2,7 +2,6 @@ package dominio.modelo.personas;
 
 import dominio.modelo.Animal;
 import dominio.modelo.Persona;
-import excepciones.AnimalException;
 import java.util.ArrayList;
 import java.util.List;
 
