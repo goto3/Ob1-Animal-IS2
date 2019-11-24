@@ -61,8 +61,7 @@ public class ResponsableTest {
     
     @Test
     public void toStringTest(){
-        assertEquals("Persona => Responsable: Nombre = "
-                + res.getNombre() + ", apellido = " + res.getApellido() +
-                ", mail = " + res.getEmail(), res.toString());
+        assertEquals(res.getNombre() + " " + res.getApellido(),
+                res.toString());
     }
 }

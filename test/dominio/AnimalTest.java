@@ -34,7 +34,7 @@ public class AnimalTest {
     
     @Before
     public void setUp() {
-        animal = new Animal();
+        animal = new Animal("Perro", "Rasta", 1, 2, "Es rubio");
     }
     
     @After
@@ -74,9 +74,7 @@ public class AnimalTest {
 //    
     @Test
     public void testToString(){
-        assertEquals(animal.getTipo() + " {" + "\n  nombre = " + animal.getNombre() + 
-                            "\n  altura = " + animal.getAltura() + 
-                            "\n  peso = " + animal.getPeso() +
-                            "\n  comentarios = " + animal.getComentarios() + "\n" + '}', animal.toString());
+        assertEquals(animal.getTipo()+ " - " + animal.getNombre() 
+                , animal.toString());
     }
 }

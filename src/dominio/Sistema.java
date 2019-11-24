@@ -14,7 +14,6 @@ import dominio.modelo.personas.Responsable;
 import dominio.modelo.personas.Usuario;
 import dominio.tools.EstadoAnimal;
 import excepciones.AnimalException;
-import excepciones.PadrinoException;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -76,42 +75,42 @@ public class Sistema {
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
-    
-    public void adoptarAnimal(Adoptante adoptante, Animal animal) throws AnimalException {
-        if (adoptante == null || animal == null) {
-            throw new AnimalException("Parámetro nulo.");
-        }
-        if (animal.getEstado() == EstadoAnimal.NO_ADOPTABLE) {
-            throw new AnimalException("Animal no puede ser adoptado.");
-        }
-        if (animal.getEstado() == EstadoAnimal.ADOPTADO) {
-            throw new AnimalException("Animal ya fue adoptado.");
-        }
-        animal.setEstado(EstadoAnimal.ADOPTADO);
-        adoptante.addAnimal(animal);
-        adoptantes.add(adoptante);
-    }
-
-    public List<Actividad> listaActividadesPorFecha(LocalDate date) {
-        ArrayList<Actividad> activs = new ArrayList<>();
-        for (Actividad actividad : actividades) {
-            LocalDate ld = actividad.getFechaHora().toLocalDate();
-            if (ld.equals(date)) {
-                activs.add(actividad);
-            }
-        }
-        return activs;
-    }
-
-    private boolean existeResponsable(Responsable responsable) {
-        for (Responsable res : responsables) {
-            if (res.getNombre().equals(responsable.getNombre())
-                    && res.getEmail().equals(responsable.getEmail())) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    
+//    public void adoptarAnimal(Adoptante adoptante, Animal animal) throws AnimalException {
+//        if (adoptante == null || animal == null) {
+//            throw new AnimalException("Parámetro nulo.");
+//        }
+//        if (animal.getEstado() == EstadoAnimal.NO_ADOPTABLE) {
+//            throw new AnimalException("Animal no puede ser adoptado.");
+//        }
+//        if (animal.getEstado() == EstadoAnimal.ADOPTADO) {
+//            throw new AnimalException("Animal ya fue adoptado.");
+//        }
+//        animal.setEstado(EstadoAnimal.ADOPTADO);
+//        adoptante.addAnimal(animal);
+//        adoptantes.add(adoptante);
+//    }
+//
+//    public List<Actividad> listaActividadesPorFecha(LocalDate date) {
+//        ArrayList<Actividad> activs = new ArrayList<>();
+//        for (Actividad actividad : actividades) {
+//            LocalDate ld = actividad.getFechaHora().toLocalDate();
+//            if (ld.equals(date)) {
+//                activs.add(actividad);
+//            }
+//        }
+//        return activs;
+//    }
+//
+//    private boolean existeResponsable(Responsable responsable) {
+//        for (Responsable res : responsables) {
+//            if (res.getNombre().equals(responsable.getNombre())
+//                    && res.getEmail().equals(responsable.getEmail())) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     /* GETTERS */
     public List<Responsable> getResponsables() {
@@ -192,50 +191,50 @@ public class Sistema {
         }
         return null;
     }
+//
+//    public Paseo getPaseo(String nombreBuscar) {
+//        for (int i = 0; i < actividades.size(); i++) {
+//            Actividad act = actividades.get(i);
+//            if (act.getNombre().equals(nombreBuscar)
+//                    && act.getClass().getSimpleName().equals("Paseo")) {
+//                return (Paseo) act;
+//            }
+//        }
+//        return null;
+//    }
 
-    public Paseo getPaseo(String nombreBuscar) {
-        for (int i = 0; i < actividades.size(); i++) {
-            Actividad act = actividades.get(i);
-            if (act.getNombre().equals(nombreBuscar)
-                    && act.getClass().getSimpleName().equals("Paseo")) {
-                return (Paseo) act;
-            }
-        }
-        return null;
-    }
+//    public VisitaVeterinaria getVisita(String nombreBuscar) {
+//        for (int i = 0; i < actividades.size(); i++) {
+//            Actividad act = actividades.get(i);
+//            if (act.getNombre().equals(nombreBuscar)
+//                    && act.getClass().getSimpleName().equals("VisitaVeterinaria")) {
+//                return (VisitaVeterinaria) act;
+//            }
+//        }
+//        return null;
+//    }
 
-    public VisitaVeterinaria getVisita(String nombreBuscar) {
-        for (int i = 0; i < actividades.size(); i++) {
-            Actividad act = actividades.get(i);
-            if (act.getNombre().equals(nombreBuscar)
-                    && act.getClass().getSimpleName().equals("VisitaVeterinaria")) {
-                return (VisitaVeterinaria) act;
-            }
-        }
-        return null;
-    }
+//    public OtraActividad getOtraActividad(String nombreBuscar) {
+//        for (int i = 0; i < actividades.size(); i++) {
+//            Actividad act = actividades.get(i);
+//            if (act.getNombre().equals(nombreBuscar)
+//                    && act.getClass().getSimpleName().equals("ActividadCualquiera")) {
+//                return (OtraActividad) act;
+//            }
+//        }
+//        return null;
+//    }
 
-    public OtraActividad getOtraActividad(String nombreBuscar) {
-        for (int i = 0; i < actividades.size(); i++) {
-            Actividad act = actividades.get(i);
-            if (act.getNombre().equals(nombreBuscar)
-                    && act.getClass().getSimpleName().equals("ActividadCualquiera")) {
-                return (OtraActividad) act;
-            }
-        }
-        return null;
-    }
-
-    public Alimentacion getAlimentacion(String nombreBuscar) {
-        for (int i = 0; i < actividades.size(); i++) {
-            Actividad act = actividades.get(i);
-            if (act.getNombre().equals(nombreBuscar)
-                    && act.getClass().getSimpleName().equals("Alimentacion")) {
-                return (Alimentacion) act;
-            }
-        }
-        return null;
-    }
+//    public Alimentacion getAlimentacion(String nombreBuscar) {
+//        for (int i = 0; i < actividades.size(); i++) {
+//            Actividad act = actividades.get(i);
+//            if (act.getNombre().equals(nombreBuscar)
+//                    && act.getClass().getSimpleName().equals("Alimentacion")) {
+//                return (Alimentacion) act;
+//            }
+//        }
+//        return null;
+//    }
 
     /* ADDERS */
     public void addPersona(Persona p) {
@@ -256,13 +255,13 @@ public class Sistema {
         animales.add(perroAnadir);
     }
 
-    public void deletePadrino(Padrino padrinoABorrar) throws PadrinoException {
-        if (padrinos.contains(padrinoABorrar)) {
-            padrinos.remove(padrinoABorrar);
-        } else {
-            throw new PadrinoException("No existe el padrino a borrar");
-        }
-    }
+//    public void deletePadrino(Padrino padrinoABorrar) throws AnimalException {
+//        if (padrinos.contains(padrinoABorrar)) {
+//            padrinos.remove(padrinoABorrar);
+//        } else {
+//            throw new AnimalException("No existe el padrino a borrar");
+//        }
+//    }
 
     public void addActividad(Actividad act) {
         actividades.add(act);
@@ -273,13 +272,13 @@ public class Sistema {
         veterinarias.add(v);
     }
 
-    /* DELETERS */
-    public void deleteActividad(Actividad act) throws AnimalException {
-        if (actividades.contains(act)) {
-            actividades.remove(act);
-        } else {
-            throw new AnimalException("no existe esa actividad");
-        }
-    }
+//    /* DELETERS */
+//    public void deleteActividad(Actividad act) throws AnimalException {
+//        if (actividades.contains(act)) {
+//            actividades.remove(act);
+//        } else {
+//            throw new AnimalException("no existe esa actividad");
+//        }
+//    }
 
 }

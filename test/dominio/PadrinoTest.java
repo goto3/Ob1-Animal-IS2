@@ -84,21 +84,8 @@ public class PadrinoTest {
     @Test
     public void imprimirListaAnimalesNoVacia() {
         Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
-        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
         padrino.agregarAnimal(ramiro);
-        padrino.agregarAnimal(juanjo);
-        String impresion = "Gato {"
-                + "\n  nombre = Ramiro"
-                + "\n  altura = 15"
-                + "\n  peso = 2" 
-                + "\n  comentarios = Blanco"
-                + "\n" + '}' + "\n"
-                +"Perro {"
-                + "\n  nombre = Juanjo"
-                + "\n  altura = 30"
-                + "\n  peso = 3" 
-                + "\n  comentarios = Marron"
-                + "\n" +'}' + "\n";
+        String impresion = "Gato - Ramiro" + "\n";
         assertEquals(impresion, padrino.imprimirListaAnimales());
     }
     

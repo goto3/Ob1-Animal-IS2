@@ -57,39 +57,6 @@ public class VeterinariaTest {
         assertEquals(inicio, vet.getHoraInicio());
         assertEquals(fin, vet.getHoraFin());
     }
-    
-    @Test
-    public void agendarActividadNingunaAEsaHora() throws AnimalException {
-        Animal unPerro = new Animal("Rasta", "Perro", 1, 2, "Es rubio");
-        Animal unGato = new Animal("Joaco", "Gato", 1, 2, "Es siames");
-        LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
-        LocalDateTime fecha2 = LocalDateTime.of(2019, Month.MARCH, 2, 16, 0);
-        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
-                "pr@gmail.com");
-        VisitaVeterinaria visitaVet = new VisitaVeterinaria("Chequeo perro", unPerro, 
-                personaResponsable, fecha1, 30, vet,"Chequeo anual");
-        vet.getActividadesAgendadas().add(visitaVet);
-        VisitaVeterinaria visitaVet2 = new VisitaVeterinaria("Chequeo gato", unGato, 
-                personaResponsable, fecha2, 30, vet,"Chequeo anual");
-        vet.agendarActividad(visitaVet2);
-        assertEquals(true , vet.getActividadesAgendadas().contains(visitaVet2));
-    }
-    
-    @Test(expected = excepciones.AnimalException.class)  
-    public void agendarActividadExisteUnaAEsaHora() throws AnimalException {
-        Animal unPerro = new Animal("Rasta", "Perro", 1, 2, "Es rubio");
-        Animal unGato = new Animal("Joaco", "Gato", 1, 2, "Es siames");
-        LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
-        LocalDateTime fecha2 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
-        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
-                "pr@gmail.com");
-        VisitaVeterinaria visitaVet = new VisitaVeterinaria("Chequeo perro", unPerro, 
-                personaResponsable, fecha1, 60, vet,"Chequeo anual");
-        vet.getActividadesAgendadas().add(visitaVet);
-        VisitaVeterinaria visitaVet2 = new VisitaVeterinaria("Chequeo gato", unGato, 
-                personaResponsable, fecha2, 30, vet,"Chequeo anual");
-        vet.agendarActividad(visitaVet2);
-    }
 
     @Test
     public void eliminarActividadAgendada() throws AnimalException {
@@ -111,9 +78,6 @@ public class VeterinariaTest {
         LocalTime horaInicial = vet.getHoraInicio();
         LocalTime horaFinal = vet.getHoraFin();
         String resToString = vet.toString();
-        assertEquals("Veterinaria{" + "nombre = " + nombre +
-                ", actividadesAgendadas = " + actividadesAgendadas + 
-                ", horaInicial = " + horaInicial + 
-                ", horaFinal = " + horaFinal + '}', resToString);
+        assertEquals(vet.getNombre(), "ANIMALS");
     }
 }

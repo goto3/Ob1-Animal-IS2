@@ -13,13 +13,6 @@ public class Veterinaria {
     private LocalTime horaInicio;
     private LocalTime horaFin;
 
-//    public Veterinaria() {
-//        this.nombre = "Sin-Nombre";
-//        this.actividades = new ArrayList<>();
-//        this.horaInicio = LocalTime.of(0, 0, 0, 0);
-//        this.horaFin = LocalTime.of(0, 0, 0, 0);
-//    }
-
     public Veterinaria(String nombre, LocalTime timeInicio, LocalTime timeFin) {
         setNombre(nombre);
         this.actividades = new ArrayList<>();
@@ -61,25 +54,26 @@ public class Veterinaria {
         this.horaFin = time;
     }
 
-    private boolean existeActividadHora(LocalDateTime fechaHora) {        
-        for (Actividad actividad : actividades) {
-            LocalDateTime inicioActividad = actividad.getFechaHora();
-            LocalDateTime finActividad = actividad.getFechaHora().plusMinutes(actividad.duracion);
-            if(fechaHora.isAfter(inicioActividad) && fechaHora.isBefore(finActividad)){
-                return true;
-            }            
-        }
-        return false;
-    }
-
-    public void agendarActividad(VisitaVeterinaria act) throws AnimalException {
-        if (!existeActividadHora(act.getFechaHora())) {
-            actividades.add(act);
-            act.setVeterinaria(this);
-        } else{
-            throw new AnimalException("fecha ocupada por otra actividad");
-        }
-    }
+//    private boolean existeActividadHora(LocalDateTime fechaHora) {        
+//        for (Actividad actividad : actividades) {
+//            LocalDateTime inicioActividad = actividad.getFechaHora();
+//            LocalDateTime finActividad = actividad.getFechaHora().plusMinutes(actividad.duracion);
+//            if(fechaHora.isAfter(inicioActividad) && fechaHora.isBefore(finActividad)){
+//                return true;
+//            }            
+//        }
+//
+//        return false;
+//    }
+//
+//    public void agendarActividad(VisitaVeterinaria act) throws AnimalException {
+//        if (!existeActividadHora(act.getFechaHora())) {
+//            actividades.add(act);
+//            act.setVeterinaria(this);
+//        } else{
+//            throw new AnimalException("fecha ocupada por otra actividad");
+//        }
+//    }
 
     public void EliminarActividadAgendada(Actividad act) {
         if (actividades.contains(act)) {
