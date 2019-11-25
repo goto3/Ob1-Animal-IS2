@@ -5,9 +5,8 @@
         <group>
             <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/interfaz/LogIn.java</file>
             <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/interfaz/paneles/personas/PAdoptante.java</file>
-            <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/dominio/Sistema.java</file>
             <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/interfaz/paneles/helpers/SeleccionMascota.java</file>
-            <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/interfaz/paneles/personas/PPadrino.java</file>
+            <file>file:/C:/Users/goto/Desktop/IS2/Ob2/Proyecto/src/interfaz/paneles/helpers/SeleccionMultipleMascotasEnAdopcion.java</file>
         </group>
     </open-files>
 </project-private>

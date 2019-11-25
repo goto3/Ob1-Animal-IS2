@@ -34,6 +34,7 @@ public class PAdoptante extends javax.swing.JPanel {
         TxtApellido.setText(a.getApellido());
         TxtEmail.setText(a.getEmail());
         TxtTelefono.setText(a.getTelefono());
+        mascotas = a.getAnimales();
     }
 
     public void setMascotas(List<String> lm) {
@@ -166,8 +167,11 @@ public class PAdoptante extends javax.swing.JPanel {
         a.setApellido(TxtApellido.getText());
         a.setEmail(TxtEmail.getText());
         a.setTelefono(TxtTelefono.getText());
+        for (Animal a : a.getAnimales()) {
+            a.setEstado(EstadoAnimal.SIN_ADOPTAR);
+        }
         a.setAnimales(mascotas);
-        for (Animal a : mascotas){
+        for (Animal a : mascotas) {
             a.setEstado(EstadoAnimal.ADOPTADO);
         }
         if (newPersona) {
@@ -180,7 +184,7 @@ public class PAdoptante extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnGuardar1ActionPerformed
 
     private void BtnSeleccionMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionMascotasActionPerformed
-        SeleccionMultipleMascotasEnAdopcion pSMM = new SeleccionMultipleMascotasEnAdopcion(a.getAnimales(), this);
+        SeleccionMultipleMascotasEnAdopcion pSMM = new SeleccionMultipleMascotasEnAdopcion(mascotas, this);
         pSMM.setVisible(true);
     }//GEN-LAST:event_BtnSeleccionMascotasActionPerformed
 

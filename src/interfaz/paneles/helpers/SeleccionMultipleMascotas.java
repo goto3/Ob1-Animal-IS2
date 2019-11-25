@@ -117,7 +117,6 @@ public class SeleccionMultipleMascotas extends javax.swing.JFrame {
         setTitle("Selección de mascotas");
         setMaximumSize(new java.awt.Dimension(400, 500));
         setMinimumSize(new java.awt.Dimension(400, 500));
-        setPreferredSize(new java.awt.Dimension(400, 500));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Selecciona algunas mascotas:");

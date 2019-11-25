@@ -94,7 +94,7 @@ public class SeleccionMultipleMascotasEnAdopcion extends javax.swing.JFrame {
         tableModel.fireTableDataChanged();
         mascotas = new ArrayList<>();
         for (Animal a : sistema.getAnimales()) {
-            if (a.getEstado() == EstadoAnimal.SIN_ADOPTAR) {
+            if ((a.getEstado() == EstadoAnimal.SIN_ADOPTAR) || mascotasS.contains(a)) {
                 Object[] animal = new Object[]{
                     mascotasS.contains(a), a.getId(), a.getNombre(), a.getTipo()
                 };
