@@ -28,13 +28,13 @@ public class MainWindow extends javax.swing.JFrame {
         jTabbedPane1.addTab("Animales", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-32.png")), pAnim);
         jTabbedPane1.addTab("Personas", new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-people-32.png")), pPers);
     }
-    
-    public void MostrarAnimal(Animal a){
+
+    public void MostrarAnimal(Animal a) {
         pAnim.SeleccionarAnimal(a);
         jTabbedPane1.setSelectedIndex(1);
     }
-    
-    public void MostrarResponsable(Responsable r){
+
+    public void MostrarResponsable(Responsable r) {
         pPers.SeleccionarPersona(r);
         jTabbedPane1.setSelectedIndex(2);
     }
@@ -53,6 +53,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabbedPane1.setFocusable(false);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,6 +75,21 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        int i = jTabbedPane1.getSelectedIndex();
+        switch (i) {
+            case 0:
+                pCal.UpdateData();
+                break;
+            case 1:
+                pAnim.UpdateData();
+                break;
+            case 2:
+                pPers.UpdateData();
+                break;
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

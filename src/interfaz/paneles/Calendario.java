@@ -37,7 +37,7 @@ public class Calendario extends javax.swing.JPanel {
             }
         });
         FillTable();
-                
+
         TableActividades.getColumnModel().getColumn(0).setMaxWidth(115);
         TableActividades.getColumnModel().getColumn(0).setMinWidth(115);
         TableActividades.getColumnModel().getColumn(1).setPreferredWidth(90);
@@ -127,6 +127,10 @@ public class Calendario extends javax.swing.JPanel {
         PanelView.revalidate();
     }
 
+    public void UpdateData() {
+        FillTable();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,14 +158,6 @@ public class Calendario extends javax.swing.JPanel {
         RSCalender.setOpaque(false);
         RSCalender.setPreferredSize(new java.awt.Dimension(380, 456));
         RSCalender.setTextMayusculas(false);
-        RSCalender.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                RSCalenderFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                RSCalenderFocusLost(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setText("Calendario");
@@ -230,9 +226,9 @@ public class Calendario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(RSCalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,14 +237,11 @@ public class Calendario extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)))
+                    .addComponent(PanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,14 +272,6 @@ public class Calendario extends javax.swing.JPanel {
     private void ComTipoActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComTipoActividadActionPerformed
         FillTable();
     }//GEN-LAST:event_ComTipoActividadActionPerformed
-
-    private void RSCalenderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RSCalenderFocusGained
-        System.out.println("Focus gained");
-    }//GEN-LAST:event_RSCalenderFocusGained
-
-    private void RSCalenderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RSCalenderFocusLost
-        System.out.println("Focus lost");
-    }//GEN-LAST:event_RSCalenderFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

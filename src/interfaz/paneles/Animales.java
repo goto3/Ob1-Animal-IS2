@@ -104,6 +104,10 @@ public class Animales extends javax.swing.JPanel {
             }
         }
     }
+    
+    public void UpdateData() {
+        FillTable();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -465,4 +469,6 @@ public class Animales extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    
 }
