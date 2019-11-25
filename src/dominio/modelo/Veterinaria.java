@@ -20,7 +20,6 @@ public class Veterinaria {
         setHoraFin(timeFin);
     }
 
-    /* GETTERS */
     public String getNombre() {
         return this.nombre;
     }
@@ -37,7 +36,6 @@ public class Veterinaria {
         return horaFin;
     }
 
-    /* SETTERS */
     public final void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -49,28 +47,7 @@ public class Veterinaria {
     public final void setHoraFin(LocalTime time) {
         this.horaFin = time;
     }
-
-//    private boolean existeActividadHora(LocalDateTime fechaHora) {        
-//        for (Actividad actividad : actividades) {
-//            LocalDateTime inicioActividad = actividad.getFechaHora();
-//            LocalDateTime finActividad = actividad.getFechaHora().plusMinutes(actividad.duracion);
-//            if(fechaHora.isAfter(inicioActividad) && fechaHora.isBefore(finActividad)){
-//                return true;
-//            }            
-//        }
-//
-//        return false;
-//    }
-//
-//    public void agendarActividad(VisitaVeterinaria act) throws AnimalException {
-//        if (!existeActividadHora(act.getFechaHora())) {
-//            actividades.add(act);
-//            act.setVeterinaria(this);
-//        } else{
-//            throw new AnimalException("fecha ocupada por otra actividad");
-//        }
-//    }
-
+    
     public void EliminarActividadAgendada(Actividad act) {
         if (actividades.contains(act)) {
             actividades.remove(act);

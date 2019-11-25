@@ -21,7 +21,6 @@ public abstract class Actividad {
         this.duracion = dur;
     }
 
-    /* GETTERS */
     public String getNombre() {
         return nombre;
     }
@@ -46,7 +45,6 @@ public abstract class Actividad {
         return duracion;
     }
 
-    /* SETTERS */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
