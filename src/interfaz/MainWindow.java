@@ -30,13 +30,13 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     public void MostrarAnimal(Animal a) {
-        pAnim.SeleccionarAnimal(a);
         jTabbedPane1.setSelectedIndex(1);
+        pAnim.SeleccionarAnimal(a);
     }
 
     public void MostrarResponsable(Responsable r) {
-        pPers.SeleccionarPersona(r);
         jTabbedPane1.setSelectedIndex(2);
+        pPers.SeleccionarPersona(r);
     }
 
     @SuppressWarnings("unchecked")
