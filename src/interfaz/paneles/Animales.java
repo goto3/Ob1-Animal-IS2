@@ -5,7 +5,9 @@ import dominio.Sistema;
 import dominio.modelo.Animal;
 import dominio.tools.EstadoAnimal;
 import dominio.tools.Pago;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
@@ -25,8 +27,8 @@ public class Animales extends javax.swing.JPanel {
         initComponents();
 
         /* Panel de foto */
-        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 280, 176);
-        PanelImagen.setLayout(new FlowLayout());
+        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/animal upload.png")), 280, 175);
+        PanelImagen.setLayout(new GridBagLayout());
         PanelImagen.add(LblFoto);
 
         /* Tabla de animales */
@@ -83,7 +85,7 @@ public class Animales extends javax.swing.JPanel {
         if (a.getFoto() != null) {
             LblFoto.UpdatePhoto(a.getFoto(), 226, 166);
         } else {
-            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 280, 176);
+            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/animal upload.png")), 280, 176);
         }
     }
 
@@ -104,7 +106,7 @@ public class Animales extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void UpdateData() {
         FillTable();
     }
@@ -202,6 +204,7 @@ public class Animales extends javax.swing.JPanel {
             }
         });
 
+        PanelImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PanelImagen.setMaximumSize(new java.awt.Dimension(280, 176));
         PanelImagen.setMinimumSize(new java.awt.Dimension(280, 176));
         PanelImagen.setPreferredSize(new java.awt.Dimension(280, 176));
@@ -271,13 +274,11 @@ public class Animales extends javax.swing.JPanel {
                                     .addComponent(jLabel9)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel6)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(0, 0, Short.MAX_VALUE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,5 +471,4 @@ public class Animales extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-    
 }

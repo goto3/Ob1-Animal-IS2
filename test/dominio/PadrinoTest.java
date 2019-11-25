@@ -1,8 +1,3 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
 package dominio;
 
 import dominio.modelo.Animal;
@@ -18,10 +13,6 @@ import dominio.tools.Pago;
 import dominio.tools.Periodo;
 import java.util.ArrayList;
 
-/**
- *
- * @author sebaban99
- */
 public class PadrinoTest {
     
     private Padrino padrino;

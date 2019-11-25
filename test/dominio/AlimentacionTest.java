@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dominio;
 
 import dominio.modelo.Persona;
@@ -18,10 +13,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author marce
- */
 public class AlimentacionTest {
 
     private Alimentacion alimentacion;
@@ -40,7 +31,7 @@ public class AlimentacionTest {
     @Before
     public void setUp() {
         Animal unGato = new Animal("Joaco", "Gato", 1, 2, "Es siames");
-        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
+        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez",
                 "pr@gmail.com");
         LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
         alimentacion = new Alimentacion("Alimentar gato", unGato, personaResponsable,
@@ -54,15 +45,15 @@ public class AlimentacionTest {
     @Test
     public void testConstructorConParametros() {
         Animal unGato = new Animal("Joaco", "Gato", 1, 2, "Es siames");
-        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez", 
+        Responsable personaResponsable = new Responsable("Pedro", "Rodriguez",
                 "pr@gmail.com");
         LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 17, 0);
         assertEquals("Alimentar gato", alimentacion.getNombre());
         assertEquals(unGato.getNombre(), alimentacion.getMascota().getNombre());
         assertEquals(unGato.getTipo(), alimentacion.getMascota().getTipo());
-        assertEquals(unGato.getComentarios(), 
+        assertEquals(unGato.getComentarios(),
                 alimentacion.getMascota().getComentarios());
-        assertEquals(personaResponsable.getEmail(), 
+        assertEquals(personaResponsable.getEmail(),
                 alimentacion.getUsuario().getEmail());
         assertEquals(fecha1, alimentacion.getFechaHora());
         assertEquals(40, alimentacion.getDuracion());
@@ -75,9 +66,9 @@ public class AlimentacionTest {
         String tipoAlimento = alimentacion.getTipoAlimento();
         boolean fueRealizado = alimentacion.getFueRealizado();
         String nombre = alimentacion.getNombre();
-        assertEquals("Alimentacion{" + "responsable = " + responsable +
-                ", mascota = " + mascota + ", tipoAlimento = " + tipoAlimento +
-                ", fueRealizado = " + fueRealizado + ", nombre = " + nombre + '}'
-                , alimentacion.toString());
+        assertEquals("Alimentacion{" + "responsable = " + responsable
+                + ", mascota = " + mascota + ", tipoAlimento = " + tipoAlimento
+                + ", fueRealizado = " + fueRealizado + ", nombre = " + nombre + '}',
+                 alimentacion.toString());
     }
 }

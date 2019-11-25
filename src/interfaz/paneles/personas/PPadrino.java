@@ -132,7 +132,7 @@ public class PPadrino extends javax.swing.JPanel {
         });
 
         BtnSeleccionMascotas.setBackground(new java.awt.Color(28, 62, 122));
-        BtnSeleccionMascotas.setText("Mascotas");
+        BtnSeleccionMascotas.setText("Seleccionar Mascotas ...");
         BtnSeleccionMascotas.setColorHover(new java.awt.Color(36, 80, 160));
         BtnSeleccionMascotas.setFocusable(false);
         BtnSeleccionMascotas.addActionListener(new java.awt.event.ActionListener() {

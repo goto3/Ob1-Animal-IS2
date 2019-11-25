@@ -3,7 +3,7 @@ package interfaz.paneles.helpers;
 import dominio.Sistema;
 import dominio.modelo.Animal;
 import interfaz.paneles.NuevaActividad;
-import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -23,8 +23,8 @@ public class SeleccionMascota extends javax.swing.JPanel {
         initComponents();
 
         /* Panel de foto */
-        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 226, 166);
-        PanelImagen.setLayout(new FlowLayout());
+        LblFoto = new Foto(new ImageIcon(getClass().getResource("/interfaz/Resources/animal upload.png")), 226, 166);
+        PanelImagen.setLayout(new GridBagLayout());
         PanelImagen.add(LblFoto);
 
         tableModel = (DefaultTableModel) TablaMasc.getModel();
@@ -102,7 +102,7 @@ public class SeleccionMascota extends javax.swing.JPanel {
         if (a != null && a.getFoto() != null) {
             LblFoto.UpdatePhoto(a.getFoto(), 226, 166);
         } else {
-            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/icons8-dog-paw-100.png")), 226, 166);
+            LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/animal upload.png")), 226, 166);
         }
     }
 

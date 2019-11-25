@@ -16,11 +16,11 @@ public class Foto extends JLabel {
 
     public Foto(ImageIcon image, int width, int height) {
         imageShowing = image;
-        
+
         subirAvatar = new JFileChooser();
         subirAvatar.setCurrentDirectory(new File("user.home"));
         subirAvatar.setFileFilter(new FileNameExtensionFilter("*.Images", "png", "jpg"));
-        subirAvatar.setAcceptAllFileFilterUsed(false);
+        subirAvatar.setAcceptAllFileFilterUsed(false);        
 
         if (imageShowing != null) {
             setIcon(Resize(imageShowing, width, height));
