@@ -108,20 +108,4 @@ public class Padrino extends Persona {
     public void setTipoPago(Pago tipoPago) {
         this.tipoPago = tipoPago;
     }    
-    
-//    @Override
-//    public String toString() {
-//        return "Persona => Padrino "
-//                + "\nNombre = " + this.nombre
-//                + "\nApellido = " + this.apellido
-//                + "\nEmail = " + this.email
-//                + "\nCiudad = " + this.ciudad
-//                + "\nPais = " + this.pais
-//                + "\nValor = " + this.valor
-//                + "\nTelefono = " + this.telefono
-//                + "\nMoneda = " + this.moneda.toString()
-//                + "\nPeriodo de pago = " + this.periodoPago.toString()
-//                + "\nTipo de pago = " + this.tipoPago.toString()
-//                + "\nAnimales que apadrina:\n" + imprimirListaAnimales();
-//    }
 }

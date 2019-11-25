@@ -22,21 +22,9 @@ public class VisitaVeterinaria extends Actividad {
     public String getMotivo() {
         return motivo;
     }
-
-    public void setMotivo(String motivo) {
-        if (motivo.equals("")) {
-            this.motivo = "Sin-Motivo";
-        } else {
-            this.motivo = motivo;
-        }
-    }
-
+    
     public Veterinaria getVeterinaria() {
         return veterinaria;
-    }
-
-    public void setVeterinaria(Veterinaria veterinaria) {
-        this.veterinaria = veterinaria;
     }
 
     @Override

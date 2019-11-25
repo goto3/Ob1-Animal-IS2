@@ -74,4 +74,43 @@ public class OtraActividadTest {
                 ", fecha = " + act.getFechaHora() + ", nombre = " + act.getNombre() + 
                 '}', act.toString());
     }
+    
+    @Test
+    public void setNombreActividad() {
+        act.setNombre("Jugar");
+        assertEquals(act.getNombre(), "Jugar");
+    }
+    
+    @Test
+    public void setDuracionActividad() {
+        act.setDuracion(10);
+        assertEquals(act.getDuracion(), 10);
+    }
+    
+    @Test
+    public void setFechaHoraActividad() {
+        LocalDateTime fecha1 = LocalDateTime.of(2019, Month.MARCH, 2, 15, 0);
+        act.setFechaHora(fecha1);
+        assertEquals(act.getFechaHora(), fecha1);
+    }
+    
+    @Test
+    public void setFueRealizadoActividad() {
+        act.setFueRealizado(true);
+        assertEquals(act.getFueRealizado(), true);
+    }
+    
+    @Test
+    public void setMascotaActividad() {
+        Animal perro = new Animal("Perro", "Rasta", 1, 2, "Es rubio");
+        act.setMascota(perro);
+        assertEquals(act.getMascota(), perro);
+    }
+    
+    @Test
+    public void setUsuarioActividad() {
+        Responsable res = new Responsable("Pedro","Gonzalez", "pedro12@gmail.com");
+        act.setUsuario(res);
+        assertEquals(act.getUsuario(), res);
+    }
 }

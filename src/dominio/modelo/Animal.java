@@ -65,44 +65,23 @@ public class Animal {
 
     /* SETTERS */
     public void setNombre(String nombre) {
-        if (nombre.equals("")) {
-            this.nombre = "Sin-Nombre";
-        } else {
-            this.nombre = nombre;
-        }
+        this.nombre = nombre;
     }
 
     public void setTipo(String tipo) {
-        if (tipo.equals("")) {
-            this.tipo = "Sin-Tipo";
-        } else {
-            this.tipo = tipo;
-        }
+        this.tipo = tipo;
     }
 
     public void setAltura(int altura) {
-        if (altura < 0) {
-            this.altura = 0;
-        } else {
-            this.altura = altura;
-        }
+        this.altura = altura;
     }
 
     public void setPeso(int peso) {
-        if (peso < 0) {
-            this.peso = 0;
-        } else {
-            this.peso = peso;
-        }
+        this.peso = peso;
     }
 
     public void setComentarios(String comentarios) {
-        if (comentarios.equals("")) {
-            this.comentarios = "Sin-Comentarios";
-
-        } else {
-            this.comentarios = comentarios;
-        }
+        this.comentarios = comentarios;
     }
 
     public void setFoto(ImageIcon imagen) {

@@ -17,7 +17,6 @@ public abstract class Actividad {
         this.nombre = nombre;
         this.responsable = responsable;
         this.animal = animal;
-        this.fueRealizado = fueRealizado;
         this.fechaHora = fecha;
         this.duracion = dur;
     }
@@ -49,11 +48,7 @@ public abstract class Actividad {
 
     /* SETTERS */
     public void setNombre(String nombre) {
-        if (nombre.equals("")) {
-            this.nombre = "Sin-Nombre";
-        } else {
-            this.nombre = nombre;
-        }
+        this.nombre = nombre;
     }
 
     public void setUsuario(Responsable responasble) {

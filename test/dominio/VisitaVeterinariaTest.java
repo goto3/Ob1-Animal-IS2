@@ -86,4 +86,11 @@ public class VisitaVeterinariaTest {
                 ", fecha = " + visita.getFechaHora() + "veterinaria=" +
                 visita.getVeterinaria() + '}', visita.toString());
     }
+    
+    @Test
+    public void setFueRealizadoTrue() {
+       visita.setFueRealizado(true);
+       assertEquals(true, visita.getFueRealizado());
+       assertFalse(visita.getVeterinaria().getActividadesAgendadas().contains(this));
+    }
 }

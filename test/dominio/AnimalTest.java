@@ -71,10 +71,41 @@ public class AnimalTest {
         animal.setFoto(null);
         assertEquals(null, animal.getFoto());
     }
-//    
+   
     @Test
     public void testToString(){
         assertEquals(animal.getTipo()+ " - " + animal.getNombre() 
                 , animal.toString());
     }
+    
+    @Test
+    public void setNombre(){
+        animal.setNombre("Juanjo");
+        assertEquals(animal.getNombre(), "Juanjo");
+    }
+    
+    @Test
+    public void setComentario(){
+        animal.setComentarios("Es marron");
+        assertEquals(animal.getComentarios(), "Es marron");
+    }
+    
+    @Test
+    public void setTipo(){
+        animal.setTipo("Gato");
+        assertEquals(animal.getTipo(), "Gato");
+    }
+    
+    @Test
+    public void setAltura(){
+        animal.setAltura(15);
+        assertEquals(animal.getAltura(), 15);
+    }
+    
+    @Test
+    public void setPeso(){
+        animal.setPeso(15);
+        assertEquals(animal.getPeso(), 15);
+    }
+    
 }

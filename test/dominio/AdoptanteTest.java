@@ -7,6 +7,7 @@ package dominio;
 
 import dominio.modelo.Animal;
 import dominio.modelo.personas.Adoptante;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -56,5 +57,18 @@ public class AdoptanteTest {
         adoptante.addAnimal(unGato);
         assertEquals(true, adoptante.getAnimales().contains(unGato));
         assertEquals(1, adoptante.getAnimales().size());
+    }
+    
+    @Test
+    public void setListaAnimalesTest() {
+        ArrayList<Animal> lista = new ArrayList<>();
+        adoptante.setAnimales(lista);
+        assertEquals(lista, adoptante.getAnimales());
+    }
+    
+    @Test
+    public void setTelefono() {
+        adoptante.setTelefono("099 123 456");
+        assertEquals("099 123 456", adoptante.getTelefono());
     }
 }

@@ -19,12 +19,12 @@ public class Sistema {
     private static Sistema Instance;
 
     private ArrayList<Usuario> usuarios;
-    private final ArrayList<Responsable> responsables;
-    private final ArrayList<Animal> animales;
-    private final ArrayList<Actividad> actividades;
-    private final List<Veterinaria> veterinarias;
-    private final List<Padrino> padrinos;
-    private final List<Adoptante> adoptantes;
+    private ArrayList<Responsable> responsables;
+    private ArrayList<Animal> animales;
+    private ArrayList<Actividad> actividades;
+    private List<Veterinaria> veterinarias;
+    private List<Padrino> padrinos;
+    private List<Adoptante> adoptantes;
 
     private Usuario usuarioLogeado;
 
@@ -66,6 +66,16 @@ public class Sistema {
         return false;
     }
 
+    public void returnEmptyLists(){
+        this.usuarios = new ArrayList<>();
+        this.responsables = new ArrayList<>();
+        this.animales = new ArrayList<>();
+        this.actividades = new ArrayList<>();
+        this.veterinarias = new ArrayList<>();
+        this.padrinos = new ArrayList<>();
+        this.adoptantes = new ArrayList<>();
+    }
+    
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
@@ -245,17 +255,9 @@ public class Sistema {
         }
     }
 
-    public void addAnimal(Animal perroAnadir) {
-        animales.add(perroAnadir);
+    public void addAnimal(Animal animal) {
+        animales.add(animal);
     }
-
-//    public void deletePadrino(Padrino padrinoABorrar) throws AnimalException {
-//        if (padrinos.contains(padrinoABorrar)) {
-//            padrinos.remove(padrinoABorrar);
-//        } else {
-//            throw new AnimalException("No existe el padrino a borrar");
-//        }
-//    }
 
     public void addActividad(Actividad act) {
         actividades.add(act);

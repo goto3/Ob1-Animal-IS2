@@ -39,11 +39,7 @@ public class Veterinaria {
 
     /* SETTERS */
     public final void setNombre(String nombre) {
-        if (nombre.equals("")) {
-            this.nombre = "Sin-Nombre";
-        } else {
-            this.nombre = nombre;
-        }
+        this.nombre = nombre;
     }
 
     public final void setHoraInicio(LocalTime time) {

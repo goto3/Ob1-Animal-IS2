@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 import dominio.tools.Moneda;
 import dominio.tools.Pago;
 import dominio.tools.Periodo;
+import java.util.ArrayList;
 
 /**
  *
@@ -73,6 +74,24 @@ public class PadrinoTest {
     }
     
     @Test
+    public void setNombrePersona() {
+        padrino.setNombre("Pilar");
+        assertEquals("Pilar", padrino.getNombre());
+    }
+    
+    @Test
+    public void setApellidoPersona() {
+        padrino.setApellido("Rodriguez");
+        assertEquals("Rodriguez", padrino.getApellido());
+    }
+    
+    @Test
+    public void setEmailPersona() {
+        padrino.setEmail("mail@mail.com");
+        assertEquals("mail@mail.com", padrino.getEmail());
+    }
+    
+    @Test
     public void imprimirListaAnimalesVacia() {
         assertEquals("", padrino.imprimirListaAnimales());
     }
@@ -85,23 +104,52 @@ public class PadrinoTest {
         assertEquals(impresion, padrino.imprimirListaAnimales());
     }
     
-//    @Test
-//    public void toStringPadrino() {
-//        Animal ramiro = new Animal("Ramiro","Gato", 15, 2, "Blanco");
-//        Animal juanjo = new Animal("Juanjo", "Perro", 30, 3, "Marron");
-//        padrino.agregarAnimal(ramiro);
-//        padrino.agregarAnimal(juanjo);
-//        String impresion = "Persona => Padrino \nNombre = "
-//                + "Pedro" + "\nApellido = " +  "González"
-//                + "\nEmail = " + "pedro12@gmail.com" + "\nCiudad = " + 
-//                "Montevideo" + "\nPais = " + "Uruguay" + "\nValor = " + 300
-//                + "\nTelefono = " + "098 775 234"
-//                + "\nMoneda = " + "DOLARES"
-//                +"\nPeriodo de pago = " + "MENSUAL" +
-//                "\nTipo de pago = " + "TARJETA_CREDITO" +
-//                "\nAnimales que apadrina:\n"
-//                + padrino.imprimirListaAnimales();
-//        assertEquals(impresion, padrino.toString());
-//    }
-   
+     @Test
+    public void setListaAnimalesTest() {
+        ArrayList<Animal> lista = new ArrayList<>();
+        padrino.setListaAnimales(lista);
+        assertEquals(lista, padrino.getListaAnimales());
+    }
+    
+    @Test
+    public void setTelefono() {
+        padrino.setTelefono("099 123 456");
+        assertEquals("099 123 456", padrino.getTelefono());
+    }
+    
+    @Test
+    public void setCiudad() {
+        padrino.setCiudad("Montevideo");
+        assertEquals("Montevideo", padrino.getCiudad());
+    }
+    
+    @Test
+    public void setPais() {
+        padrino.setPais("Uruguay");
+        assertEquals("Uruguay", padrino.getPais());
+    }
+    
+    @Test
+    public void setValor() {
+        padrino.setValor(20);
+        assertEquals(20, padrino.getValor());
+    }
+    
+    @Test
+    public void setMoneda() {
+        padrino.setMoneda(Moneda.DOLARES);
+        assertEquals(Moneda.DOLARES, padrino.getMoneda());
+    }
+    
+    @Test
+    public void setTipoPago() {
+        padrino.setTipoPago(Pago.TARJETA_CREDITO);
+        assertEquals(Pago.TARJETA_CREDITO, padrino.getTipoPago());
+    }
+    
+    @Test
+    public void setPeriodoPago() {
+        padrino.setPeriodoPago(Periodo.ANUAL);
+        assertEquals(Periodo.ANUAL, padrino.getPeriodoPago());
+    }
 }

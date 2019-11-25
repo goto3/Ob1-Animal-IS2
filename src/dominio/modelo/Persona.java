@@ -25,11 +25,7 @@ public abstract class Persona {
     }
 
     public void setNombre(String nombre) {
-        if (nombre.equals("")) {
-            this.nombre = "Sin-Nombre";
-        } else {
-            this.nombre = nombre;
-        }
+        this.nombre = nombre;
     }
 
     public String getApellido() {
@@ -45,11 +41,7 @@ public abstract class Persona {
     }
 
     public void setEmail(String mail) {
-        if (mail.equals("")) {
-            this.email = "Sin-Mail";
-        } else {
-            this.email = mail;
-        }
+        this.email = mail;
     }
 
     @Override
