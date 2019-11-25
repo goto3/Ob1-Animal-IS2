@@ -20,14 +20,6 @@ public class Alimentacion extends Actividad {
         return tipoAlimento;
     }
 
-//    public void setTipoAlimento(String tipoAlimento) {
-//        if(tipoAlimento.equals("")){
-//            this.tipoAlimento = "Sin-Tipo";
-//        }else{
-//            this.tipoAlimento = tipoAlimento;
-//        }
-//    }
-
     @Override
     public String toString() {
         return "Alimentacion{" + "responsable = " + this.responsable +

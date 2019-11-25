@@ -30,7 +30,6 @@ public class Animal {
         this.estado = EstadoAnimal.NO_ADOPTABLE;
     }
 
-    /* GETTERS */
     public String getId() {
         return id;
     }
@@ -63,7 +62,6 @@ public class Animal {
         return estado;
     }
 
-    /* SETTERS */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
