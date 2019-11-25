@@ -31,12 +31,14 @@ public class PPaseoView extends javax.swing.JPanel {
             LblFoto.UpdatePhoto(new ImageIcon(getClass().getResource("/interfaz/Resources/map.png")), 226, 166);
         }
 
-        TxtNombre.setText(actividad.getNombre());
-        TxtFecha.setText(actividad.getFechaHora().format(formatDateTime));
-        TxtDuracion.setText(String.valueOf(actividad.getDuracion()));
-        TxtMascota.setText(actividad.getMascota().toString());
-        TxtResponsable.setText(actividad.getUsuario().toString());
-        TxtDistancia.setText(String.valueOf(actividad.getDistancia()));
+        if (actividad != null) {
+            TxtNombre.setText(actividad.getNombre());
+            TxtFecha.setText(actividad.getFechaHora().format(formatDateTime));
+            TxtDuracion.setText(String.valueOf(actividad.getDuracion()));
+            TxtMascota.setText(actividad.getMascota().toString());
+            TxtResponsable.setText(actividad.getUsuario().toString());
+            TxtDistancia.setText(String.valueOf(actividad.getDistancia()));
+        }
     }
 
     @SuppressWarnings("unchecked")
