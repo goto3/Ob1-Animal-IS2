@@ -9,7 +9,7 @@ public class RandomID {
     private static RandomID Instance;
 
     private final List<String> ids;
-    public String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public static RandomID getInstance() {
         if (Instance == null) {
